@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent 6: DevOps & Infrastructure | Custom Plugin Backend</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .agent-hero {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .agent-hero h1 { color: white; position: relative; z-index: 1; }
+        .agent-meta-info { display: flex; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; position: relative; z-index: 1; }
+        .meta-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: rgba(255, 255, 255, 0.2); border-radius: 0.5rem; backdrop-filter: blur(10px); }
+        .content-section { padding: 4rem 0; }
+        .content-section h2 { margin-bottom: 2rem; position: relative; }
+        .content-section h2::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, #10b981 0%, #047857 100%); border-radius: 2px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .skill-card { background: white; border-radius: 1rem; padding: 2rem; border: 1px solid #e5e7eb; transition: all 0.3s ease; }
+        .skill-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); }
+        .skill-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .skill-card h3 { color: #1f2937; margin-bottom: 1rem; }
+        .skill-card p { color: #6b7280; font-size: 0.95rem; line-height: 1.6; }
+        .project-item { background: white; padding: 2rem; border-radius: 0.75rem; border-left: 4px solid #3b82f6; transition: all 0.3s ease; margin-bottom: 1.5rem; }
+        .project-item:hover { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); }
+        .project-item h4 { color: #1f2937; margin-bottom: 0.5rem; font-size: 1.125rem; }
+        .project-hours { display: inline-block; background: #3b82f620; color: #3b82f6; padding: 0.25rem 0.75rem; border-radius: 0.25rem; font-size: 0.85rem; font-weight: 600; margin: 1rem 0; }
+        .timeline { position: relative; padding: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #3b82f6, transparent); }
+        .timeline-item { margin-bottom: 2rem; padding-left: 100px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: 20px; top: 0; width: 20px; height: 20px; background: white; border: 3px solid #3b82f6; border-radius: 50%; }
+        .timeline-item h4 { color: #1f2937; margin-bottom: 0.5rem; }
+        .timeline-item p { color: #6b7280; }
+        .nav-buttons { display: flex; justify-content: space-between; margin-top: 4rem; gap: 1rem; }
+        @media (max-width: 768px) {
+            .agent-meta-info { flex-direction: column; gap: 1rem; }
+            .nav-buttons { flex-direction: column; }
+            .timeline::before { left: 0; }
+            .timeline-item { padding-left: 50px; }
+            .timeline-item::before { left: -10px; }
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .btn-primary { background: linear-gradient(135deg, #10b981 0%, #047857 100%); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6); }
+    </style>
+</head>
+<body>
+    <nav style="position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+            <a href="../index.html" style="font-size: 1.5rem; font-weight: bold; color: #3b82f6; text-decoration: none;">← Back</a>
+            <h2 style="margin: 0; font-size: 1.25rem;">Agent 6: DevOps & Infrastructure</h2>
+            <div style="width: 80px;"></div>
+        </div>
+    </nav>
+
+    <section class="agent-hero">
+        <div class="container">
+            <h1>🚀 Agent 6: DevOps & Infrastructure</h1>
+            <p style="font-size: 1.25rem; opacity: 0.95; margin: 1rem 0;">Docker, Kubernetes, CI/CD, Infrastructure as Code</p>
+            <div class="agent-meta-info">
+                <div class="meta-item">⏱️ Duration: 12 weeks</div>
+                <div class="meta-item">📚 Skills: 4</div>
+                <div class="meta-item">⏳ Hours: 120+</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="content-section">
+            <h2>Overview & Key Topics</h2>
+            <p>Agent 6 provides comprehensive training on advanced backend development topics essential for professional systems.</p>
+            <div style="background: #f9fafb; padding: 2rem; border-radius: 1rem; margin-top: 2rem;">
+                <h3 style="color: #1f2937; margin-bottom: 1rem;">What You'll Learn</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem;">✅ Production-ready implementation patterns</li>
+                    <li style="margin-bottom: 0.75rem;">✅ Industry best practices and standards</li>
+                    <li style="margin-bottom: 0.75rem;">✅ Real-world use cases and scenarios</li>
+                    <li style="margin-bottom: 0.75rem;">✅ Hands-on project implementation</li>
+                    <li style="margin-bottom: 0.75rem;">✅ Assessment and success criteria</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="nav-buttons">
+            <a href="agent-5.html" class="btn btn-secondary btn-lg" style="flex: 1; text-align: center;">
+                ← Previous
+            </a>
+            <a href="agent-7.html" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">
+                Next →
+            </a>
+        </section>
+    </div>
+
+    <footer style="background: #1f2937; color: white; text-align: center; padding: 2rem 0; margin-top: 4rem;">
+        <p style="color: rgba(255, 255, 255, 0.8);">Custom Plugin Backend © 2025 | <a href="https://github.com/pluginagentmarketplace/custum-plugin-backend" style="color: #3b82f6;">View on GitHub</a></p>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

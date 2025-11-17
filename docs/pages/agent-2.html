@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent 2: Database Management | Custom Plugin Backend</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .agent-hero {
+            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .agent-hero h1 {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .agent-meta-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .content-section h2 {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ec4899, #f43f5e);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #ec4899;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #ec4899;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-item h4 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .project-hours {
+            display: inline-block;
+            background: #ec489920;
+            color: #ec4899;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #ec4899, transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 100px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid #ec4899;
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #6b7280;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .agent-meta-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                padding-left: 50px;
+            }
+
+            .timeline-item::before {
+                left: -10px;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <nav style="position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+            <a href="../index.html" style="font-size: 1.5rem; font-weight: bold; color: #ec4899; text-decoration: none;">← Back</a>
+            <h2 style="margin: 0; font-size: 1.25rem;">Agent 2: Database Management</h2>
+            <div style="width: 80px;"></div>
+        </div>
+    </nav>
+
+    <section class="agent-hero">
+        <div class="container">
+            <h1>💾 Agent 2: Database Management</h1>
+            <p style="font-size: 1.25rem; opacity: 0.95; margin: 1rem 0;">Master relational and NoSQL databases, optimization, backup and recovery</p>
+            <div class="agent-meta-info">
+                <div class="meta-item">⏱️ Duration: 10 weeks</div>
+                <div class="meta-item">📚 Skills: 4</div>
+                <div class="meta-item">🎯 Projects: 6</div>
+                <div class="meta-item">⏳ Hours: 100+</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="content-section">
+            <h2>Overview</h2>
+            <p>Agent 2 teaches data persistence and management by helping you:</p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">✅ <strong>Design relational and NoSQL databases</strong> for different use cases</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Optimize database queries</strong> for production performance</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Implement backup strategies</strong> and disaster recovery</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Choose appropriate databases</strong> for project requirements</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Scale databases</strong> for high-volume use cases</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>Covered Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Relational Databases</h3>
+                    <p>PostgreSQL, MySQL, MariaDB, T-SQL. Master SQL, ACID properties, transactions, normalization, and constraints.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📄</div>
+                    <h3>NoSQL Databases</h3>
+                    <p>MongoDB, Redis, Cassandra, DynamoDB, Elasticsearch. Understand document models and eventual consistency.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3>Query Optimization</h3>
+                    <p>EXPLAIN plans, indexing strategies, performance tuning, monitoring, and N+1 problem solutions.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🔄</div>
+                    <h3>Backup & Replication</h3>
+                    <p>Backup types, replication architectures, point-in-time recovery, and disaster recovery planning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Learning Path</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Phase 1: Relational Databases (Weeks 1-3)</h4>
+                    <p>PostgreSQL, MySQL, MariaDB. Learn SQL fundamentals, ACID properties, and transactions.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 2: NoSQL Databases (Weeks 4-5)</h4>
+                    <p>MongoDB, Redis, Cassandra. Understand document models and consistency models (CAP theorem).</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 3: Query Optimization (Week 6)</h4>
+                    <p>EXPLAIN analysis, indexing strategies, query performance tuning, and monitoring.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 4: Backup & Scaling (Weeks 7-10)</h4>
+                    <p>Backup procedures, replication architectures, sharding strategies, and high availability patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Hands-On Projects</h2>
+            <div class="project-item">
+                <h4>1️⃣ Relational Database Design</h4>
+                <span class="project-hours">15 hours</span>
+                <p>Design schema for complex domain (e-commerce, social network). Implement normalization and optimize queries.</p>
+            </div>
+            <div class="project-item">
+                <h4>2️⃣ NoSQL Database Comparison</h4>
+                <span class="project-hours">15 hours</span>
+                <p>Build same app in MongoDB and Redis. Compare performance and choose appropriate technology.</p>
+            </div>
+            <div class="project-item">
+                <h4>3️⃣ Query Optimization Challenge</h4>
+                <span class="project-hours">12 hours</span>
+                <p>Analyze slow queries, add indexes, rewrite inefficient SQL, and measure improvements.</p>
+            </div>
+            <div class="project-item">
+                <h4>4️⃣ Backup & Recovery Setup</h4>
+                <span class="project-hours">12 hours</span>
+                <p>Set up automated backups, configure replication, test point-in-time recovery, plan disaster recovery.</p>
+            </div>
+            <div class="project-item">
+                <h4>5️⃣ Database Scaling Project</h4>
+                <span class="project-hours">12 hours</span>
+                <p>Implement sharding, set up read replicas, load test, and handle shard migration.</p>
+            </div>
+            <div class="project-item">
+                <h4>6️⃣ Production Database Setup</h4>
+                <span class="project-hours">12 hours</span>
+                <p>Design complete production database system with security, monitoring, and runbooks.</p>
+            </div>
+        </section>
+
+        <section class="nav-buttons">
+            <a href="agent-1.html" class="btn btn-secondary btn-lg" style="flex: 1; text-align: center;">
+                ← Previous: Agent 1
+            </a>
+            <a href="agent-3.html" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">
+                Next: Agent 3 →
+            </a>
+        </section>
+    </div>
+
+    <footer style="background: #1f2937; color: white; text-align: center; padding: 2rem 0; margin-top: 4rem;">
+        <p style="color: rgba(255, 255, 255, 0.8);">Custom Plugin Backend © 2025 | <a href="https://github.com/pluginagentmarketplace/custum-plugin-backend" style="color: #ec4899;">View on GitHub</a></p>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

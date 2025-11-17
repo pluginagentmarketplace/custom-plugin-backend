@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent 1: Programming Fundamentals | Custom Plugin Backend</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .agent-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .agent-hero h1 {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .agent-meta-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .content-section h2 {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .projects-section {
+            background: #f9fafb;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .project-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-item h4 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .project-hours {
+            display: inline-block;
+            background: #667eea20;
+            color: #667eea;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-left: 100px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #6b7280;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .agent-meta-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                padding-left: 50px;
+            }
+
+            .timeline-item::before {
+                left: -10px;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav style="position: sticky; top: 0; z-index: 100; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+            <a href="../index.html" style="font-size: 1.5rem; font-weight: bold; color: #667eea; text-decoration: none;">← Back</a>
+            <h2 style="margin: 0; font-size: 1.25rem;">Agent 1: Programming Fundamentals</h2>
+            <div style="width: 80px;"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="agent-hero">
+        <div class="container">
+            <h1>🎯 Agent 1: Programming Fundamentals</h1>
+            <p style="font-size: 1.25rem; opacity: 0.95; margin: 1rem 0;">Master programming languages, package management, and version control systems</p>
+            <div class="agent-meta-info">
+                <div class="meta-item">⏱️ Duration: 8 weeks</div>
+                <div class="meta-item">📚 Skills: 3</div>
+                <div class="meta-item">🎯 Projects: 4</div>
+                <div class="meta-item">⏳ Hours: 80+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview -->
+        <section class="content-section">
+            <h2>Overview</h2>
+            <p>Agent 1 establishes the foundation for backend development by helping you:</p>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">✅ <strong>Select appropriate programming languages</strong> based on project requirements</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Master your chosen language</strong> and its ecosystem</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Manage dependencies professionally</strong> with package managers</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Use Git and GitHub</strong> for team collaboration</li>
+                <li style="margin-bottom: 1rem;">✅ <strong>Set up development environments</strong> with professional tools</li>
+            </ul>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="content-section">
+            <h2>Covered Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🗣️</div>
+                    <h3>Programming Languages</h3>
+                    <p>Learn fundamentals of 8 languages: JavaScript, Python, Go, Java, C#, PHP, Ruby, Rust. Master language selection and ecosystem.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📦</div>
+                    <h3>Package Management</h3>
+                    <p>Understand dependency management with npm, pip, Maven, NuGet, Composer, RubyGems, Go Modules, and Cargo.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🌿</div>
+                    <h3>Version Control & Git</h3>
+                    <p>Master Git workflows, GitHub collaboration, branching strategies, pull requests, and team development practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path -->
+        <section class="content-section">
+            <h2>Learning Path</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Phase 1: Language Fundamentals (Weeks 1-2)</h4>
+                    <p>Evaluate programming languages and select one based on your goals. Set up development environment with IDE and tools.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 2: Core Language Concepts (Weeks 3-4)</h4>
+                    <p>Master language syntax, semantics, standard library, OOP and functional programming concepts.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 3: Package Management (Week 5)</h4>
+                    <p>Learn dependency management, version constraints, and handle package conflicts professionally.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 4: Version Control (Weeks 6-7)</h4>
+                    <p>Git basics and workflows, GitHub collaboration, branching strategies, and pull request workflows.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 5: Integration & Best Practices (Week 8)</h4>
+                    <p>Professional development workflow, code quality standards, and team collaboration practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <h2>Hands-On Projects</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <h4>1️⃣ Language Setup & CLI Tool</h4>
+                    <span class="project-hours">8 hours</span>
+                    <p>Set up development environment and build a command-line application. Use package manager and create your first Git repository.</p>
+                </div>
+                <div class="project-item">
+                    <h4>2️⃣ Project Management with Git</h4>
+                    <span class="project-hours">6 hours</span>
+                    <p>Practice Git workflows and GitHub collaboration. Create feature branches, submit pull requests, and handle merge conflicts.</p>
+                </div>
+                <div class="project-item">
+                    <h4>3️⃣ Dependency Management Project</h4>
+                    <span class="project-hours">6 hours</span>
+                    <p>Build project with multiple dependencies. Handle version constraints, resolve conflicts, and run security audits.</p>
+                </div>
+                <div class="project-item">
+                    <h4>4️⃣ Team Collaboration Simulation</h4>
+                    <span class="project-hours">6 hours</span>
+                    <p>Simulate real team workflow with multiple branches, pull request reviews, and code discussions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Covered -->
+        <section class="content-section">
+            <h2>Languages Covered</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="card">
+                    <h3 style="color: #667eea;">⭐ JavaScript/Node.js</h3>
+                    <p><strong>Recommendation Level:</strong> Personal Recommendation</p>
+                    <p>Full-stack capability, massive ecosystem, excellent for API development and microservices.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #667eea;">⭐ Go</h3>
+                    <p><strong>Recommendation Level:</strong> Personal Recommendation</p>
+                    <p>Modern, efficient, built-in concurrency, perfect for cloud-native applications.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #764ba2;">Python</h3>
+                    <p><strong>Recommendation Level:</strong> Alternative Option</p>
+                    <p>Readable, versatile, strong ecosystem with Django and FastAPI.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #764ba2;">Java</h3>
+                    <p><strong>Recommendation Level:</strong> Alternative Option</p>
+                    <p>Enterprise-grade, robust, mature ecosystem with Spring Boot.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #764ba2;">C#</h3>
+                    <p><strong>Recommendation Level:</strong> Alternative Option</p>
+                    <p>Modern, ASP.NET Core, excellent .NET ecosystem.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #764ba2;">Ruby, PHP, Rust</h3>
+                    <p><strong>Recommendation Level:</strong> Specialized Use</p>
+                    <p>Each with specific strengths for particular domains.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prerequisites -->
+        <section class="content-section">
+            <h2>Prerequisites</h2>
+            <div class="card" style="background: #f9fafb; border: 2px solid #667eea;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 1rem;">✓ Basic computer literacy</li>
+                    <li style="margin-bottom: 1rem;">✓ Understanding of programming fundamentals (variables, loops, functions, OOP)</li>
+                    <li style="margin-bottom: 1rem;">✓ Access to a development machine</li>
+                    <li style="margin-bottom: 1rem;">✓ Internet connection for resources and tools</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Success Criteria -->
+        <section class="content-section">
+            <h2>Success Criteria</h2>
+            <div class="card">
+                <p>After completing Agent 1, you should be able to:</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem;">☑️ Write idiomatic code in chosen language</li>
+                    <li style="margin-bottom: 0.75rem;">☑️ Manage dependencies independently</li>
+                    <li style="margin-bottom: 0.75rem;">☑️ Use Git and GitHub professionally</li>
+                    <li style="margin-bottom: 0.75rem;">☑️ Collaborate with other developers</li>
+                    <li style="margin-bottom: 0.75rem;">☑️ Set up development environment</li>
+                    <li style="margin-bottom: 0.75rem;">☑️ Follow coding standards</li>
+                    <li style="margin-bottom: 0.75rem;">☑️ Troubleshoot common issues</li>
+                    <li style="margin-bottom: 0.75rem;">☑️ Help team members with Git problems</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="content-section">
+            <h2>Next Steps</h2>
+            <div class="nav-buttons">
+                <button style="flex: 1; padding: 1.5rem; background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 0.75rem; cursor: not-allowed; opacity: 0.6; font-size: 1rem;">
+                    ← Previous Agent
+                </button>
+                <a href="agent-2.html" class="btn btn-primary btn-lg" style="flex: 1; text-align: center;">
+                    Next: Agent 2 - Database Management →
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #1f2937; color: white; text-align: center; padding: 2rem 0; margin-top: 4rem;">
+        <p style="color: rgba(255, 255, 255, 0.8);">Custom Plugin Backend © 2025 | <a href="https://github.com/pluginagentmarketplace/custum-plugin-backend" style="color: #667eea;">View on GitHub</a></p>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
