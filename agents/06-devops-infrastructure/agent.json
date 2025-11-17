@@ -1,0 +1,525 @@
+{
+  "agent_id": "06-devops-infrastructure",
+  "agent_name": "DevOps & Infrastructure",
+  "version": "1.0.0",
+  "description": "Master containerization, orchestration, cloud platforms, infrastructure as code, CI/CD pipelines, and networking to deploy and manage scalable production infrastructure",
+  "phase": 2,
+  "sequence": 6,
+  "duration_weeks": 14,
+  "difficulty_level": "Intermediate to Advanced",
+  "prerequisites": [
+    "Understanding of Linux/Unix command line",
+    "Basic networking knowledge (IP addresses, ports)",
+    "Experience with Git and version control",
+    "Programming/scripting knowledge",
+    "Database and application architecture understanding",
+    "Completion of Agents 1-5 (recommended)"
+  ],
+  "learning_objectives": [
+    "Master Docker containerization and optimization",
+    "Deploy and manage Kubernetes clusters",
+    "Provision infrastructure using Terraform and Ansible",
+    "Implement automated CI/CD pipelines",
+    "Configure secure networking and SSL/TLS",
+    "Deploy applications with zero downtime",
+    "Implement monitoring and observability",
+    "Optimize cloud infrastructure costs"
+  ],
+  "skills": [
+    {
+      "skill_id": "6.1",
+      "skill_name": "Containerization & Orchestration",
+      "file": "skills/containerization-orchestration.md",
+      "duration_hours": 120,
+      "description": "Docker fundamentals, Dockerfile optimization, Docker Compose, Kubernetes architecture, K8s resources, deployments, services, and production best practices"
+    },
+    {
+      "skill_id": "6.2",
+      "skill_name": "Cloud Platforms & Infrastructure as Code",
+      "file": "skills/cloud-iac.md",
+      "duration_hours": 100,
+      "description": "AWS, GCP, Azure services overview, Infrastructure as Code with Terraform, configuration management with Ansible, CloudFormation, and multi-cloud strategies"
+    },
+    {
+      "skill_id": "6.3",
+      "skill_name": "CI/CD Pipelines & Automation",
+      "file": "skills/ci-cd-pipelines.md",
+      "duration_hours": 90,
+      "description": "Continuous integration and deployment concepts, GitHub Actions, GitLab CI, Jenkins, GitOps with ArgoCD, deployment strategies (blue-green, canary, rolling)"
+    },
+    {
+      "skill_id": "6.4",
+      "skill_name": "Networking & SSL/TLS",
+      "file": "skills/networking-ssl.md",
+      "duration_hours": 80,
+      "description": "TCP/IP fundamentals, DNS configuration, HTTP/HTTPS protocols, SSL/TLS certificates, Let's Encrypt, firewalls, VPN, load balancing, and reverse proxies"
+    }
+  ],
+  "hands_on_projects": [
+    {
+      "project_name": "Containerized Multi-Tier Application",
+      "description": "Create optimized Docker images for frontend, backend, and database. Implement Docker Compose for local development with multiple services",
+      "duration_hours": 12,
+      "technologies": [
+        "Docker",
+        "Dockerfile",
+        "Docker Compose",
+        "Multi-stage builds"
+      ],
+      "deliverables": [
+        "Optimized Dockerfiles for each service",
+        "Docker Compose configuration",
+        "Container size optimization report",
+        "Security scan results"
+      ]
+    },
+    {
+      "project_name": "Kubernetes Production Deployment",
+      "description": "Deploy complete application stack to Kubernetes with Deployments, Services, Ingress, ConfigMaps, Secrets, and persistent storage",
+      "duration_hours": 18,
+      "technologies": [
+        "Kubernetes",
+        "kubectl",
+        "Helm",
+        "Ingress Controller",
+        "cert-manager"
+      ],
+      "deliverables": [
+        "Kubernetes manifests for all resources",
+        "Helm chart for application",
+        "Ingress configuration with HTTPS",
+        "Monitoring and logging setup"
+      ]
+    },
+    {
+      "project_name": "Infrastructure as Code with Terraform",
+      "description": "Provision complete cloud infrastructure including VPC, subnets, security groups, load balancers, RDS database, and ECS/EKS cluster using Terraform",
+      "duration_hours": 16,
+      "technologies": [
+        "Terraform",
+        "AWS/GCP/Azure",
+        "VPC",
+        "Load Balancers",
+        "RDS/Cloud SQL"
+      ],
+      "deliverables": [
+        "Terraform modules for infrastructure",
+        "Multi-environment configuration",
+        "State management setup",
+        "Infrastructure documentation"
+      ]
+    },
+    {
+      "project_name": "Complete CI/CD Pipeline",
+      "description": "Build comprehensive CI/CD pipeline with automated testing, security scanning, Docker image building, and deployment to staging and production environments",
+      "duration_hours": 20,
+      "technologies": [
+        "GitHub Actions/GitLab CI",
+        "Docker",
+        "Kubernetes",
+        "Security scanning",
+        "GitOps"
+      ],
+      "deliverables": [
+        "CI/CD pipeline configuration",
+        "Automated testing integration",
+        "Security scanning reports",
+        "Deployment automation scripts",
+        "Rollback procedures"
+      ]
+    },
+    {
+      "project_name": "Production Infrastructure with Monitoring",
+      "description": "Deploy end-to-end production infrastructure with HTTPS, load balancing, auto-scaling, monitoring, logging, and disaster recovery",
+      "duration_hours": 24,
+      "technologies": [
+        "Kubernetes/ECS",
+        "Nginx/ALB",
+        "Let's Encrypt",
+        "Prometheus",
+        "Grafana",
+        "ELK Stack"
+      ],
+      "deliverables": [
+        "Production-ready infrastructure",
+        "HTTPS configuration with certificates",
+        "Load balancer setup",
+        "Monitoring dashboards",
+        "Log aggregation system",
+        "Disaster recovery plan",
+        "Runbooks and documentation"
+      ]
+    }
+  ],
+  "assessment_criteria": [
+    {
+      "criterion": "Container Mastery",
+      "weight": 20,
+      "assessment_method": "Build optimized Docker images, implement multi-stage builds, demonstrate security scanning and best practices"
+    },
+    {
+      "criterion": "Kubernetes Proficiency",
+      "weight": 25,
+      "assessment_method": "Deploy complete application stack to K8s, configure services, ingress, storage, implement rolling updates"
+    },
+    {
+      "criterion": "Infrastructure as Code",
+      "weight": 20,
+      "assessment_method": "Provision cloud infrastructure using Terraform, create reusable modules, manage state, implement multi-environment setup"
+    },
+    {
+      "criterion": "CI/CD Implementation",
+      "weight": 20,
+      "assessment_method": "Build automated pipeline with testing, security scanning, deployment to multiple environments, implement GitOps"
+    },
+    {
+      "criterion": "Networking & Security",
+      "weight": 15,
+      "assessment_method": "Configure HTTPS with SSL/TLS, implement load balancing, set up firewalls, secure infrastructure"
+    }
+  ],
+  "success_metrics": [
+    "Successfully containerized applications with optimized images",
+    "Deployed and managed Kubernetes clusters in production",
+    "Provisioned infrastructure using code (Terraform/Ansible)",
+    "Implemented fully automated CI/CD pipelines",
+    "Configured secure HTTPS with valid certificates",
+    "Achieved zero-downtime deployments",
+    "Implemented comprehensive monitoring and logging",
+    "Reduced deployment time by 80%",
+    "Maintained 99.9% uptime",
+    "Documented all infrastructure and procedures"
+  ],
+  "tools_and_technologies": {
+    "containerization": [
+      "Docker",
+      "Docker Compose",
+      "Podman",
+      "Docker Hub",
+      "Amazon ECR",
+      "Google GCR",
+      "Azure ACR"
+    ],
+    "orchestration": [
+      "Kubernetes",
+      "Helm",
+      "kubectl",
+      "minikube",
+      "kind",
+      "k3s",
+      "Amazon EKS",
+      "Google GKE",
+      "Azure AKS"
+    ],
+    "cloud_platforms": [
+      "Amazon Web Services (AWS)",
+      "Google Cloud Platform (GCP)",
+      "Microsoft Azure",
+      "DigitalOcean",
+      "Linode"
+    ],
+    "infrastructure_as_code": [
+      "Terraform",
+      "Ansible",
+      "AWS CloudFormation",
+      "Pulumi",
+      "Chef",
+      "Puppet"
+    ],
+    "ci_cd_tools": [
+      "GitHub Actions",
+      "GitLab CI/CD",
+      "Jenkins",
+      "CircleCI",
+      "Travis CI",
+      "ArgoCD",
+      "Flux",
+      "Tekton"
+    ],
+    "monitoring_logging": [
+      "Prometheus",
+      "Grafana",
+      "ELK Stack (Elasticsearch, Logstash, Kibana)",
+      "Loki",
+      "Datadog",
+      "New Relic",
+      "CloudWatch",
+      "Stackdriver"
+    ],
+    "networking_security": [
+      "nginx",
+      "HAProxy",
+      "Traefik",
+      "Let's Encrypt",
+      "Certbot",
+      "OpenVPN",
+      "WireGuard",
+      "iptables",
+      "UFW",
+      "AWS VPC",
+      "Security Groups"
+    ],
+    "version_control_gitops": [
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Bitbucket",
+      "ArgoCD",
+      "Flux",
+      "Kustomize"
+    ]
+  },
+  "next_agent": "07-observability-monitoring",
+  "related_agents": [
+    "05-security-authentication",
+    "07-observability-monitoring",
+    "08-performance-scalability"
+  ],
+  "resources": {
+    "official_documentation": [
+      "https://docs.docker.com/",
+      "https://kubernetes.io/docs/",
+      "https://www.terraform.io/docs",
+      "https://docs.ansible.com/",
+      "https://docs.github.com/actions",
+      "https://docs.gitlab.com/ee/ci/",
+      "https://www.jenkins.io/doc/",
+      "https://nginx.org/en/docs/",
+      "https://docs.aws.amazon.com/",
+      "https://cloud.google.com/docs",
+      "https://docs.microsoft.com/azure/"
+    ],
+    "learning_platforms": [
+      "https://kodekloud.com/",
+      "https://acloudguru.com/",
+      "https://learn.hashicorp.com/",
+      "https://www.katacoda.com/",
+      "https://training.linuxfoundation.org/"
+    ],
+    "community_resources": [
+      "https://landscape.cncf.io/",
+      "https://roadmap.sh/devops",
+      "https://github.com/kelseyhightower/kubernetes-the-hard-way",
+      "https://www.reddit.com/r/devops/",
+      "https://kubernetes.slack.com/"
+    ],
+    "books": [
+      "The DevOps Handbook by Gene Kim",
+      "Kubernetes in Action by Marko Luksa",
+      "Terraform: Up and Running by Yevgeniy Brikman",
+      "Site Reliability Engineering by Google",
+      "The Phoenix Project by Gene Kim",
+      "Continuous Delivery by Jez Humble",
+      "Docker Deep Dive by Nigel Poulton"
+    ],
+    "youtube_channels": [
+      "TechWorld with Nana",
+      "DevOps Toolkit",
+      "Cloud Native Foundation",
+      "Kubernetes",
+      "HashiCorp"
+    ],
+    "practice_platforms": [
+      "https://killercoda.com/",
+      "https://labs.play-with-k8s.com/",
+      "https://labs.play-with-docker.com/",
+      "https://instruqt.com/"
+    ]
+  },
+  "certifications": [
+    {
+      "name": "Docker Certified Associate (DCA)",
+      "provider": "Docker",
+      "level": "Associate",
+      "url": "https://training.mirantis.com/dca-certification-exam/"
+    },
+    {
+      "name": "Certified Kubernetes Administrator (CKA)",
+      "provider": "Cloud Native Computing Foundation",
+      "level": "Professional",
+      "url": "https://www.cncf.io/certification/cka/"
+    },
+    {
+      "name": "Certified Kubernetes Application Developer (CKAD)",
+      "provider": "Cloud Native Computing Foundation",
+      "level": "Professional",
+      "url": "https://www.cncf.io/certification/ckad/"
+    },
+    {
+      "name": "Certified Kubernetes Security Specialist (CKS)",
+      "provider": "Cloud Native Computing Foundation",
+      "level": "Expert",
+      "url": "https://www.cncf.io/certification/cks/"
+    },
+    {
+      "name": "AWS Certified Solutions Architect - Associate",
+      "provider": "Amazon Web Services",
+      "level": "Associate",
+      "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
+    },
+    {
+      "name": "AWS Certified DevOps Engineer - Professional",
+      "provider": "Amazon Web Services",
+      "level": "Professional",
+      "url": "https://aws.amazon.com/certification/certified-devops-engineer-professional/"
+    },
+    {
+      "name": "Google Cloud Professional Cloud Architect",
+      "provider": "Google Cloud",
+      "level": "Professional",
+      "url": "https://cloud.google.com/certification/cloud-architect"
+    },
+    {
+      "name": "Microsoft Azure Solutions Architect Expert",
+      "provider": "Microsoft",
+      "level": "Expert",
+      "url": "https://docs.microsoft.com/learn/certifications/azure-solutions-architect/"
+    },
+    {
+      "name": "HashiCorp Certified: Terraform Associate",
+      "provider": "HashiCorp",
+      "level": "Associate",
+      "url": "https://www.hashicorp.com/certification/terraform-associate"
+    }
+  ],
+  "estimated_completion_date": "14 weeks",
+  "difficulty_progression": [
+    {
+      "week": "1-2",
+      "focus": "Docker fundamentals and containerization",
+      "difficulty": "Medium"
+    },
+    {
+      "week": "3-4",
+      "focus": "Docker Compose and multi-container applications",
+      "difficulty": "Medium"
+    },
+    {
+      "week": "5-7",
+      "focus": "Kubernetes architecture, deployments, and services",
+      "difficulty": "Hard"
+    },
+    {
+      "week": "8-9",
+      "focus": "Cloud platforms and Infrastructure as Code (Terraform)",
+      "difficulty": "Hard"
+    },
+    {
+      "week": "10-11",
+      "focus": "CI/CD pipelines and automation",
+      "difficulty": "Medium-Hard"
+    },
+    {
+      "week": "12-13",
+      "focus": "Networking, SSL/TLS, load balancing, security",
+      "difficulty": "Medium-Hard"
+    },
+    {
+      "week": 14,
+      "focus": "Integration project and production deployment",
+      "difficulty": "Hard"
+    }
+  ],
+  "career_paths": [
+    {
+      "role": "DevOps Engineer",
+      "description": "Focus on CI/CD, automation, infrastructure management",
+      "salary_range": "$100,000 - $160,000",
+      "key_skills": [
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "CI/CD tools",
+        "Scripting"
+      ]
+    },
+    {
+      "role": "Site Reliability Engineer (SRE)",
+      "description": "Focus on system reliability, monitoring, incident response",
+      "salary_range": "$120,000 - $180,000",
+      "key_skills": [
+        "Kubernetes",
+        "Monitoring tools",
+        "Scripting",
+        "On-call",
+        "SLI/SLO"
+      ]
+    },
+    {
+      "role": "Cloud Engineer",
+      "description": "Focus on cloud architecture, migration, optimization",
+      "salary_range": "$110,000 - $170,000",
+      "key_skills": [
+        "AWS/GCP/Azure",
+        "Infrastructure as Code",
+        "Cloud-native services",
+        "Cost optimization"
+      ]
+    },
+    {
+      "role": "Platform Engineer",
+      "description": "Focus on internal developer platforms and tooling",
+      "salary_range": "$120,000 - $180,000",
+      "key_skills": [
+        "Kubernetes",
+        "CI/CD",
+        "Developer experience",
+        "Automation"
+      ]
+    },
+    {
+      "role": "Infrastructure Engineer",
+      "description": "Focus on infrastructure design, provisioning, management",
+      "salary_range": "$100,000 - $160,000",
+      "key_skills": [
+        "Infrastructure as Code",
+        "Cloud platforms",
+        "Networking",
+        "Security"
+      ]
+    }
+  ],
+  "common_challenges": [
+    {
+      "challenge": "Container Size Bloat",
+      "solution": "Use multi-stage builds, Alpine Linux base images, minimize layers, use .dockerignore"
+    },
+    {
+      "challenge": "Kubernetes Complexity",
+      "solution": "Start with managed K8s (EKS, GKE, AKS), use Helm charts, follow best practices, gradual learning"
+    },
+    {
+      "challenge": "Cloud Cost Overruns",
+      "solution": "Implement cost monitoring, use auto-scaling, right-size instances, leverage spot instances"
+    },
+    {
+      "challenge": "Pipeline Failures",
+      "solution": "Comprehensive testing, pipeline-as-code, monitoring metrics, proper error handling"
+    },
+    {
+      "challenge": "Security Vulnerabilities",
+      "solution": "Regular security scanning, update base images, implement least privilege, container hardening"
+    },
+    {
+      "challenge": "Zero Downtime Deployments",
+      "solution": "Implement blue-green or canary deployments, health checks, gradual rollouts, rollback plans"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Roadmap Team",
+    "tags": [
+      "devops",
+      "docker",
+      "kubernetes",
+      "terraform",
+      "ci-cd",
+      "cloud",
+      "infrastructure",
+      "automation"
+    ],
+    "difficulty_rating": 8,
+    "importance_rating": 10
+  }
+}

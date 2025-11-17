@@ -1,0 +1,383 @@
+{
+  "system": {
+    "name": "Custom Plugin Backend",
+    "version": "1.0.0",
+    "description": "Comprehensive Backend Development Learning System",
+    "created_date": "2025-11-17",
+    "status": "active",
+    "total_agents": 7,
+    "total_skills": 28,
+    "total_projects": 43,
+    "total_learning_hours": 1000,
+    "total_content_size_kb": 1400
+  },
+
+  "agents": [
+    {
+      "id": "01-programming-fundamentals",
+      "name": "Programming Fundamentals & Language Selection",
+      "sequence": 1,
+      "duration_weeks": 8,
+      "difficulty_level": "Beginner to Intermediate",
+      "status": "complete",
+      "skills_count": 3,
+      "projects_count": 4,
+      "content_size_kb": 250,
+      "learning_hours": 80,
+      "description": "Master programming languages, package management, and version control systems",
+      "skills": [
+        {
+          "id": "1.1",
+          "name": "Programming Languages",
+          "file": "agents/01-programming-fundamentals/skills/languages.md"
+        },
+        {
+          "id": "1.2",
+          "name": "Package Management",
+          "file": "agents/01-programming-fundamentals/skills/package-management.md"
+        },
+        {
+          "id": "1.3",
+          "name": "Version Control & Git",
+          "file": "agents/01-programming-fundamentals/skills/version-control.md"
+        }
+      ],
+      "prerequisites": ["Basic computer literacy"],
+      "next_agents": ["02-database-management"],
+      "config_file": "agents/01-programming-fundamentals/agent.json"
+    },
+
+    {
+      "id": "02-database-management",
+      "name": "Database Management & Data Architecture",
+      "sequence": 2,
+      "duration_weeks": 10,
+      "difficulty_level": "Intermediate",
+      "status": "complete",
+      "skills_count": 4,
+      "projects_count": 6,
+      "content_size_kb": 180,
+      "learning_hours": 100,
+      "description": "SQL, NoSQL, optimization, and disaster recovery strategies",
+      "skills": [
+        {
+          "id": "2.1",
+          "name": "Relational Databases",
+          "file": "agents/02-database-management/skills/relational-databases.md"
+        },
+        {
+          "id": "2.2",
+          "name": "NoSQL Databases",
+          "file": "agents/02-database-management/skills/nosql-databases.md"
+        },
+        {
+          "id": "2.3",
+          "name": "Query Optimization",
+          "file": "agents/02-database-management/skills/query-optimization.md"
+        },
+        {
+          "id": "2.4",
+          "name": "Backup & Replication",
+          "file": "agents/02-database-management/skills/backup-replication.md"
+        }
+      ],
+      "prerequisites": ["Agent 1: Programming Fundamentals"],
+      "next_agents": ["03-api-development", "05-caching-performance"],
+      "config_file": "agents/02-database-management/agent.json"
+    },
+
+    {
+      "id": "03-api-development",
+      "name": "API Development & Design",
+      "sequence": 3,
+      "duration_weeks": 16,
+      "difficulty_level": "Intermediate to Advanced",
+      "status": "complete",
+      "skills_count": 4,
+      "projects_count": 7,
+      "content_size_kb": 200,
+      "learning_hours": 160,
+      "description": "REST, GraphQL, gRPC, authentication, and API testing",
+      "skills": [
+        {
+          "id": "3.1",
+          "name": "REST APIs",
+          "file": "agents/03-api-development/skills/rest-apis.md"
+        },
+        {
+          "id": "3.2",
+          "name": "GraphQL & gRPC",
+          "file": "agents/03-api-development/skills/graphql-grpc.md"
+        },
+        {
+          "id": "3.3",
+          "name": "Authentication & Authorization",
+          "file": "agents/03-api-development/skills/authentication-authorization.md"
+        },
+        {
+          "id": "3.4",
+          "name": "API Documentation & Testing",
+          "file": "agents/03-api-development/skills/api-documentation-testing.md"
+        }
+      ],
+      "prerequisites": ["Agent 1: Programming Fundamentals", "Agent 2: Database Management"],
+      "next_agents": ["04-architecture-patterns"],
+      "config_file": "agents/03-api-development/agent.json"
+    },
+
+    {
+      "id": "04-architecture-patterns",
+      "name": "Architecture & Design Patterns",
+      "sequence": 4,
+      "duration_weeks": 14,
+      "difficulty_level": "Advanced",
+      "status": "complete",
+      "skills_count": 4,
+      "projects_count": 6,
+      "content_size_kb": 190,
+      "learning_hours": 140,
+      "description": "SOLID principles, design patterns, microservices, and event-driven architecture",
+      "skills": [
+        {
+          "id": "4.1",
+          "name": "SOLID Principles",
+          "file": "agents/04-architecture-patterns/skills/solid-principles.md"
+        },
+        {
+          "id": "4.2",
+          "name": "Design Patterns",
+          "file": "agents/04-architecture-patterns/skills/design-patterns.md"
+        },
+        {
+          "id": "4.3",
+          "name": "Microservices Architecture",
+          "file": "agents/04-architecture-patterns/skills/microservices-architecture.md"
+        },
+        {
+          "id": "4.4",
+          "name": "Event-Driven & CQRS",
+          "file": "agents/04-architecture-patterns/skills/event-driven-cqrs.md"
+        }
+      ],
+      "prerequisites": ["Agents 1-3"],
+      "next_agents": ["06-devops-infrastructure", "07-testing-security"],
+      "config_file": "agents/04-architecture-patterns/agent.json"
+    },
+
+    {
+      "id": "05-caching-performance",
+      "name": "Caching & Performance Optimization",
+      "sequence": 5,
+      "duration_weeks": 8,
+      "difficulty_level": "Advanced",
+      "status": "complete",
+      "skills_count": 4,
+      "projects_count": 9,
+      "content_size_kb": 180,
+      "learning_hours": 100,
+      "description": "Caching strategies, Redis, load balancing, and performance monitoring",
+      "skills": [
+        {
+          "id": "5.1",
+          "name": "Caching Strategies",
+          "file": "agents/05-caching-performance/skills/caching-strategies.md"
+        },
+        {
+          "id": "5.2",
+          "name": "Redis & Memcached",
+          "file": "agents/05-caching-performance/skills/redis-memcached.md"
+        },
+        {
+          "id": "5.3",
+          "name": "Load Balancing & Scaling",
+          "file": "agents/05-caching-performance/skills/load-balancing-scaling.md"
+        },
+        {
+          "id": "5.4",
+          "name": "Monitoring & Optimization",
+          "file": "agents/05-caching-performance/skills/monitoring-optimization.md"
+        }
+      ],
+      "prerequisites": ["Agents 1-3"],
+      "next_agents": ["04-architecture-patterns"],
+      "config_file": "agents/05-caching-performance/agent.json"
+    },
+
+    {
+      "id": "06-devops-infrastructure",
+      "name": "DevOps & Infrastructure",
+      "sequence": 6,
+      "duration_weeks": 12,
+      "difficulty_level": "Advanced",
+      "status": "complete",
+      "skills_count": 4,
+      "projects_count": 5,
+      "content_size_kb": 210,
+      "learning_hours": 120,
+      "description": "Docker, Kubernetes, cloud platforms, CI/CD, and networking",
+      "skills": [
+        {
+          "id": "6.1",
+          "name": "Containerization & Orchestration",
+          "file": "agents/06-devops-infrastructure/skills/containerization-orchestration.md"
+        },
+        {
+          "id": "6.2",
+          "name": "Cloud Platforms & IaC",
+          "file": "agents/06-devops-infrastructure/skills/cloud-iac.md"
+        },
+        {
+          "id": "6.3",
+          "name": "CI/CD Pipelines",
+          "file": "agents/06-devops-infrastructure/skills/ci-cd-pipelines.md"
+        },
+        {
+          "id": "6.4",
+          "name": "Networking & SSL/TLS",
+          "file": "agents/06-devops-infrastructure/skills/networking-ssl.md"
+        }
+      ],
+      "prerequisites": ["Agent 4: Architecture & Design Patterns"],
+      "next_agents": ["07-testing-security"],
+      "config_file": "agents/06-devops-infrastructure/agent.json"
+    },
+
+    {
+      "id": "07-testing-security",
+      "name": "Testing, Security & Monitoring",
+      "sequence": 7,
+      "duration_weeks": 12,
+      "difficulty_level": "Advanced",
+      "status": "complete",
+      "skills_count": 4,
+      "projects_count": 6,
+      "content_size_kb": 200,
+      "learning_hours": 120,
+      "description": "Testing strategies, security best practices, compliance, and observability",
+      "skills": [
+        {
+          "id": "7.1",
+          "name": "Testing Strategies",
+          "file": "agents/07-testing-security/skills/testing-strategies.md"
+        },
+        {
+          "id": "7.2",
+          "name": "Security Best Practices",
+          "file": "agents/07-testing-security/skills/security-best-practices.md"
+        },
+        {
+          "id": "7.3",
+          "name": "Security Scanning & Compliance",
+          "file": "agents/07-testing-security/skills/security-scanning-compliance.md"
+        },
+        {
+          "id": "7.4",
+          "name": "Monitoring & Observability",
+          "file": "agents/07-testing-security/skills/monitoring-observability.md"
+        }
+      ],
+      "prerequisites": ["Agent 4: Architecture & Design Patterns", "Agent 6: DevOps"],
+      "next_agents": [],
+      "config_file": "agents/07-testing-security/agent.json"
+    }
+  ],
+
+  "learning_paths": [
+    {
+      "id": "fast-track",
+      "name": "Fast Track",
+      "description": "16 weeks - Quick learning for experienced developers",
+      "duration_weeks": 16,
+      "agents": ["01-programming-fundamentals", "03-api-development", "06-devops-infrastructure"],
+      "target_audience": "Experienced developers"
+    },
+    {
+      "id": "full-stack",
+      "name": "Full-Stack Web Developer",
+      "description": "20 weeks - Build complete web applications",
+      "duration_weeks": 20,
+      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "06-devops-infrastructure"],
+      "target_audience": "Web developers"
+    },
+    {
+      "id": "microservices",
+      "name": "Microservices Architect",
+      "description": "28 weeks - Build distributed systems",
+      "duration_weeks": 28,
+      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "04-architecture-patterns", "05-caching-performance", "06-devops-infrastructure", "07-testing-security"],
+      "target_audience": "Senior engineers"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps Engineer",
+      "description": "24 weeks - Infrastructure and deployment",
+      "duration_weeks": 24,
+      "agents": ["01-programming-fundamentals", "02-database-management", "05-caching-performance", "06-devops-infrastructure", "07-testing-security"],
+      "target_audience": "Infrastructure specialists"
+    },
+    {
+      "id": "security",
+      "name": "Security Specialist",
+      "description": "26 weeks - Security and compliance",
+      "duration_weeks": 26,
+      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "04-architecture-patterns", "07-testing-security"],
+      "target_audience": "Security engineers"
+    },
+    {
+      "id": "comprehensive",
+      "name": "Comprehensive",
+      "description": "36 weeks - Complete mastery",
+      "duration_weeks": 36,
+      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "04-architecture-patterns", "05-caching-performance", "06-devops-infrastructure", "07-testing-security"],
+      "target_audience": "All skill levels"
+    }
+  ],
+
+  "assessment_framework": {
+    "levels": [
+      {
+        "level": 1,
+        "name": "Foundational",
+        "description": "Understanding basic concepts",
+        "agents": ["01-programming-fundamentals"]
+      },
+      {
+        "level": 2,
+        "name": "Intermediate",
+        "description": "Can apply concepts independently",
+        "agents": ["02-database-management"]
+      },
+      {
+        "level": 3,
+        "name": "Professional",
+        "description": "Can build production systems",
+        "agents": ["03-api-development"]
+      },
+      {
+        "level": 4,
+        "name": "Advanced",
+        "description": "Can architect complex systems",
+        "agents": ["04-architecture-patterns", "05-caching-performance"]
+      },
+      {
+        "level": 5,
+        "name": "Expert",
+        "description": "Can lead technical decisions",
+        "agents": ["06-devops-infrastructure", "07-testing-security"]
+      }
+    ]
+  },
+
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Learning Team",
+    "license": "MIT",
+    "repository": "https://github.com/pluginagentmarketplace/custum-plugin-backend",
+    "documentation": {
+      "readme": "README.md",
+      "architecture": "ARCHITECTURE.md",
+      "learning_paths": "LEARNING-PATH.md"
+    }
+  }
+}

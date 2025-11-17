@@ -1,0 +1,2858 @@
+{
+  "devops_and_infrastructure": {
+    "metadata": {
+      "title": "Comprehensive DevOps & Infrastructure Knowledge Base",
+      "description": "Complete overview of DevOps tools, technologies, and practices",
+      "last_updated": "2025-11-17",
+      "source": "Industry standards and best practices"
+    },
+    "1_containerization": {
+      "description": "Technologies for packaging applications and dependencies into isolated containers",
+      "core_technologies": {
+        "docker": {
+          "description": "Industry-standard containerization platform",
+          "key_concepts": [
+            "Docker Images",
+            "Docker Containers",
+            "Dockerfile",
+            "Docker Registry",
+            "Docker Hub",
+            "Docker Engine",
+            "Docker CLI",
+            "Docker Daemon",
+            "Container layers",
+            "Image caching",
+            "Multi-stage builds",
+            "Docker volumes",
+            "Docker networks",
+            "Docker bridge network",
+            "Docker host network",
+            "Docker overlay network"
+          ],
+          "commands": [
+            "docker build",
+            "docker run",
+            "docker ps",
+            "docker exec",
+            "docker logs",
+            "docker stop",
+            "docker rm",
+            "docker rmi",
+            "docker pull",
+            "docker push",
+            "docker tag",
+            "docker inspect",
+            "docker stats",
+            "docker system prune"
+          ],
+          "best_practices": [
+            "Use official base images",
+            "Minimize layer count",
+            "Leverage build cache",
+            "Use .dockerignore",
+            "Run as non-root user",
+            "Scan images for vulnerabilities",
+            "Tag images properly",
+            "Keep images small"
+          ]
+        },
+        "docker_compose": {
+          "description": "Tool for defining and running multi-container Docker applications",
+          "key_concepts": [
+            "docker-compose.yml",
+            "Services definition",
+            "Networks configuration",
+            "Volumes management",
+            "Environment variables",
+            "Service dependencies",
+            "Health checks",
+            "Scaling services"
+          ],
+          "commands": [
+            "docker-compose up",
+            "docker-compose down",
+            "docker-compose build",
+            "docker-compose logs",
+            "docker-compose ps",
+            "docker-compose exec",
+            "docker-compose scale",
+            "docker-compose restart"
+          ],
+          "use_cases": [
+            "Local development environments",
+            "Integration testing",
+            "Microservices orchestration",
+            "CI/CD pipelines"
+          ]
+        },
+        "alternative_technologies": {
+          "podman": {
+            "description": "Daemonless container engine, Docker alternative",
+            "features": ["Rootless containers", "Pod support", "Docker-compatible CLI"]
+          },
+          "lxc_lxd": {
+            "description": "Linux Containers - system containers",
+            "features": ["Full OS containers", "Fast startup", "Resource isolation"]
+          },
+          "containerd": {
+            "description": "Industry-standard container runtime",
+            "features": ["OCI compliant", "Used by Kubernetes", "Lightweight"]
+          },
+          "cri-o": {
+            "description": "Lightweight container runtime for Kubernetes",
+            "features": ["Kubernetes native", "OCI compliant", "Minimal overhead"]
+          },
+          "rkt": {
+            "description": "Security-focused container runtime (archived)",
+            "features": ["Pod-native", "Composable", "Security-focused"]
+          }
+        },
+        "container_registries": {
+          "public": [
+            "Docker Hub",
+            "Quay.io",
+            "GitHub Container Registry (GHCR)",
+            "Google Container Registry (GCR)"
+          ],
+          "private": [
+            "Harbor",
+            "JFrog Artifactory",
+            "Sonatype Nexus",
+            "AWS ECR (Elastic Container Registry)",
+            "Azure Container Registry (ACR)",
+            "Google Artifact Registry"
+          ]
+        },
+        "security_tools": [
+          "Trivy - vulnerability scanner",
+          "Clair - static analysis",
+          "Anchore - policy enforcement",
+          "Snyk - security scanning",
+          "Aqua Security",
+          "Twistlock/Prisma Cloud"
+        ]
+      }
+    },
+    "2_container_orchestration": {
+      "description": "Platforms for automating deployment, scaling, and management of containerized applications",
+      "kubernetes": {
+        "description": "Industry-leading container orchestration platform",
+        "core_concepts": {
+          "cluster_architecture": [
+            "Master Node (Control Plane)",
+            "Worker Nodes",
+            "etcd - distributed key-value store",
+            "kube-apiserver",
+            "kube-scheduler",
+            "kube-controller-manager",
+            "kubelet",
+            "kube-proxy",
+            "Container runtime"
+          ],
+          "workload_resources": [
+            "Pods",
+            "ReplicaSets",
+            "Deployments",
+            "StatefulSets",
+            "DaemonSets",
+            "Jobs",
+            "CronJobs"
+          ],
+          "service_and_networking": [
+            "Services (ClusterIP, NodePort, LoadBalancer)",
+            "Ingress",
+            "Ingress Controllers",
+            "Network Policies",
+            "CNI (Container Network Interface)",
+            "Service Mesh integration",
+            "DNS for services"
+          ],
+          "storage": [
+            "Volumes",
+            "Persistent Volumes (PV)",
+            "Persistent Volume Claims (PVC)",
+            "Storage Classes",
+            "CSI (Container Storage Interface)",
+            "StatefulSet storage"
+          ],
+          "configuration": [
+            "ConfigMaps",
+            "Secrets",
+            "Environment variables",
+            "Volume mounts"
+          ],
+          "security": [
+            "RBAC (Role-Based Access Control)",
+            "Service Accounts",
+            "Pod Security Policies",
+            "Pod Security Standards",
+            "Network Policies",
+            "Secrets management",
+            "Image pull secrets"
+          ],
+          "observability": [
+            "Metrics Server",
+            "Prometheus integration",
+            "Logging architecture",
+            "Health checks (liveness, readiness, startup probes)",
+            "Resource monitoring"
+          ]
+        },
+        "kubectl_commands": [
+          "kubectl get",
+          "kubectl describe",
+          "kubectl create",
+          "kubectl apply",
+          "kubectl delete",
+          "kubectl logs",
+          "kubectl exec",
+          "kubectl port-forward",
+          "kubectl scale",
+          "kubectl rollout",
+          "kubectl top",
+          "kubectl config"
+        ],
+        "deployment_tools": {
+          "helm": {
+            "description": "Package manager for Kubernetes",
+            "concepts": ["Charts", "Releases", "Repositories", "Templates", "Values files"]
+          },
+          "kustomize": {
+            "description": "Template-free Kubernetes configuration",
+            "concepts": ["Overlays", "Bases", "Patches", "Resources"]
+          },
+          "operators": {
+            "description": "Kubernetes-native applications",
+            "examples": ["Prometheus Operator", "MySQL Operator", "Elasticsearch Operator"]
+          }
+        },
+        "kubernetes_distributions": [
+          "Vanilla Kubernetes",
+          "Google Kubernetes Engine (GKE)",
+          "Amazon Elastic Kubernetes Service (EKS)",
+          "Azure Kubernetes Service (AKS)",
+          "Red Hat OpenShift",
+          "Rancher",
+          "K3s (lightweight)",
+          "MicroK8s",
+          "Minikube (local)",
+          "Kind (Kubernetes in Docker)",
+          "Docker Desktop Kubernetes"
+        ],
+        "advanced_topics": [
+          "Custom Resource Definitions (CRDs)",
+          "Operators and Operator Framework",
+          "Service Mesh (Istio, Linkerd)",
+          "GitOps (ArgoCD, Flux)",
+          "Multi-cluster management",
+          "Cluster autoscaling",
+          "Horizontal Pod Autoscaler (HPA)",
+          "Vertical Pod Autoscaler (VPA)",
+          "Pod Disruption Budgets",
+          "Taints and Tolerations",
+          "Node Affinity and Anti-Affinity"
+        ]
+      },
+      "docker_swarm": {
+        "description": "Docker's native clustering and orchestration solution",
+        "key_concepts": [
+          "Swarm mode",
+          "Manager nodes",
+          "Worker nodes",
+          "Services",
+          "Tasks",
+          "Stacks",
+          "Overlay networks",
+          "Service discovery",
+          "Load balancing",
+          "Rolling updates",
+          "Secrets management",
+          "Configs"
+        ],
+        "commands": [
+          "docker swarm init",
+          "docker swarm join",
+          "docker service create",
+          "docker service scale",
+          "docker service update",
+          "docker stack deploy",
+          "docker node ls"
+        ],
+        "advantages": [
+          "Simpler than Kubernetes",
+          "Integrated with Docker",
+          "Easy setup",
+          "Good for small to medium deployments"
+        ]
+      },
+      "alternative_orchestrators": {
+        "nomad": {
+          "description": "HashiCorp's flexible orchestrator",
+          "features": ["Multi-workload support", "Simple architecture", "Easy to operate"]
+        },
+        "apache_mesos": {
+          "description": "Distributed systems kernel",
+          "features": ["Resource isolation", "Two-level scheduling", "Framework support"]
+        },
+        "marathon": {
+          "description": "Container orchestration for Mesos",
+          "features": ["Service discovery", "Health checks", "Constraints"]
+        },
+        "amazon_ecs": {
+          "description": "AWS container orchestration service",
+          "features": ["AWS integration", "Fargate support", "Task definitions"]
+        },
+        "amazon_ecs_fargate": {
+          "description": "Serverless container compute",
+          "features": ["No server management", "Pay per use", "Auto scaling"]
+        },
+        "google_cloud_run": {
+          "description": "Fully managed container platform",
+          "features": ["Serverless", "Auto scaling", "Pay per request"]
+        },
+        "azure_container_instances": {
+          "description": "Serverless containers on Azure",
+          "features": ["Fast startup", "Per-second billing", "Virtual network support"]
+        }
+      }
+    },
+    "3_cloud_platforms": {
+      "description": "Major cloud service providers and their offerings",
+      "aws": {
+        "name": "Amazon Web Services",
+        "compute": {
+          "ec2": "Elastic Compute Cloud - virtual servers",
+          "lambda": "Serverless compute",
+          "ecs": "Elastic Container Service",
+          "eks": "Elastic Kubernetes Service",
+          "fargate": "Serverless containers",
+          "lightsail": "Simple virtual private servers",
+          "batch": "Batch processing",
+          "elastic_beanstalk": "PaaS offering",
+          "app_runner": "Container-based web apps"
+        },
+        "storage": {
+          "s3": "Simple Storage Service - object storage",
+          "ebs": "Elastic Block Store",
+          "efs": "Elastic File System",
+          "fsx": "Managed file systems",
+          "glacier": "Cold storage",
+          "storage_gateway": "Hybrid cloud storage",
+          "backup": "Centralized backup"
+        },
+        "database": {
+          "rds": "Relational Database Service (MySQL, PostgreSQL, Oracle, SQL Server)",
+          "aurora": "MySQL and PostgreSQL compatible DB",
+          "dynamodb": "NoSQL database",
+          "elasticache": "In-memory caching (Redis, Memcached)",
+          "redshift": "Data warehouse",
+          "neptune": "Graph database",
+          "documentdb": "MongoDB compatible",
+          "keyspaces": "Cassandra compatible",
+          "timestream": "Time series database"
+        },
+        "networking": {
+          "vpc": "Virtual Private Cloud",
+          "route53": "DNS service",
+          "cloudfront": "CDN",
+          "elb": "Elastic Load Balancing (ALB, NLB, CLB)",
+          "api_gateway": "API management",
+          "direct_connect": "Dedicated network connection",
+          "transit_gateway": "Network transit hub",
+          "privatelink": "Private connectivity"
+        },
+        "security": {
+          "iam": "Identity and Access Management",
+          "cognito": "User authentication",
+          "secrets_manager": "Secrets management",
+          "kms": "Key Management Service",
+          "waf": "Web Application Firewall",
+          "shield": "DDoS protection",
+          "guardduty": "Threat detection",
+          "inspector": "Security assessment",
+          "macie": "Data security",
+          "security_hub": "Security posture management"
+        },
+        "monitoring_logging": {
+          "cloudwatch": "Monitoring and observability",
+          "cloudtrail": "API logging",
+          "x-ray": "Distributed tracing",
+          "eventbridge": "Event bus"
+        },
+        "devops_tools": {
+          "codepipeline": "CI/CD orchestration",
+          "codebuild": "Build service",
+          "codedeploy": "Deployment automation",
+          "codecommit": "Git repositories",
+          "codeartifact": "Artifact repository",
+          "cloud9": "Cloud IDE"
+        },
+        "infrastructure": {
+          "cloudformation": "Infrastructure as Code",
+          "cdk": "Cloud Development Kit",
+          "systems_manager": "Operations management",
+          "opsworks": "Configuration management"
+        },
+        "messaging": {
+          "sqs": "Simple Queue Service",
+          "sns": "Simple Notification Service",
+          "eventbridge": "Event-driven architecture",
+          "mq": "Managed message broker"
+        }
+      },
+      "gcp": {
+        "name": "Google Cloud Platform",
+        "compute": {
+          "compute_engine": "Virtual machines",
+          "gke": "Google Kubernetes Engine",
+          "cloud_run": "Serverless containers",
+          "cloud_functions": "Serverless functions",
+          "app_engine": "PaaS offering"
+        },
+        "storage": {
+          "cloud_storage": "Object storage",
+          "persistent_disk": "Block storage",
+          "filestore": "Managed file storage",
+          "archive_storage": "Cold storage"
+        },
+        "database": {
+          "cloud_sql": "Managed relational databases",
+          "cloud_spanner": "Globally distributed database",
+          "firestore": "NoSQL document database",
+          "bigtable": "NoSQL wide-column store",
+          "memorystore": "Redis and Memcached"
+        },
+        "networking": {
+          "vpc": "Virtual Private Cloud",
+          "cloud_dns": "DNS service",
+          "cloud_cdn": "Content delivery",
+          "cloud_load_balancing": "Load balancing",
+          "cloud_interconnect": "Dedicated connectivity",
+          "cloud_armor": "DDoS and WAF protection"
+        },
+        "security": {
+          "iam": "Identity and Access Management",
+          "cloud_identity": "Identity management",
+          "secret_manager": "Secrets management",
+          "kms": "Key management",
+          "security_command_center": "Security management"
+        },
+        "monitoring_logging": {
+          "cloud_monitoring": "Stackdriver Monitoring",
+          "cloud_logging": "Centralized logging",
+          "cloud_trace": "Distributed tracing",
+          "cloud_profiler": "Performance profiling"
+        },
+        "devops_tools": {
+          "cloud_build": "CI/CD platform",
+          "artifact_registry": "Package management",
+          "container_registry": "Container images",
+          "deployment_manager": "Infrastructure as Code"
+        }
+      },
+      "azure": {
+        "name": "Microsoft Azure",
+        "compute": {
+          "virtual_machines": "VMs",
+          "aks": "Azure Kubernetes Service",
+          "container_instances": "Serverless containers",
+          "functions": "Serverless compute",
+          "app_service": "Web apps and APIs",
+          "batch": "Batch processing",
+          "service_fabric": "Microservices platform"
+        },
+        "storage": {
+          "blob_storage": "Object storage",
+          "disk_storage": "Block storage",
+          "files": "Managed file shares",
+          "queue_storage": "Queue service",
+          "archive_storage": "Cold storage"
+        },
+        "database": {
+          "sql_database": "Managed SQL Server",
+          "cosmos_db": "Multi-model database",
+          "database_for_mysql": "Managed MySQL",
+          "database_for_postgresql": "Managed PostgreSQL",
+          "cache_for_redis": "Redis cache",
+          "synapse_analytics": "Data warehouse"
+        },
+        "networking": {
+          "virtual_network": "VNet",
+          "dns": "DNS service",
+          "cdn": "Content delivery",
+          "load_balancer": "Load balancing",
+          "application_gateway": "Application load balancer",
+          "expressroute": "Dedicated connectivity",
+          "firewall": "Network security"
+        },
+        "security": {
+          "active_directory": "Identity management",
+          "key_vault": "Secrets and keys",
+          "security_center": "Security posture",
+          "sentinel": "SIEM",
+          "ddos_protection": "DDoS mitigation"
+        },
+        "monitoring_logging": {
+          "monitor": "Monitoring service",
+          "log_analytics": "Log management",
+          "application_insights": "APM"
+        },
+        "devops_tools": {
+          "devops": "Azure DevOps (Pipelines, Repos, Boards)",
+          "artifacts": "Package management",
+          "resource_manager": "Infrastructure management",
+          "bicep": "Infrastructure as Code"
+        }
+      },
+      "other_cloud_providers": {
+        "digitalocean": {
+          "focus": "Developer-friendly cloud",
+          "services": ["Droplets", "Kubernetes", "App Platform", "Spaces", "Databases"]
+        },
+        "linode": {
+          "focus": "Simple cloud hosting",
+          "services": ["Compute instances", "Kubernetes", "Object storage", "Block storage"]
+        },
+        "vultr": {
+          "focus": "High-performance cloud",
+          "services": ["Cloud compute", "Bare metal", "Kubernetes"]
+        },
+        "ibm_cloud": {
+          "focus": "Enterprise cloud",
+          "services": ["Virtual servers", "Kubernetes", "Watson AI", "Cloud Foundry"]
+        },
+        "oracle_cloud": {
+          "focus": "Enterprise and database",
+          "services": ["Compute", "Kubernetes", "Autonomous Database", "Networking"]
+        },
+        "alibaba_cloud": {
+          "focus": "Asia-Pacific cloud leader",
+          "services": ["ECS", "Container Service", "OSS", "RDS"]
+        }
+      },
+      "multi_cloud_tools": [
+        "Terraform",
+        "Pulumi",
+        "Crossplane",
+        "CloudQuery",
+        "Steampipe"
+      ]
+    },
+    "4_infrastructure_as_code": {
+      "description": "Tools and practices for managing infrastructure through code",
+      "terraform": {
+        "description": "Multi-cloud infrastructure provisioning",
+        "vendor": "HashiCorp",
+        "language": "HCL (HashiCorp Configuration Language)",
+        "key_concepts": [
+          "Providers (AWS, Azure, GCP, etc.)",
+          "Resources",
+          "Data sources",
+          "Variables",
+          "Outputs",
+          "Modules",
+          "State files",
+          "State backends (S3, Terraform Cloud, etc.)",
+          "Workspaces",
+          "Remote state",
+          "State locking",
+          "Terraform Cloud",
+          "Terraform Enterprise"
+        ],
+        "workflow": [
+          "terraform init - Initialize working directory",
+          "terraform plan - Preview changes",
+          "terraform apply - Apply changes",
+          "terraform destroy - Destroy resources",
+          "terraform validate - Validate configuration",
+          "terraform fmt - Format code",
+          "terraform import - Import existing resources",
+          "terraform state - State management"
+        ],
+        "best_practices": [
+          "Use version control",
+          "Remote state storage",
+          "State locking",
+          "Module composition",
+          "Variable validation",
+          "Sensitive data handling",
+          "Workspace separation",
+          "Plan before apply",
+          "Use .tfvars files",
+          "Document your code"
+        ],
+        "providers": {
+          "major": ["AWS", "Azure", "GCP", "Kubernetes", "Docker", "GitHub"],
+          "count": "3000+ providers available"
+        }
+      },
+      "cloudformation": {
+        "description": "AWS native infrastructure as code",
+        "vendor": "Amazon Web Services",
+        "language": "JSON or YAML",
+        "key_concepts": [
+          "Templates",
+          "Stacks",
+          "StackSets",
+          "Change Sets",
+          "Parameters",
+          "Resources",
+          "Outputs",
+          "Conditions",
+          "Mappings",
+          "Intrinsic functions",
+          "Nested stacks",
+          "Cross-stack references",
+          "Drift detection",
+          "Stack policies"
+        ],
+        "advantages": [
+          "Native AWS integration",
+          "No additional cost",
+          "AWS service coverage",
+          "Rollback capabilities",
+          "Visual designer"
+        ],
+        "related_tools": {
+          "cdk": "AWS Cloud Development Kit - Define infrastructure in code",
+          "sam": "Serverless Application Model",
+          "amplify": "Full-stack development"
+        }
+      },
+      "ansible": {
+        "description": "Configuration management and automation",
+        "vendor": "Red Hat",
+        "language": "YAML",
+        "key_concepts": [
+          "Playbooks",
+          "Roles",
+          "Tasks",
+          "Handlers",
+          "Variables",
+          "Templates (Jinja2)",
+          "Inventory",
+          "Modules",
+          "Ansible Galaxy",
+          "Ansible Tower/AWX",
+          "Dynamic inventory",
+          "Vault (secrets)",
+          "Tags",
+          "Conditionals",
+          "Loops"
+        ],
+        "architecture": [
+          "Agentless (SSH-based)",
+          "Push-based model",
+          "Control node",
+          "Managed nodes"
+        ],
+        "use_cases": [
+          "Configuration management",
+          "Application deployment",
+          "Orchestration",
+          "Provisioning",
+          "Security automation"
+        ],
+        "ansible_tower_awx": {
+          "description": "Enterprise automation platform",
+          "features": ["Web UI", "RBAC", "Job scheduling", "Workflow orchestration", "API"]
+        }
+      },
+      "pulumi": {
+        "description": "Modern infrastructure as code using programming languages",
+        "languages": [
+          "TypeScript/JavaScript",
+          "Python",
+          "Go",
+          "C#/.NET",
+          "Java",
+          "YAML"
+        ],
+        "key_concepts": [
+          "Programs (not templates)",
+          "Projects",
+          "Stacks",
+          "Resources",
+          "Outputs",
+          "State",
+          "Pulumi Cloud",
+          "Automation API",
+          "Component resources",
+          "Providers"
+        ],
+        "advantages": [
+          "Use familiar programming languages",
+          "IDE support",
+          "Testing capabilities",
+          "Reusability through code",
+          "Multi-cloud support"
+        ]
+      },
+      "chef": {
+        "description": "Configuration management platform",
+        "vendor": "Progress (formerly Chef Software)",
+        "language": "Ruby DSL",
+        "key_concepts": [
+          "Cookbooks",
+          "Recipes",
+          "Resources",
+          "Attributes",
+          "Chef Server",
+          "Chef Client",
+          "Chef Workstation",
+          "Knife tool",
+          "Chef Supermarket",
+          "Chef InSpec (compliance)",
+          "Chef Habitat (application automation)",
+          "Nodes",
+          "Roles",
+          "Environments",
+          "Data bags"
+        ],
+        "architecture": [
+          "Client-server model",
+          "Pull-based configuration",
+          "Convergence model"
+        ]
+      },
+      "puppet": {
+        "description": "Configuration management and automation",
+        "vendor": "Perforce (formerly Puppet)",
+        "language": "Puppet DSL",
+        "key_concepts": [
+          "Manifests",
+          "Modules",
+          "Classes",
+          "Resources",
+          "Facts",
+          "Puppet Server",
+          "Puppet Agent",
+          "Hiera (data lookup)",
+          "Forge (module repository)",
+          "Puppet Enterprise",
+          "Bolt (orchestration)",
+          "Catalog",
+          "Node classifier"
+        ],
+        "architecture": [
+          "Client-server model",
+          "Pull-based configuration",
+          "Declarative approach"
+        ]
+      },
+      "saltstack": {
+        "description": "Event-driven automation and configuration management",
+        "vendor": "VMware",
+        "language": "YAML with Jinja2",
+        "key_concepts": [
+          "Salt Master",
+          "Salt Minions",
+          "States",
+          "Pillars",
+          "Grains",
+          "Formulas",
+          "Runners",
+          "Reactors",
+          "Event bus",
+          "Remote execution",
+          "SaltStack Enterprise"
+        ],
+        "architecture": [
+          "Master-minion model",
+          "Push and pull modes",
+          "ZeroMQ messaging"
+        ],
+        "advantages": [
+          "Fast execution",
+          "Event-driven",
+          "Real-time communication",
+          "Scalable"
+        ]
+      },
+      "other_iac_tools": {
+        "crossplane": {
+          "description": "Kubernetes-native infrastructure management",
+          "features": ["CRDs for infrastructure", "Multi-cloud", "GitOps friendly"]
+        },
+        "bicep": {
+          "description": "DSL for Azure Resource Manager",
+          "features": ["Azure native", "Simpler than ARM JSON", "Type safety"]
+        },
+        "arm_templates": {
+          "description": "Azure Resource Manager templates",
+          "language": "JSON"
+        },
+        "deployment_manager": {
+          "description": "Google Cloud infrastructure deployment",
+          "language": "YAML or Python"
+        },
+        "cdktf": {
+          "description": "Cloud Development Kit for Terraform",
+          "languages": ["TypeScript", "Python", "Java", "C#", "Go"]
+        }
+      }
+    },
+    "5_cicd_pipelines": {
+      "description": "Continuous Integration and Continuous Deployment tools and platforms",
+      "jenkins": {
+        "description": "Open-source automation server",
+        "type": "Self-hosted",
+        "key_concepts": [
+          "Jenkins Controller (Master)",
+          "Jenkins Agents (Slaves)",
+          "Jobs",
+          "Pipelines",
+          "Jenkinsfile",
+          "Declarative Pipeline",
+          "Scripted Pipeline",
+          "Plugins (2000+)",
+          "Blue Ocean UI",
+          "Multibranch Pipeline",
+          "Shared Libraries",
+          "Credentials management",
+          "Build triggers",
+          "Post-build actions",
+          "Workspace",
+          "Build artifacts"
+        ],
+        "pipeline_stages": [
+          "Checkout",
+          "Build",
+          "Test",
+          "Analysis",
+          "Package",
+          "Deploy",
+          "Notify"
+        ],
+        "popular_plugins": [
+          "Git",
+          "Docker",
+          "Kubernetes",
+          "Pipeline",
+          "Blue Ocean",
+          "Email Extension",
+          "Slack Notification",
+          "SonarQube Scanner",
+          "Artifactory",
+          "AWS",
+          "Ansible"
+        ],
+        "advantages": [
+          "Highly customizable",
+          "Extensive plugin ecosystem",
+          "Self-hosted control",
+          "Large community"
+        ],
+        "challenges": [
+          "Maintenance overhead",
+          "Plugin compatibility",
+          "UI complexity"
+        ]
+      },
+      "gitlab_ci": {
+        "description": "GitLab's integrated CI/CD",
+        "type": "Integrated with GitLab",
+        "key_concepts": [
+          ".gitlab-ci.yml",
+          "Pipelines",
+          "Jobs",
+          "Stages",
+          "Runners (shared, specific, group)",
+          "Artifacts",
+          "Cache",
+          "Variables",
+          "Environments",
+          "Review apps",
+          "Auto DevOps",
+          "Container Registry",
+          "Package Registry",
+          "Feature flags",
+          "Merge request pipelines",
+          "Parent-child pipelines",
+          "Directed Acyclic Graph (DAG)"
+        ],
+        "runner_types": [
+          "Shared runners",
+          "Group runners",
+          "Specific runners"
+        ],
+        "executor_types": [
+          "Shell",
+          "Docker",
+          "Kubernetes",
+          "VirtualBox",
+          "SSH"
+        ],
+        "advantages": [
+          "Integrated with GitLab",
+          "No external tool needed",
+          "Built-in container registry",
+          "Auto DevOps features"
+        ]
+      },
+      "github_actions": {
+        "description": "GitHub's native CI/CD and automation",
+        "type": "Integrated with GitHub",
+        "key_concepts": [
+          "Workflows",
+          "Jobs",
+          "Steps",
+          "Actions (reusable units)",
+          "Runners (GitHub-hosted, self-hosted)",
+          "Events/Triggers",
+          "Secrets",
+          "Artifacts",
+          "Matrix builds",
+          "Composite actions",
+          "Reusable workflows",
+          "Environment protection rules",
+          "GitHub Marketplace",
+          "GITHUB_TOKEN",
+          "Expressions and contexts"
+        ],
+        "workflow_triggers": [
+          "push",
+          "pull_request",
+          "schedule (cron)",
+          "workflow_dispatch (manual)",
+          "repository_dispatch",
+          "release",
+          "issues",
+          "workflow_call"
+        ],
+        "runner_options": [
+          "GitHub-hosted (Ubuntu, Windows, macOS)",
+          "Self-hosted",
+          "Larger runners"
+        ],
+        "advantages": [
+          "Native GitHub integration",
+          "Marketplace with thousands of actions",
+          "Matrix builds",
+          "No separate tool needed",
+          "Free for public repos"
+        ]
+      },
+      "circleci": {
+        "description": "Cloud-based CI/CD platform",
+        "type": "Cloud-hosted",
+        "key_concepts": [
+          ".circleci/config.yml",
+          "Workflows",
+          "Jobs",
+          "Steps",
+          "Executors (Docker, Machine, macOS, Windows)",
+          "Orbs (reusable packages)",
+          "Contexts (secrets)",
+          "Caching",
+          "Artifacts",
+          "Workspaces",
+          "Pipeline parameters",
+          "Dynamic configuration",
+          "Insights",
+          "Test splitting"
+        ],
+        "orbs": {
+          "description": "Reusable configuration packages",
+          "registry": "CircleCI Orb Registry"
+        },
+        "advantages": [
+          "Fast builds",
+          "Docker layer caching",
+          "SSH debugging",
+          "Parallel execution",
+          "Resource classes"
+        ]
+      },
+      "travis_ci": {
+        "description": "CI/CD service for GitHub projects",
+        "type": "Cloud-hosted",
+        "key_concepts": [
+          ".travis.yml",
+          "Build stages",
+          "Build matrix",
+          "Caching",
+          "Environment variables",
+          "Deployment providers",
+          "Conditional builds"
+        ],
+        "supported_languages": [
+          "Many languages with pre-configured environments"
+        ]
+      },
+      "azure_devops": {
+        "description": "Microsoft's DevOps platform",
+        "type": "Cloud and on-premises",
+        "components": {
+          "pipelines": "CI/CD pipelines",
+          "repos": "Git repositories",
+          "boards": "Project tracking",
+          "artifacts": "Package management",
+          "test_plans": "Testing tools"
+        },
+        "pipeline_concepts": [
+          "YAML pipelines",
+          "Classic pipelines",
+          "Stages",
+          "Jobs",
+          "Tasks",
+          "Agents (Microsoft-hosted, self-hosted)",
+          "Service connections",
+          "Variable groups",
+          "Library",
+          "Deployment groups",
+          "Environments",
+          "Gates and approvals"
+        ],
+        "advantages": [
+          "Integrated DevOps suite",
+          "Azure integration",
+          "Free tier for small teams",
+          "On-premises option"
+        ]
+      },
+      "teamcity": {
+        "description": "JetBrains CI/CD server",
+        "type": "Self-hosted",
+        "vendor": "JetBrains",
+        "key_concepts": [
+          "Projects",
+          "Build configurations",
+          "Build runners",
+          "Build agents",
+          "Build chains",
+          "Templates",
+          "Meta-runners",
+          "Kotlin DSL for configuration",
+          "VCS roots",
+          "Dependencies"
+        ],
+        "advantages": [
+          "Excellent Java/JVM support",
+          "Powerful UI",
+          "Build chains",
+          "Free for small teams"
+        ]
+      },
+      "bamboo": {
+        "description": "Atlassian's CI/CD server",
+        "type": "Self-hosted",
+        "vendor": "Atlassian",
+        "key_concepts": [
+          "Plans",
+          "Stages",
+          "Jobs",
+          "Tasks",
+          "Agents",
+          "Deployment projects",
+          "Environments",
+          "Jira integration",
+          "Bitbucket integration"
+        ],
+        "advantages": [
+          "Atlassian ecosystem integration",
+          "Deployment projects",
+          "Permission management"
+        ]
+      },
+      "drone": {
+        "description": "Container-native CI/CD",
+        "type": "Self-hosted or cloud",
+        "key_concepts": [
+          ".drone.yml",
+          "Pipelines as containers",
+          "Plugins",
+          "Secrets",
+          "Cron jobs",
+          "Multiple architectures"
+        ],
+        "advantages": [
+          "Container-native",
+          "Lightweight",
+          "Plugin ecosystem"
+        ]
+      },
+      "other_cicd_tools": {
+        "buildkite": {
+          "description": "Hybrid CI/CD platform",
+          "features": ["Agent-based", "Self-hosted runners", "Cloud orchestration"]
+        },
+        "codeship": {
+          "description": "Cloud-based CI/CD",
+          "features": ["Basic and Pro versions", "Docker support", "Parallel testing"]
+        },
+        "concourse": {
+          "description": "Open-source CI/CD",
+          "features": ["Pipeline-centric", "Container-based", "Reproducible builds"]
+        },
+        "spinnaker": {
+          "description": "Multi-cloud continuous delivery",
+          "features": ["Deployment strategies", "Multi-cloud", "Advanced pipelines"]
+        },
+        "argo_cd": {
+          "description": "GitOps continuous delivery for Kubernetes",
+          "features": ["GitOps", "Kubernetes-native", "Automated sync"]
+        },
+        "flux": {
+          "description": "GitOps for Kubernetes",
+          "features": ["Git as source of truth", "Automated deployments", "CNCF project"]
+        },
+        "harness": {
+          "description": "Modern software delivery platform",
+          "features": ["AI/ML-driven", "Deployment verification", "Cost management"]
+        },
+        "codefresh": {
+          "description": "GitOps CI/CD platform",
+          "features": ["Kubernetes-native", "Argo-based", "Helm support"]
+        }
+      },
+      "build_tools": {
+        "description": "Tools used within CI/CD pipelines for building applications",
+        "java": ["Maven", "Gradle", "Ant"],
+        "javascript": ["npm", "yarn", "pnpm", "webpack", "Vite", "esbuild"],
+        "python": ["pip", "poetry", "setuptools", "pipenv"],
+        "dotnet": ["MSBuild", "dotnet CLI"],
+        "go": ["go build", "make"],
+        "ruby": ["bundler", "rake"],
+        "rust": ["cargo"],
+        "c_cpp": ["make", "CMake", "Ninja"],
+        "general": ["Bazel", "Buck", "Pants"]
+      },
+      "artifact_repositories": {
+        "jfrog_artifactory": {
+          "description": "Universal artifact repository",
+          "supports": ["Maven", "npm", "Docker", "Helm", "PyPI", "Generic"]
+        },
+        "sonatype_nexus": {
+          "description": "Repository manager",
+          "supports": ["Maven", "npm", "Docker", "PyPI", "NuGet"]
+        },
+        "github_packages": {
+          "description": "Package hosting",
+          "supports": ["npm", "Maven", "Gradle", "Docker", "NuGet", "RubyGems"]
+        },
+        "gitlab_package_registry": {
+          "description": "Integrated package registry",
+          "supports": ["npm", "Maven", "PyPI", "Composer", "NuGet"]
+        },
+        "aws_codeartifact": {
+          "description": "AWS artifact repository",
+          "supports": ["npm", "Maven", "PyPI", "NuGet"]
+        },
+        "azure_artifacts": {
+          "description": "Azure DevOps package management",
+          "supports": ["npm", "Maven", "NuGet", "Python"]
+        }
+      }
+    },
+    "6_logging_and_monitoring": {
+      "description": "Tools and practices for observability, logging, and monitoring",
+      "logging_tools": {
+        "elk_stack": {
+          "name": "Elasticsearch, Logstash, Kibana",
+          "components": {
+            "elasticsearch": {
+              "description": "Search and analytics engine",
+              "features": ["Full-text search", "Distributed", "RESTful API", "Real-time indexing"]
+            },
+            "logstash": {
+              "description": "Log collection and processing",
+              "features": ["Input plugins", "Filters", "Output plugins", "Data transformation"]
+            },
+            "kibana": {
+              "description": "Visualization and exploration",
+              "features": ["Dashboards", "Visualizations", "Discover", "Canvas", "Alerting"]
+            },
+            "beats": {
+              "description": "Lightweight data shippers",
+              "types": ["Filebeat", "Metricbeat", "Packetbeat", "Auditbeat", "Heartbeat", "Winlogbeat"]
+            }
+          },
+          "use_cases": [
+            "Centralized logging",
+            "Log analysis",
+            "Security analytics",
+            "Business analytics"
+          ]
+        },
+        "splunk": {
+          "description": "Log management and analysis platform",
+          "components": [
+            "Splunk Enterprise",
+            "Splunk Cloud",
+            "Universal Forwarder",
+            "Heavy Forwarder",
+            "Search Processing Language (SPL)"
+          ],
+          "features": [
+            "Real-time search",
+            "Alerts and dashboards",
+            "Machine learning",
+            "SIEM capabilities",
+            "IT operations",
+            "Security monitoring"
+          ]
+        },
+        "graylog": {
+          "description": "Open-source log management",
+          "components": [
+            "Graylog Server",
+            "Elasticsearch",
+            "MongoDB"
+          ],
+          "features": [
+            "Centralized logging",
+            "Alerting",
+            "Dashboards",
+            "Search",
+            "Streams",
+            "Content packs"
+          ]
+        },
+        "loki": {
+          "description": "Log aggregation system by Grafana Labs",
+          "vendor": "Grafana Labs",
+          "features": [
+            "Designed for Prometheus",
+            "Label-based indexing",
+            "Cost-effective",
+            "LogQL query language",
+            "Integration with Grafana"
+          ],
+          "components": [
+            "Loki",
+            "Promtail (log shipper)",
+            "Grafana (visualization)"
+          ]
+        },
+        "fluentd": {
+          "description": "Unified logging layer",
+          "type": "CNCF graduated project",
+          "features": [
+            "Unified logging layer",
+            "500+ plugins",
+            "Flexible architecture",
+            "Buffer and retry",
+            "Log routing"
+          ]
+        },
+        "fluent_bit": {
+          "description": "Lightweight log processor",
+          "features": [
+            "Low resource usage",
+            "High performance",
+            "Plugin-based",
+            "Cloud-native"
+          ]
+        },
+        "cloudwatch_logs": {
+          "description": "AWS log management",
+          "features": [
+            "Native AWS integration",
+            "Log groups and streams",
+            "Insights queries",
+            "Alarms",
+            "Subscriptions"
+          ]
+        },
+        "stackdriver": {
+          "description": "Google Cloud logging (now Cloud Logging)",
+          "features": [
+            "GCP integration",
+            "Log explorer",
+            "Log-based metrics",
+            "Log router"
+          ]
+        },
+        "azure_monitor_logs": {
+          "description": "Azure log analytics",
+          "features": [
+            "Log Analytics workspace",
+            "KQL (Kusto Query Language)",
+            "Workbooks",
+            "Alerts"
+          ]
+        },
+        "papertrail": {
+          "description": "Cloud-hosted log management",
+          "features": [
+            "Fast search",
+            "Live tail",
+            "Alerts",
+            "Archiving"
+          ]
+        },
+        "loggly": {
+          "description": "Cloud-based log management",
+          "features": [
+            "Real-time analysis",
+            "Dashboards",
+            "Alerting",
+            "Integration with DevOps tools"
+          ]
+        }
+      },
+      "monitoring_tools": {
+        "prometheus": {
+          "description": "Time-series monitoring and alerting",
+          "type": "CNCF graduated project",
+          "key_concepts": [
+            "Time-series database",
+            "Metrics collection",
+            "PromQL query language",
+            "Pull-based model",
+            "Service discovery",
+            "Alertmanager",
+            "Exporters",
+            "Federation",
+            "Remote storage"
+          ],
+          "exporters": [
+            "Node Exporter (system metrics)",
+            "Blackbox Exporter (probing)",
+            "MySQL Exporter",
+            "PostgreSQL Exporter",
+            "Redis Exporter",
+            "Custom exporters"
+          ],
+          "advantages": [
+            "Kubernetes native",
+            "Powerful query language",
+            "Multi-dimensional data",
+            "Active community"
+          ]
+        },
+        "grafana": {
+          "description": "Observability and visualization platform",
+          "vendor": "Grafana Labs",
+          "key_features": [
+            "Multi-source dashboards",
+            "Alerting",
+            "Panels and visualizations",
+            "Variables and templating",
+            "Annotations",
+            "Plugins",
+            "Teams and permissions",
+            "Unified alerting"
+          ],
+          "data_sources": [
+            "Prometheus",
+            "Elasticsearch",
+            "Loki",
+            "InfluxDB",
+            "MySQL/PostgreSQL",
+            "CloudWatch",
+            "Azure Monitor",
+            "Google Cloud Monitoring",
+            "Graphite",
+            "Tempo",
+            "Jaeger"
+          ],
+          "editions": [
+            "Grafana OSS",
+            "Grafana Cloud",
+            "Grafana Enterprise"
+          ]
+        },
+        "datadog": {
+          "description": "Cloud-scale monitoring and analytics",
+          "type": "SaaS platform",
+          "features": [
+            "Infrastructure monitoring",
+            "APM (Application Performance Monitoring)",
+            "Log management",
+            "Network monitoring",
+            "Security monitoring",
+            "Real User Monitoring (RUM)",
+            "Synthetic monitoring",
+            "Dashboards",
+            "Alerting",
+            "500+ integrations"
+          ],
+          "components": [
+            "Datadog Agent",
+            "Integrations",
+            "Dashboards",
+            "Monitors"
+          ]
+        },
+        "new_relic": {
+          "description": "Observability platform",
+          "type": "SaaS",
+          "products": [
+            "APM",
+            "Infrastructure monitoring",
+            "Browser monitoring",
+            "Mobile monitoring",
+            "Synthetic monitoring",
+            "Logs",
+            "Distributed tracing",
+            "Kubernetes monitoring",
+            "Serverless monitoring"
+          ],
+          "features": [
+            "Full-stack observability",
+            "AI-driven insights",
+            "Custom dashboards",
+            "NRQL query language"
+          ]
+        },
+        "nagios": {
+          "description": "IT infrastructure monitoring",
+          "type": "Open-source",
+          "components": [
+            "Nagios Core",
+            "Nagios XI (commercial)"
+          ],
+          "features": [
+            "Host and service monitoring",
+            "Alerting",
+            "Plugin architecture",
+            "Web interface",
+            "Event handlers"
+          ]
+        },
+        "zabbix": {
+          "description": "Enterprise monitoring solution",
+          "type": "Open-source",
+          "features": [
+            "Network monitoring",
+            "Server monitoring",
+            "Application monitoring",
+            "Templates",
+            "Triggers and actions",
+            "Distributed monitoring",
+            "Web monitoring",
+            "Auto-discovery"
+          ]
+        },
+        "icinga": {
+          "description": "Monitoring system (Nagios fork)",
+          "features": [
+            "Scalable monitoring",
+            "RESTful API",
+            "Modern UI",
+            "Distributed monitoring",
+            "Configuration management"
+          ]
+        },
+        "influxdb": {
+          "description": "Time-series database",
+          "use_case": "Metrics storage",
+          "features": [
+            "High write throughput",
+            "InfluxQL and Flux languages",
+            "Continuous queries",
+            "Retention policies",
+            "Downsampling"
+          ]
+        },
+        "victoria_metrics": {
+          "description": "Time-series database",
+          "features": [
+            "Prometheus compatible",
+            "High performance",
+            "Cost-effective",
+            "Long-term storage"
+          ]
+        },
+        "sensu": {
+          "description": "Monitoring event pipeline",
+          "features": [
+            "Multi-cloud monitoring",
+            "Service checks",
+            "Event-driven",
+            "Flexible alerting"
+          ]
+        },
+        "appdynamics": {
+          "description": "Application performance management",
+          "vendor": "Cisco",
+          "features": [
+            "APM",
+            "Business transaction monitoring",
+            "End-user monitoring",
+            "Infrastructure visibility",
+            "Analytics"
+          ]
+        },
+        "dynatrace": {
+          "description": "Software intelligence platform",
+          "features": [
+            "AI-powered monitoring",
+            "Full-stack monitoring",
+            "Automatic discovery",
+            "Root cause analysis",
+            "Cloud automation"
+          ]
+        }
+      },
+      "apm_tools": {
+        "description": "Application Performance Monitoring tools",
+        "tools": {
+          "elastic_apm": {
+            "description": "Part of Elastic Stack",
+            "features": ["Distributed tracing", "Real user monitoring", "Error tracking"]
+          },
+          "jaeger": {
+            "description": "Distributed tracing system",
+            "type": "CNCF project",
+            "features": ["Distributed tracing", "OpenTelemetry compatible", "Service dependency analysis"]
+          },
+          "zipkin": {
+            "description": "Distributed tracing system",
+            "features": ["Tracing collection", "Dependency graph", "Latency analysis"]
+          },
+          "tempo": {
+            "description": "Distributed tracing backend by Grafana Labs",
+            "features": ["Cost-effective", "Trace ID lookup", "Integration with Grafana"]
+          },
+          "opentelemetry": {
+            "description": "Observability framework",
+            "type": "CNCF project",
+            "features": ["Vendor-neutral", "Traces, metrics, logs", "Auto-instrumentation", "Language SDKs"]
+          },
+          "aws_x_ray": {
+            "description": "AWS distributed tracing",
+            "features": ["AWS service integration", "Service map", "Trace analysis"]
+          },
+          "google_cloud_trace": {
+            "description": "GCP distributed tracing",
+            "features": ["Latency analysis", "Service dependencies", "Performance insights"]
+          },
+          "azure_application_insights": {
+            "description": "Azure APM",
+            "features": ["Application monitoring", "Dependency tracking", "Live metrics", "Profiler"]
+          }
+        }
+      },
+      "uptime_monitoring": {
+        "pingdom": "Website monitoring",
+        "uptime_robot": "Free uptime monitoring",
+        "status_cake": "Website monitoring",
+        "better_uptime": "Incident management and monitoring"
+      },
+      "error_tracking": {
+        "sentry": {
+          "description": "Application error tracking",
+          "features": ["Error monitoring", "Performance monitoring", "Release tracking", "Issue grouping"]
+        },
+        "rollbar": {
+          "description": "Error monitoring",
+          "features": ["Real-time error tracking", "Deployment tracking", "Root cause analysis"]
+        },
+        "bugsnag": {
+          "description": "Error monitoring",
+          "features": ["Stability monitoring", "Diagnostics", "Release tracking"]
+        },
+        "raygun": {
+          "description": "Error and crash reporting",
+          "features": ["Crash reporting", "Real user monitoring", "Deployment tracking"]
+        }
+      },
+      "observability_concepts": [
+        "Metrics - Numerical measurements over time",
+        "Logs - Event records",
+        "Traces - Request flow through distributed system",
+        "Golden Signals (Latency, Traffic, Errors, Saturation)",
+        "RED Method (Rate, Errors, Duration)",
+        "USE Method (Utilization, Saturation, Errors)",
+        "Service Level Indicators (SLI)",
+        "Service Level Objectives (SLO)",
+        "Service Level Agreements (SLA)",
+        "Alert fatigue mitigation",
+        "On-call rotation",
+        "Incident response",
+        "Post-mortems",
+        "Correlation of signals"
+      ]
+    },
+    "7_server_management": {
+      "description": "Server provisioning, configuration, and management practices",
+      "operating_systems": {
+        "linux_distributions": {
+          "debian_based": {
+            "ubuntu": {
+              "description": "Popular Debian-based distribution",
+              "versions": ["Ubuntu Server", "Ubuntu LTS", "Ubuntu Core"],
+              "use_cases": ["General purpose", "Cloud", "Containers"]
+            },
+            "debian": {
+              "description": "Stable and reliable distribution",
+              "use_cases": ["Servers", "Stability-focused deployments"]
+            }
+          },
+          "rhel_based": {
+            "rhel": {
+              "name": "Red Hat Enterprise Linux",
+              "description": "Enterprise Linux distribution",
+              "features": ["Commercial support", "Long-term support", "Certified applications"]
+            },
+            "centos": {
+              "description": "Community-driven RHEL derivative (transitioning to Stream)",
+              "note": "CentOS Linux discontinued, CentOS Stream continues"
+            },
+            "rocky_linux": {
+              "description": "RHEL-compatible distribution",
+              "note": "CentOS replacement"
+            },
+            "almalinux": {
+              "description": "RHEL-compatible distribution",
+              "note": "CentOS replacement"
+            },
+            "fedora": {
+              "description": "Cutting-edge RHEL upstream",
+              "use_cases": ["Latest features", "Testing"]
+            },
+            "oracle_linux": {
+              "description": "RHEL-compatible by Oracle",
+              "features": ["Oracle support", "Ksplice updates"]
+            }
+          },
+          "suse_based": {
+            "suse_linux_enterprise": "Enterprise distribution",
+            "opensuse": "Community distribution"
+          },
+          "arch_based": {
+            "arch_linux": "Rolling release",
+            "manjaro": "User-friendly Arch derivative"
+          },
+          "other": {
+            "alpine_linux": {
+              "description": "Minimal distribution",
+              "use_cases": ["Containers", "Security-focused", "Small footprint"],
+              "features": ["musl libc", "BusyBox", "Tiny size"]
+            },
+            "amazon_linux": {
+              "description": "AWS-optimized distribution",
+              "versions": ["Amazon Linux 2", "Amazon Linux 2023"],
+              "features": ["AWS integration", "Optimized for EC2"]
+            },
+            "coreos": {
+              "description": "Container-focused OS (now Fedora CoreOS)",
+              "features": ["Immutable infrastructure", "Automatic updates"]
+            }
+          }
+        },
+        "windows_server": {
+          "versions": [
+            "Windows Server 2022",
+            "Windows Server 2019",
+            "Windows Server 2016"
+          ],
+          "editions": [
+            "Standard",
+            "Datacenter",
+            "Server Core"
+          ],
+          "features": [
+            "Active Directory",
+            "IIS",
+            "Hyper-V",
+            "PowerShell",
+            "Windows Admin Center"
+          ]
+        }
+      },
+      "configuration_management": {
+        "tools": [
+          "Ansible - Agentless automation",
+          "Chef - Configuration as code",
+          "Puppet - Declarative configuration",
+          "SaltStack - Event-driven automation"
+        ],
+        "concepts": [
+          "Desired state configuration",
+          "Idempotency",
+          "Configuration drift detection",
+          "Centralized management",
+          "Version control of configurations"
+        ]
+      },
+      "package_management": {
+        "debian_ubuntu": {
+          "tools": ["apt", "apt-get", "dpkg"],
+          "package_format": ".deb"
+        },
+        "rhel_centos": {
+          "tools": ["yum", "dnf", "rpm"],
+          "package_format": ".rpm"
+        },
+        "universal": {
+          "snap": "Universal Linux packages",
+          "flatpak": "Desktop application distribution",
+          "appimage": "Portable applications"
+        }
+      },
+      "system_initialization": {
+        "systemd": {
+          "description": "Modern init system and service manager",
+          "components": [
+            "systemctl - Service control",
+            "journalctl - Log viewing",
+            "Units (service, socket, target, etc.)",
+            "Timers (cron replacement)"
+          ],
+          "used_by": "Most modern Linux distributions"
+        },
+        "sysvinit": {
+          "description": "Traditional init system",
+          "status": "Legacy, being replaced by systemd"
+        },
+        "upstart": {
+          "description": "Event-based init system",
+          "status": "Largely replaced by systemd"
+        },
+        "openrc": {
+          "description": "Dependency-based init system",
+          "used_by": "Gentoo, Alpine Linux"
+        }
+      },
+      "process_management": {
+        "supervisord": {
+          "description": "Process control system",
+          "features": ["Process monitoring", "Auto-restart", "Web interface", "XML-RPC API"]
+        },
+        "systemd": "Built-in process management",
+        "pm2": {
+          "description": "Node.js process manager",
+          "features": ["Process monitoring", "Load balancing", "Auto-restart", "Log management"]
+        },
+        "forever": "Simple Node.js process manager"
+      },
+      "remote_access": {
+        "ssh": {
+          "description": "Secure Shell protocol",
+          "tools": [
+            "OpenSSH - Standard implementation",
+            "PuTTY - Windows SSH client",
+            "MobaXterm - Enhanced terminal for Windows"
+          ],
+          "concepts": [
+            "Key-based authentication",
+            "SSH keys (RSA, Ed25519)",
+            "SSH config file",
+            "Port forwarding",
+            "SSH tunneling",
+            "ProxyJump",
+            "SSH agent",
+            "Bastion hosts"
+          ],
+          "security": [
+            "Disable root login",
+            "Use key authentication",
+            "Change default port (optional)",
+            "Fail2ban for brute force protection",
+            "SSH key rotation"
+          ]
+        },
+        "rdp": {
+          "description": "Remote Desktop Protocol",
+          "use_case": "Windows remote access",
+          "port": 3389
+        },
+        "vnc": {
+          "description": "Virtual Network Computing",
+          "implementations": ["TightVNC", "RealVNC", "TigerVNC"],
+          "use_case": "Cross-platform remote desktop"
+        }
+      },
+      "server_hardening": {
+        "practices": [
+          "Minimal installation",
+          "Regular security updates",
+          "Firewall configuration",
+          "SELinux/AppArmor",
+          "Disable unnecessary services",
+          "Strong password policies",
+          "Multi-factor authentication",
+          "Regular security audits",
+          "File integrity monitoring",
+          "Log monitoring",
+          "Principle of least privilege",
+          "Network segmentation"
+        ],
+        "tools": [
+          "fail2ban - Intrusion prevention",
+          "UFW - Uncomplicated Firewall",
+          "iptables/nftables - Firewall",
+          "SELinux - Security-Enhanced Linux",
+          "AppArmor - Application armor",
+          "ClamAV - Antivirus",
+          "AIDE - File integrity",
+          "Lynis - Security auditing",
+          "OpenSCAP - Security compliance"
+        ]
+      },
+      "automation_tools": {
+        "scripting": [
+          "Bash scripting",
+          "Python scripts",
+          "PowerShell (Windows)"
+        ],
+        "cron": {
+          "description": "Time-based job scheduler",
+          "concepts": ["Crontab", "Cron expressions", "Anacron for desktops"]
+        },
+        "systemd_timers": {
+          "description": "Modern alternative to cron",
+          "advantages": ["Better logging", "Dependency handling", "Calendar and monotonic timers"]
+        }
+      },
+      "virtualization": {
+        "hypervisors": {
+          "type_1": {
+            "description": "Bare metal hypervisors",
+            "examples": [
+              "VMware ESXi",
+              "Microsoft Hyper-V",
+              "Xen",
+              "KVM (with QEMU)",
+              "Proxmox VE"
+            ]
+          },
+          "type_2": {
+            "description": "Hosted hypervisors",
+            "examples": [
+              "VMware Workstation",
+              "VirtualBox",
+              "Parallels Desktop",
+              "QEMU"
+            ]
+          }
+        },
+        "management_tools": [
+          "vSphere",
+          "Proxmox",
+          "oVirt",
+          "XCP-ng",
+          "Vagrant (development environments)"
+        ]
+      },
+      "provisioning_tools": {
+        "cloud_init": {
+          "description": "Cloud instance initialization",
+          "features": ["User creation", "Package installation", "File writing", "Command execution"],
+          "supported_by": "Most cloud providers"
+        },
+        "packer": {
+          "description": "Image building automation",
+          "vendor": "HashiCorp",
+          "features": ["Multi-platform images", "Template-based", "CI/CD integration"]
+        },
+        "kickstart": {
+          "description": "Automated RHEL installation",
+          "use_case": "Red Hat based systems"
+        },
+        "preseed": {
+          "description": "Automated Debian installation",
+          "use_case": "Debian-based systems"
+        }
+      }
+    },
+    "8_networking_fundamentals": {
+      "description": "Core networking concepts and protocols for DevOps",
+      "osi_model": {
+        "description": "Open Systems Interconnection model",
+        "layers": {
+          "layer_7": {
+            "name": "Application",
+            "description": "End-user applications and services",
+            "protocols": ["HTTP", "HTTPS", "FTP", "SMTP", "DNS", "SSH", "Telnet", "SNMP"]
+          },
+          "layer_6": {
+            "name": "Presentation",
+            "description": "Data translation and encryption",
+            "functions": ["Encryption", "Compression", "Data formatting"]
+          },
+          "layer_5": {
+            "name": "Session",
+            "description": "Session management",
+            "functions": ["Session establishment", "Maintenance", "Termination"]
+          },
+          "layer_4": {
+            "name": "Transport",
+            "description": "End-to-end communication",
+            "protocols": ["TCP", "UDP", "SCTP"]
+          },
+          "layer_3": {
+            "name": "Network",
+            "description": "Routing and forwarding",
+            "protocols": ["IP", "ICMP", "IGMP", "IPsec"]
+          },
+          "layer_2": {
+            "name": "Data Link",
+            "description": "Node-to-node transfer",
+            "protocols": ["Ethernet", "Wi-Fi (802.11)", "PPP", "ARP"]
+          },
+          "layer_1": {
+            "name": "Physical",
+            "description": "Physical transmission",
+            "components": ["Cables", "Hubs", "Repeaters", "Network adapters"]
+          }
+        }
+      },
+      "tcpip_model": {
+        "description": "Internet Protocol Suite",
+        "layers": {
+          "application": ["HTTP", "FTP", "DNS", "SSH"],
+          "transport": ["TCP", "UDP"],
+          "internet": ["IP", "ICMP", "ARP"],
+          "network_access": ["Ethernet", "Wi-Fi"]
+        }
+      },
+      "protocols": {
+        "tcp": {
+          "name": "Transmission Control Protocol",
+          "characteristics": [
+            "Connection-oriented",
+            "Reliable delivery",
+            "Ordered packets",
+            "Error checking",
+            "Flow control",
+            "Congestion control"
+          ],
+          "use_cases": ["HTTP/HTTPS", "FTP", "SSH", "Email"]
+        },
+        "udp": {
+          "name": "User Datagram Protocol",
+          "characteristics": [
+            "Connectionless",
+            "Unreliable delivery",
+            "No ordering",
+            "Lower overhead",
+            "Faster than TCP"
+          ],
+          "use_cases": ["DNS", "Video streaming", "Online gaming", "VoIP"]
+        },
+        "ip": {
+          "name": "Internet Protocol",
+          "versions": {
+            "ipv4": {
+              "format": "xxx.xxx.xxx.xxx (32-bit)",
+              "example": "192.168.1.1",
+              "address_space": "4.3 billion addresses",
+              "classes": ["Class A", "Class B", "Class C", "Class D", "Class E"]
+            },
+            "ipv6": {
+              "format": "xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx (128-bit)",
+              "example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+              "address_space": "340 undecillion addresses",
+              "features": ["Native IPsec", "No NAT required", "Auto-configuration"]
+            }
+          }
+        },
+        "icmp": {
+          "name": "Internet Control Message Protocol",
+          "purpose": "Error reporting and diagnostics",
+          "tools": ["ping", "traceroute"]
+        },
+        "arp": {
+          "name": "Address Resolution Protocol",
+          "purpose": "Map IP addresses to MAC addresses"
+        }
+      },
+      "http_https": {
+        "http": {
+          "name": "Hypertext Transfer Protocol",
+          "port": 80,
+          "versions": {
+            "http_1_0": "1996",
+            "http_1_1": "1997, persistent connections",
+            "http_2": "2015, multiplexing, server push",
+            "http_3": "2022, QUIC protocol, UDP-based"
+          },
+          "methods": [
+            "GET - Retrieve data",
+            "POST - Submit data",
+            "PUT - Update/replace resource",
+            "PATCH - Partial update",
+            "DELETE - Remove resource",
+            "HEAD - Get headers only",
+            "OPTIONS - Get supported methods",
+            "CONNECT - Establish tunnel",
+            "TRACE - Diagnostic trace"
+          ],
+          "status_codes": {
+            "1xx": "Informational",
+            "2xx": "Success (200 OK, 201 Created, 204 No Content)",
+            "3xx": "Redirection (301 Moved, 302 Found, 304 Not Modified)",
+            "4xx": "Client errors (400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found)",
+            "5xx": "Server errors (500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable)"
+          },
+          "headers": {
+            "request": ["Host", "User-Agent", "Accept", "Authorization", "Content-Type", "Cookie"],
+            "response": ["Content-Type", "Content-Length", "Set-Cookie", "Cache-Control", "Server"],
+            "both": ["Date", "Connection", "Transfer-Encoding"]
+          }
+        },
+        "https": {
+          "name": "HTTP Secure",
+          "port": 443,
+          "security": "TLS/SSL encryption",
+          "features": [
+            "Encrypted communication",
+            "Server authentication",
+            "Data integrity",
+            "Client authentication (optional)"
+          ]
+        }
+      },
+      "dns": {
+        "name": "Domain Name System",
+        "port": "53 (UDP/TCP)",
+        "purpose": "Translate domain names to IP addresses",
+        "record_types": {
+          "a": "IPv4 address",
+          "aaaa": "IPv6 address",
+          "cname": "Canonical name (alias)",
+          "mx": "Mail exchange",
+          "txt": "Text records",
+          "ns": "Name server",
+          "soa": "Start of authority",
+          "ptr": "Pointer (reverse DNS)",
+          "srv": "Service location",
+          "caa": "Certificate authority authorization"
+        },
+        "dns_servers": {
+          "recursive": "Query on behalf of clients",
+          "authoritative": "Hold DNS records",
+          "forwarding": "Forward queries to other servers",
+          "caching": "Cache results"
+        },
+        "public_dns_providers": [
+          "Google (8.8.8.8, 8.8.4.4)",
+          "Cloudflare (1.1.1.1, 1.0.0.1)",
+          "Quad9 (9.9.9.9)",
+          "OpenDNS (208.67.222.222, 208.67.220.220)"
+        ],
+        "dns_tools": [
+          "dig",
+          "nslookup",
+          "host",
+          "whois"
+        ],
+        "concepts": [
+          "TTL (Time To Live)",
+          "DNS propagation",
+          "Zone files",
+          "DNSSEC (security)",
+          "Split-horizon DNS",
+          "GeoDNS",
+          "Anycast"
+        ]
+      },
+      "load_balancing": {
+        "types": {
+          "layer_4": {
+            "name": "Transport layer",
+            "basis": "IP and port",
+            "protocols": "TCP/UDP",
+            "speed": "Faster",
+            "examples": ["Network Load Balancer", "HAProxy (TCP mode)"]
+          },
+          "layer_7": {
+            "name": "Application layer",
+            "basis": "HTTP headers, cookies, URL",
+            "features": "Content-based routing",
+            "speed": "Slower but more flexible",
+            "examples": ["Application Load Balancer", "HAProxy (HTTP mode)", "Nginx"]
+          }
+        },
+        "algorithms": [
+          "Round Robin",
+          "Least Connections",
+          "Least Response Time",
+          "IP Hash",
+          "Weighted Round Robin",
+          "Weighted Least Connections",
+          "Random",
+          "URL Hash"
+        ],
+        "tools": {
+          "haproxy": {
+            "description": "High-performance load balancer",
+            "features": ["Layer 4 and 7", "Health checks", "SSL termination", "Statistics"]
+          },
+          "nginx": {
+            "description": "Web server and load balancer",
+            "features": ["HTTP load balancing", "TCP/UDP load balancing", "Health checks", "Caching"]
+          },
+          "envoy": {
+            "description": "Modern proxy and load balancer",
+            "features": ["Service mesh", "Dynamic configuration", "Observability", "Layer 7 routing"]
+          },
+          "traefik": {
+            "description": "Modern HTTP reverse proxy",
+            "features": ["Auto-discovery", "Let's Encrypt", "Multiple backends", "Dynamic configuration"]
+          },
+          "cloud_load_balancers": {
+            "aws": ["ELB (Classic)", "ALB (Application)", "NLB (Network)", "GLB (Gateway)"],
+            "gcp": ["HTTP(S) Load Balancing", "Network Load Balancing", "Internal Load Balancing"],
+            "azure": ["Load Balancer", "Application Gateway", "Traffic Manager", "Front Door"]
+          }
+        },
+        "health_checks": [
+          "HTTP/HTTPS endpoint check",
+          "TCP connection check",
+          "Active vs passive",
+          "Interval and timeout configuration"
+        ]
+      },
+      "reverse_proxy": {
+        "description": "Server that sits in front of web servers",
+        "benefits": [
+          "Load balancing",
+          "SSL termination",
+          "Caching",
+          "Compression",
+          "Security (WAF)",
+          "URL rewriting",
+          "Hide backend servers"
+        ],
+        "tools": [
+          "Nginx",
+          "Apache (mod_proxy)",
+          "HAProxy",
+          "Traefik",
+          "Envoy",
+          "Caddy"
+        ]
+      },
+      "cdn": {
+        "description": "Content Delivery Network",
+        "purpose": "Distribute content globally for performance",
+        "providers": [
+          "Cloudflare",
+          "Akamai",
+          "Amazon CloudFront",
+          "Fastly",
+          "Google Cloud CDN",
+          "Azure CDN",
+          "StackPath",
+          "KeyCDN"
+        ],
+        "benefits": [
+          "Reduced latency",
+          "DDoS protection",
+          "Bandwidth savings",
+          "Global reach",
+          "Edge caching"
+        ]
+      },
+      "firewalls": {
+        "types": {
+          "network_firewall": "Filter network traffic",
+          "host_firewall": "Protect individual hosts",
+          "waf": "Web Application Firewall - protect web applications"
+        },
+        "tools": {
+          "iptables": "Linux packet filtering",
+          "nftables": "Modern Linux firewall",
+          "ufw": "Uncomplicated Firewall (Ubuntu)",
+          "firewalld": "Dynamic firewall (RHEL/CentOS)",
+          "pf": "Packet Filter (BSD)",
+          "windows_firewall": "Windows Defender Firewall"
+        },
+        "cloud_firewalls": {
+          "aws": ["Security Groups", "Network ACLs", "AWS WAF"],
+          "gcp": ["VPC firewall rules", "Cloud Armor"],
+          "azure": ["Network Security Groups", "Azure Firewall", "Application Gateway WAF"]
+        }
+      },
+      "vpn": {
+        "description": "Virtual Private Network",
+        "types": {
+          "site_to_site": "Connect networks",
+          "remote_access": "Connect individual users"
+        },
+        "protocols": [
+          "OpenVPN",
+          "WireGuard",
+          "IPsec",
+          "L2TP/IPsec",
+          "PPTP (deprecated)",
+          "SSTP"
+        ],
+        "tools": [
+          "OpenVPN",
+          "WireGuard",
+          "StrongSwan (IPsec)",
+          "SoftEther",
+          "Pritunl"
+        ]
+      },
+      "network_tools": {
+        "diagnostic": [
+          "ping - Test connectivity",
+          "traceroute/tracert - Trace route",
+          "mtr - Network diagnostic tool",
+          "netstat - Network statistics",
+          "ss - Socket statistics",
+          "nmap - Network scanner",
+          "tcpdump - Packet analyzer",
+          "wireshark - Network protocol analyzer",
+          "iperf - Network performance",
+          "curl - Transfer data",
+          "wget - Download files",
+          "nc/netcat - Network utility"
+        ],
+        "monitoring": [
+          "Nagios",
+          "Zabbix",
+          "PRTG",
+          "SolarWinds",
+          "LibreNMS",
+          "Observium"
+        ]
+      },
+      "subnetting_cidr": {
+        "cidr": {
+          "name": "Classless Inter-Domain Routing",
+          "notation": "192.168.1.0/24",
+          "examples": {
+            "/8": "16,777,214 hosts (255.0.0.0)",
+            "/16": "65,534 hosts (255.255.0.0)",
+            "/24": "254 hosts (255.255.255.0)",
+            "/32": "Single host"
+          }
+        },
+        "private_ranges": [
+          "10.0.0.0/8 (Class A)",
+          "172.16.0.0/12 (Class B)",
+          "192.168.0.0/16 (Class C)"
+        ]
+      }
+    },
+    "9_ssl_tls_certificates": {
+      "description": "Security certificates and encryption",
+      "ssl_tls": {
+        "ssl": {
+          "name": "Secure Sockets Layer",
+          "status": "Deprecated",
+          "versions": ["SSL 2.0 (deprecated)", "SSL 3.0 (deprecated)"]
+        },
+        "tls": {
+          "name": "Transport Layer Security",
+          "status": "Current standard",
+          "versions": {
+            "tls_1_0": "Deprecated",
+            "tls_1_1": "Deprecated",
+            "tls_1_2": "Widely used",
+            "tls_1_3": "Latest, improved security and performance"
+          }
+        },
+        "purpose": [
+          "Encryption of data in transit",
+          "Server authentication",
+          "Client authentication (optional)",
+          "Data integrity"
+        ]
+      },
+      "certificate_types": {
+        "dv": {
+          "name": "Domain Validated",
+          "validation": "Domain ownership only",
+          "speed": "Minutes",
+          "use_case": "Basic HTTPS"
+        },
+        "ov": {
+          "name": "Organization Validated",
+          "validation": "Organization verification",
+          "speed": "Days",
+          "use_case": "Business websites"
+        },
+        "ev": {
+          "name": "Extended Validation",
+          "validation": "Rigorous organization verification",
+          "speed": "Weeks",
+          "use_case": "E-commerce, financial",
+          "visual": "Green address bar (older browsers)"
+        },
+        "wildcard": {
+          "description": "Covers all subdomains",
+          "example": "*.example.com",
+          "use_case": "Multiple subdomains"
+        },
+        "san_multi_domain": {
+          "name": "Subject Alternative Name",
+          "description": "Multiple domains in one certificate",
+          "use_case": "Multiple domains"
+        }
+      },
+      "certificate_authorities": {
+        "commercial": [
+          "DigiCert",
+          "Sectigo (formerly Comodo)",
+          "GlobalSign",
+          "GoDaddy",
+          "Entrust",
+          "Thawte",
+          "GeoTrust"
+        ],
+        "free": [
+          "Let's Encrypt",
+          "ZeroSSL",
+          "Buypass",
+          "SSL.com Free"
+        ]
+      },
+      "lets_encrypt": {
+        "description": "Free, automated, and open certificate authority",
+        "features": [
+          "Free DV certificates",
+          "90-day validity",
+          "Automated renewal",
+          "Wildcard certificates",
+          "API-driven"
+        ],
+        "clients": {
+          "certbot": {
+            "description": "Official client",
+            "features": ["Auto-renewal", "Multiple web servers", "DNS plugins"]
+          },
+          "acme_sh": "Lightweight shell script",
+          "lego": "Go-based client",
+          "dehydrated": "Bash client",
+          "win_acme": "Windows client",
+          "caddy": "Built-in ACME support",
+          "traefik": "Built-in Let's Encrypt"
+        },
+        "validation_methods": {
+          "http_01": "HTTP challenge",
+          "dns_01": "DNS challenge (required for wildcards)",
+          "tls_alpn_01": "TLS challenge"
+        }
+      },
+      "certificate_management": {
+        "concepts": [
+          "Certificate chain",
+          "Root certificate",
+          "Intermediate certificate",
+          "Certificate Signing Request (CSR)",
+          "Private key",
+          "Public key",
+          "Certificate expiration",
+          "Certificate renewal",
+          "Certificate revocation",
+          "OCSP (Online Certificate Status Protocol)",
+          "CRL (Certificate Revocation List)"
+        ],
+        "tools": {
+          "openssl": {
+            "description": "Cryptography toolkit",
+            "operations": [
+              "Generate private keys",
+              "Create CSR",
+              "Self-signed certificates",
+              "View certificate details",
+              "Convert formats",
+              "Test connections"
+            ]
+          },
+          "cfssl": "CloudFlare's PKI toolkit",
+          "easy_rsa": "Simple PKI management",
+          "vault": "HashiCorp Vault PKI engine",
+          "step_ca": "Step Certificate Manager"
+        },
+        "certificate_formats": [
+          "PEM - Base64 encoded (.pem, .crt, .cer, .key)",
+          "DER - Binary format (.der, .cer)",
+          "PFX/P12 - PKCS#12 (.pfx, .p12)",
+          "P7B/P7C - PKCS#7 (.p7b, .p7c)",
+          "JKS - Java KeyStore (.jks)"
+        ]
+      },
+      "ssl_tls_termination": {
+        "description": "Where SSL/TLS is decrypted",
+        "options": {
+          "load_balancer": "Terminate at load balancer",
+          "reverse_proxy": "Terminate at reverse proxy",
+          "application": "End-to-end encryption",
+          "edge": "CDN or edge network"
+        },
+        "considerations": [
+          "Performance",
+          "Security",
+          "Certificate management",
+          "Compliance requirements"
+        ]
+      },
+      "mtls": {
+        "name": "Mutual TLS",
+        "description": "Both client and server authenticate",
+        "use_cases": [
+          "Service-to-service communication",
+          "Zero-trust networks",
+          "Microservices",
+          "API security"
+        ]
+      },
+      "certificate_monitoring": {
+        "tools": [
+          "Certificate Transparency logs",
+          "SSL Labs",
+          "Qualys SSL Server Test",
+          "TestSSL.sh",
+          "CertSpotter",
+          "Certificate monitoring services"
+        ],
+        "checks": [
+          "Expiration dates",
+          "Certificate chain validity",
+          "Revocation status",
+          "Cipher suite strength",
+          "Protocol versions",
+          "Configuration issues"
+        ]
+      },
+      "best_practices": [
+        "Use TLS 1.2 or higher",
+        "Disable SSL and old TLS versions",
+        "Use strong cipher suites",
+        "Enable HSTS (HTTP Strict Transport Security)",
+        "Implement certificate pinning (mobile apps)",
+        "Automate certificate renewal",
+        "Monitor certificate expiration",
+        "Use CAA records",
+        "Implement OCSP stapling",
+        "Regular security audits"
+      ]
+    },
+    "10_deployment_strategies": {
+      "description": "Strategies for deploying applications with minimal downtime and risk",
+      "blue_green_deployment": {
+        "description": "Two identical production environments, switch traffic between them",
+        "process": [
+          "Blue environment serves production traffic",
+          "Deploy new version to Green environment",
+          "Test Green environment",
+          "Switch traffic from Blue to Green",
+          "Blue becomes idle or rollback option"
+        ],
+        "advantages": [
+          "Zero downtime",
+          "Quick rollback",
+          "Full environment testing",
+          "Isolated deployment"
+        ],
+        "disadvantages": [
+          "Requires double infrastructure",
+          "Database migration complexity",
+          "Cost overhead"
+        ],
+        "tools": [
+          "Kubernetes (Services and labels)",
+          "AWS Elastic Beanstalk",
+          "Cloud Foundry",
+          "Spinnaker",
+          "ArgoCD"
+        ]
+      },
+      "canary_deployment": {
+        "description": "Gradually roll out changes to subset of users",
+        "process": [
+          "Deploy new version to small subset (5-10%)",
+          "Monitor metrics and errors",
+          "Gradually increase traffic to new version",
+          "Roll back if issues detected",
+          "Complete rollout when validated"
+        ],
+        "advantages": [
+          "Early issue detection",
+          "Limited blast radius",
+          "Real user validation",
+          "Gradual risk mitigation"
+        ],
+        "disadvantages": [
+          "Requires sophisticated monitoring",
+          "Complex traffic routing",
+          "Session management challenges",
+          "Longer deployment time"
+        ],
+        "metrics_to_monitor": [
+          "Error rates",
+          "Response times",
+          "CPU/Memory usage",
+          "Business metrics",
+          "User feedback"
+        ],
+        "tools": [
+          "Istio (Service mesh)",
+          "Linkerd",
+          "Flagger (Kubernetes)",
+          "Spinnaker",
+          "ArgoCD Rollouts",
+          "AWS App Mesh",
+          "Nginx with weighted routing"
+        ]
+      },
+      "rolling_deployment": {
+        "description": "Gradually replace instances with new version",
+        "process": [
+          "Deploy new version to one instance",
+          "Health check the instance",
+          "Remove old instance from pool",
+          "Repeat for all instances",
+          "Complete when all instances updated"
+        ],
+        "advantages": [
+          "No additional infrastructure",
+          "Gradual rollout",
+          "Automatic with orchestrators",
+          "Resource efficient"
+        ],
+        "disadvantages": [
+          "Multiple versions running simultaneously",
+          "Longer deployment time",
+          "Slower rollback",
+          "Compatibility requirements"
+        ],
+        "configurations": {
+          "max_surge": "Number of instances above desired count",
+          "max_unavailable": "Number of instances that can be unavailable",
+          "health_check": "Validation before proceeding"
+        },
+        "kubernetes": {
+          "strategy": "RollingUpdate",
+          "parameters": ["maxSurge", "maxUnavailable"],
+          "commands": [
+            "kubectl set image",
+            "kubectl rollout status",
+            "kubectl rollout undo"
+          ]
+        }
+      },
+      "recreate_deployment": {
+        "description": "Shut down old version, then start new version",
+        "process": [
+          "Stop all old version instances",
+          "Deploy new version",
+          "Start new version instances"
+        ],
+        "advantages": [
+          "Simple strategy",
+          "No version conflicts",
+          "Lower resource usage"
+        ],
+        "disadvantages": [
+          "Downtime during deployment",
+          "All-or-nothing approach",
+          "Risk of extended outage"
+        ],
+        "use_cases": [
+          "Development environments",
+          "Non-critical applications",
+          "Major version upgrades",
+          "Database schema changes"
+        ]
+      },
+      "ab_testing": {
+        "description": "Run two versions to compare performance",
+        "purpose": [
+          "Feature validation",
+          "UX testing",
+          "Performance comparison",
+          "Business metric optimization"
+        ],
+        "vs_canary": [
+          "A/B: Compare features or variants",
+          "Canary: Validate deployment safety"
+        ],
+        "tools": [
+          "Split.io",
+          "Optimizely",
+          "LaunchDarkly",
+          "Feature flags",
+          "Custom routing"
+        ]
+      },
+      "shadow_deployment": {
+        "description": "Deploy new version alongside production, mirror traffic without serving responses",
+        "process": [
+          "Deploy new version",
+          "Mirror production traffic to new version",
+          "Monitor behavior and performance",
+          "Don't serve responses to users",
+          "Validate before actual deployment"
+        ],
+        "advantages": [
+          "No user impact",
+          "Real traffic testing",
+          "Performance validation",
+          "Risk-free testing"
+        ],
+        "disadvantages": [
+          "Complex infrastructure",
+          "Requires traffic mirroring",
+          "Resource overhead",
+          "Side effects management"
+        ],
+        "tools": [
+          "Istio traffic mirroring",
+          "Envoy shadowing",
+          "Nginx mirror module"
+        ]
+      },
+      "feature_flags": {
+        "description": "Control feature availability without redeployment",
+        "types": {
+          "release_flags": "Enable/disable features",
+          "experiment_flags": "A/B testing",
+          "ops_flags": "Operational control",
+          "permission_flags": "User-based access"
+        },
+        "advantages": [
+          "Decouple deployment from release",
+          "Quick rollback",
+          "Gradual rollout",
+          "Targeted releases",
+          "Testing in production"
+        ],
+        "tools": [
+          "LaunchDarkly",
+          "Split.io",
+          "Unleash",
+          "Flagsmith",
+          "ConfigCat",
+          "FeatureHub",
+          "Flipt"
+        ],
+        "best_practices": [
+          "Clean up old flags",
+          "Document flag purpose",
+          "Monitor flag usage",
+          "Plan flag lifecycle",
+          "Test flag combinations"
+        ]
+      },
+      "immutable_infrastructure": {
+        "description": "Never modify deployed infrastructure, always replace",
+        "principles": [
+          "No in-place updates",
+          "Servers are disposable",
+          "Configuration in code",
+          "Version everything"
+        ],
+        "advantages": [
+          "Consistency",
+          "Easy rollback",
+          "No configuration drift",
+          "Reproducible deployments"
+        ],
+        "implementation": [
+          "Container images",
+          "Machine images (AMI, etc.)",
+          "Infrastructure as Code",
+          "GitOps workflows"
+        ]
+      },
+      "gitops": {
+        "description": "Git as single source of truth for infrastructure and applications",
+        "principles": [
+          "Declarative configuration",
+          "Versioned in Git",
+          "Automatic synchronization",
+          "Continuous reconciliation"
+        ],
+        "workflow": [
+          "Define desired state in Git",
+          "Commit changes",
+          "Automated sync to cluster",
+          "Continuous monitoring and reconciliation"
+        ],
+        "tools": [
+          "ArgoCD",
+          "Flux",
+          "Jenkins X",
+          "Weave GitOps",
+          "Rancher Fleet"
+        ],
+        "benefits": [
+          "Audit trail",
+          "Easy rollback (git revert)",
+          "Collaboration via PRs",
+          "Disaster recovery",
+          "Declarative state"
+        ]
+      },
+      "progressive_delivery": {
+        "description": "Advanced deployment with automated analysis and rollback",
+        "components": [
+          "Deployment strategies (canary, blue-green)",
+          "Automated metrics analysis",
+          "Progressive traffic shifting",
+          "Automated rollback",
+          "Feature flags"
+        ],
+        "tools": [
+          "Flagger (Kubernetes)",
+          "ArgoCD Rollouts",
+          "Spinnaker",
+          "Harness",
+          "LaunchDarkly"
+        ]
+      },
+      "deployment_checklist": [
+        "Define rollback plan",
+        "Set up monitoring and alerting",
+        "Prepare database migrations",
+        "Configure health checks",
+        "Document deployment process",
+        "Test in staging environment",
+        "Schedule deployment window",
+        "Communicate with stakeholders",
+        "Backup data",
+        "Verify post-deployment",
+        "Monitor for issues",
+        "Update documentation"
+      ],
+      "zero_downtime_techniques": [
+        "Load balancer health checks",
+        "Graceful shutdown",
+        "Connection draining",
+        "Session persistence",
+        "Database migration strategies",
+        "Backward compatible changes",
+        "Feature toggles",
+        "Queue draining",
+        "Cache warming"
+      ]
+    },
+    "additional_devops_concepts": {
+      "site_reliability_engineering": {
+        "description": "Google's approach to operations",
+        "principles": [
+          "Embrace risk",
+          "Service Level Objectives (SLOs)",
+          "Error budgets",
+          "Reduce toil",
+          "Monitor everything",
+          "Automate operations",
+          "Release engineering",
+          "Simplicity"
+        ],
+        "sli_slo_sla": {
+          "sli": {
+            "name": "Service Level Indicator",
+            "description": "Quantitative measure of service level",
+            "examples": ["Request latency", "Error rate", "Availability", "Throughput"]
+          },
+          "slo": {
+            "name": "Service Level Objective",
+            "description": "Target value or range for SLI",
+            "examples": ["99.9% availability", "95% of requests < 100ms"]
+          },
+          "sla": {
+            "name": "Service Level Agreement",
+            "description": "Contract with consequences",
+            "includes": ["SLOs", "Penalties for violations"]
+          }
+        },
+        "error_budget": {
+          "description": "Allowed amount of unreliability",
+          "calculation": "100% - SLO = Error budget",
+          "purpose": "Balance reliability vs innovation"
+        }
+      },
+      "chaos_engineering": {
+        "description": "Discipline of experimenting on systems to build confidence",
+        "principles": [
+          "Hypothesize steady state",
+          "Vary real-world events",
+          "Run experiments in production",
+          "Automate experiments",
+          "Minimize blast radius"
+        ],
+        "tools": [
+          "Chaos Monkey (Netflix)",
+          "Gremlin",
+          "Chaos Mesh",
+          "Litmus Chaos",
+          "Chaos Toolkit",
+          "PowerfulSeal",
+          "Toxiproxy"
+        ],
+        "experiments": [
+          "Instance failures",
+          "Network latency",
+          "Resource exhaustion",
+          "Dependency failures",
+          "Time travel",
+          "Regional outages"
+        ]
+      },
+      "disaster_recovery": {
+        "rto": {
+          "name": "Recovery Time Objective",
+          "description": "Maximum acceptable downtime"
+        },
+        "rpo": {
+          "name": "Recovery Point Objective",
+          "description": "Maximum acceptable data loss"
+        },
+        "strategies": [
+          "Backup and restore",
+          "Pilot light",
+          "Warm standby",
+          "Multi-site active-active"
+        ],
+        "backup_tools": [
+          "Velero (Kubernetes)",
+          "Restic",
+          "Duplicity",
+          "BorgBackup",
+          "Cloud-native backup services"
+        ]
+      },
+      "compliance_and_security": {
+        "compliance_frameworks": [
+          "SOC 2",
+          "ISO 27001",
+          "PCI DSS",
+          "HIPAA",
+          "GDPR",
+          "FedRAMP"
+        ],
+        "security_tools": [
+          "Vault (secrets management)",
+          "SOPS (encrypted configs)",
+          "Sealed Secrets (Kubernetes)",
+          "External Secrets Operator",
+          "AWS Secrets Manager",
+          "Azure Key Vault",
+          "Google Secret Manager"
+        ],
+        "security_scanning": [
+          "Snyk",
+          "Trivy",
+          "Clair",
+          "Anchore",
+          "SonarQube",
+          "OWASP Dependency Check",
+          "GitGuardian",
+          "TruffleHog"
+        ]
+      },
+      "cost_optimization": {
+        "strategies": [
+          "Right-sizing instances",
+          "Auto-scaling",
+          "Spot/preemptible instances",
+          "Reserved instances",
+          "Storage tiering",
+          "Resource tagging",
+          "Unused resource cleanup"
+        ],
+        "tools": [
+          "AWS Cost Explorer",
+          "CloudHealth",
+          "Cloudability",
+          "Kubecost (Kubernetes)",
+          "OpenCost",
+          "Infracost (IaC cost estimation)"
+        ]
+      }
+    }
+  }
+}

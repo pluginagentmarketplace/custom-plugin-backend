@@ -1,0 +1,532 @@
+{
+  "agent_id": "07-testing-security",
+  "agent_name": "Testing, Security & Monitoring",
+  "version": "1.0.0",
+  "description": "Master comprehensive testing strategies, implement robust security practices, and establish effective monitoring and observability for production-ready backend systems",
+  "phase": 2,
+  "sequence": 7,
+  "duration_weeks": 12,
+  "difficulty_level": "Advanced",
+  "prerequisites": [
+    "Completed Agent 1-6 (Programming, Databases, APIs, Architecture, Caching, DevOps)",
+    "Working application to test and secure",
+    "Basic understanding of HTTP, APIs, and web security",
+    "CI/CD pipeline from Agent 6 (DevOps)",
+    "Access to cloud environment for tooling"
+  ],
+  "learning_objectives": [
+    "Implement comprehensive test coverage (unit, integration, E2E)",
+    "Practice Test-Driven Development (TDD)",
+    "Secure applications against OWASP Top 10 vulnerabilities",
+    "Implement authentication and authorization (JWT, OAuth)",
+    "Encrypt data at rest and in transit",
+    "Automate security scanning (SAST, DAST, SCA)",
+    "Meet compliance requirements (GDPR, HIPAA, PCI-DSS)",
+    "Build observability infrastructure (metrics, logs, traces)",
+    "Set up Application Performance Monitoring (APM)",
+    "Implement alerting and incident response procedures",
+    "Define and monitor SLIs, SLOs, and SLAs"
+  ],
+  "skills": [
+    {
+      "skill_id": "7.1",
+      "skill_name": "Testing Strategies",
+      "file": "skills/testing-strategies.md",
+      "duration_hours": 80,
+      "description": "Unit testing, integration testing, E2E testing, TDD, test pyramid, CI/CD integration",
+      "topics": [
+        "The Test Pyramid",
+        "Unit Testing (Jest, PyTest, JUnit)",
+        "Integration Testing (Testcontainers, Postman)",
+        "End-to-End Testing (Cypress, Playwright)",
+        "Test-Driven Development (TDD)",
+        "Mocking and Stubbing",
+        "Code Coverage",
+        "CI/CD Test Automation",
+        "Contract Testing",
+        "Performance Testing"
+      ]
+    },
+    {
+      "skill_id": "7.2",
+      "skill_name": "Security Best Practices",
+      "file": "skills/security-best-practices.md",
+      "duration_hours": 100,
+      "description": "OWASP Top 10, SQL injection prevention, authentication, authorization, encryption, secure coding",
+      "topics": [
+        "OWASP Top 10 (2025)",
+        "SQL Injection Prevention",
+        "Authentication (JWT, OAuth 2.0, MFA)",
+        "Authorization (RBAC, ABAC)",
+        "Password Hashing (Argon2, bcrypt)",
+        "Data Encryption (at rest, in transit)",
+        "Secrets Management (Vault, AWS Secrets Manager)",
+        "Input Validation and Sanitization",
+        "XSS and CSRF Protection",
+        "Security Headers (Helmet.js, CSP)",
+        "API Security",
+        "Rate Limiting",
+        "CORS Configuration"
+      ]
+    },
+    {
+      "skill_id": "7.3",
+      "skill_name": "Security Scanning & Compliance",
+      "file": "skills/security-scanning-compliance.md",
+      "duration_hours": 70,
+      "description": "SAST, DAST, SCA tools, container scanning, IaC scanning, compliance frameworks",
+      "topics": [
+        "Static Application Security Testing (SAST)",
+        "SonarQube, Semgrep, CodeQL",
+        "Dynamic Application Security Testing (DAST)",
+        "OWASP ZAP, Burp Suite",
+        "Software Composition Analysis (SCA)",
+        "Snyk, Dependabot, npm audit",
+        "Container Security (Trivy, Docker Scout)",
+        "Infrastructure as Code Scanning (Checkov, tfsec)",
+        "GDPR Compliance",
+        "HIPAA Compliance",
+        "PCI-DSS Compliance",
+        "SOC 2 Requirements",
+        "Vulnerability Management",
+        "Security Automation in CI/CD"
+      ]
+    },
+    {
+      "skill_id": "7.4",
+      "skill_name": "Monitoring & Observability",
+      "file": "skills/monitoring-observability.md",
+      "duration_hours": 90,
+      "description": "Observability (metrics, logs, traces), APM tools, distributed tracing, incident response, SLI/SLO/SLA",
+      "topics": [
+        "The Three Pillars (Metrics, Logs, Traces)",
+        "Prometheus Metrics Collection",
+        "Grafana Dashboards",
+        "Golden Signals (Latency, Traffic, Errors, Saturation)",
+        "RED Method and USE Method",
+        "Structured Logging (Winston, Python logging)",
+        "ELK Stack (Elasticsearch, Logstash, Kibana)",
+        "Grafana Loki",
+        "Distributed Tracing (OpenTelemetry, Jaeger)",
+        "Application Performance Monitoring (Datadog, New Relic)",
+        "Error Tracking (Sentry)",
+        "Alerting (Prometheus Alertmanager, PagerDuty)",
+        "Incident Response and Post-Mortems",
+        "SLI, SLO, SLA and Error Budgets",
+        "Debugging and Troubleshooting"
+      ]
+    }
+  ],
+  "hands_on_projects": [
+    {
+      "project_name": "Comprehensive Test Suite",
+      "description": "Build complete test coverage for existing application with unit, integration, and E2E tests",
+      "duration_hours": 20,
+      "technologies": [
+        "Jest/PyTest/JUnit",
+        "Testcontainers",
+        "Cypress/Playwright",
+        "GitHub Actions"
+      ],
+      "deliverables": [
+        "70%+ code coverage with unit tests",
+        "Integration tests for all API endpoints",
+        "E2E tests for critical user journeys",
+        "CI/CD pipeline with automated test execution",
+        "Test reports and coverage dashboards"
+      ]
+    },
+    {
+      "project_name": "Security Hardening",
+      "description": "Secure application against OWASP Top 10 vulnerabilities",
+      "duration_hours": 25,
+      "technologies": [
+        "JWT",
+        "bcrypt/Argon2",
+        "OWASP ZAP",
+        "HashiCorp Vault",
+        "Helmet.js"
+      ],
+      "deliverables": [
+        "SQL injection prevention with parameterized queries",
+        "JWT authentication with refresh tokens",
+        "Role-based authorization",
+        "Input validation and sanitization",
+        "XSS and CSRF protection",
+        "Rate limiting implementation",
+        "Security headers configuration",
+        "Secret management with Vault",
+        "HTTPS with TLS 1.3"
+      ]
+    },
+    {
+      "project_name": "Security Scanning Pipeline",
+      "description": "Implement automated security scanning in CI/CD pipeline",
+      "duration_hours": 15,
+      "technologies": [
+        "SonarQube/Semgrep",
+        "Snyk/Dependabot",
+        "Trivy",
+        "Checkov",
+        "GitHub Actions"
+      ],
+      "deliverables": [
+        "SAST scanning with quality gates",
+        "SCA scanning with automated updates",
+        "Container image scanning",
+        "IaC security scanning",
+        "Security gates blocking vulnerable code",
+        "SBOM generation",
+        "Vulnerability remediation workflow"
+      ]
+    },
+    {
+      "project_name": "Observability Platform",
+      "description": "Build complete observability stack with metrics, logs, and traces",
+      "duration_hours": 30,
+      "technologies": [
+        "Prometheus",
+        "Grafana",
+        "ELK Stack/Loki",
+        "Jaeger",
+        "OpenTelemetry",
+        "Sentry",
+        "PagerDuty"
+      ],
+      "deliverables": [
+        "Prometheus metrics collection",
+        "Grafana dashboards (Golden Signals, RED method)",
+        "Structured logging with correlation IDs",
+        "Log aggregation and search",
+        "Distributed tracing with Jaeger",
+        "OpenTelemetry instrumentation",
+        "Alerting rules and notifications",
+        "Error tracking with Sentry",
+        "PagerDuty integration for incidents"
+      ]
+    },
+    {
+      "project_name": "Incident Response Simulation",
+      "description": "Practice incident response and debugging with simulated production issues",
+      "duration_hours": 15,
+      "technologies": [
+        "Observability Stack",
+        "Incident Management Tools",
+        "Post-Mortem Documentation"
+      ],
+      "deliverables": [
+        "Simulated incidents (database failure, high latency, security breach)",
+        "Incident detection via monitoring",
+        "Root cause analysis using logs and traces",
+        "Mitigation and resolution",
+        "Blameless post-mortem documentation",
+        "Updated runbooks and alerts"
+      ]
+    },
+    {
+      "project_name": "Compliance Implementation",
+      "description": "Implement compliance requirements for GDPR or HIPAA",
+      "duration_hours": 20,
+      "technologies": [
+        "Database Encryption",
+        "Audit Logging",
+        "Compliance Tools",
+        "Data Export/Deletion APIs"
+      ],
+      "deliverables": [
+        "Data classification and labeling",
+        "Encryption for sensitive data",
+        "User consent management",
+        "Data export functionality",
+        "Data deletion capabilities (right to be forgotten)",
+        "Comprehensive audit logging",
+        "Privacy policy and notices",
+        "Breach notification procedures"
+      ]
+    }
+  ],
+  "assessment_criteria": [
+    {
+      "criterion": "Test Coverage & Quality",
+      "weight": 20,
+      "assessment_method": "Code coverage reports (70%+ target), test quality review, TDD practices"
+    },
+    {
+      "criterion": "Security Posture",
+      "weight": 25,
+      "assessment_method": "OWASP ZAP scan results, security audit, penetration testing report"
+    },
+    {
+      "criterion": "Monitoring Implementation",
+      "weight": 20,
+      "assessment_method": "Dashboard quality, alert effectiveness, observability coverage"
+    },
+    {
+      "criterion": "CI/CD Integration",
+      "weight": 15,
+      "assessment_method": "Pipeline automation, security gates, test automation"
+    },
+    {
+      "criterion": "Incident Response",
+      "weight": 10,
+      "assessment_method": "Simulation performance, runbook quality, post-mortem documentation"
+    },
+    {
+      "criterion": "Compliance",
+      "weight": 10,
+      "assessment_method": "Compliance checklist completion, audit readiness"
+    }
+  ],
+  "success_metrics": [
+    "70%+ unit test coverage for critical business logic",
+    "All API endpoints have integration tests",
+    "Critical user journeys covered by E2E tests",
+    "Zero high/critical vulnerabilities in production",
+    "All OWASP Top 10 vulnerabilities mitigated",
+    "Authentication and authorization properly implemented",
+    "Data encrypted at rest and in transit",
+    "Security scanning integrated in CI/CD",
+    "Prometheus metrics collecting Golden Signals",
+    "Grafana dashboards for system health",
+    "Structured logging with correlation IDs",
+    "Distributed tracing for all services",
+    "Alerting configured with appropriate thresholds",
+    "Incident response procedures documented",
+    "SLI/SLO/SLA defined and monitored",
+    "Compliance requirements met (GDPR/HIPAA/PCI-DSS as applicable)"
+  ],
+  "tools_and_technologies": {
+    "testing": {
+      "unit": [
+        "Jest",
+        "Vitest",
+        "Mocha",
+        "PyTest",
+        "unittest",
+        "JUnit 5",
+        "TestNG",
+        "Mockito",
+        "Go testing"
+      ],
+      "integration": [
+        "Testcontainers",
+        "Postman",
+        "Newman",
+        "Rest Assured",
+        "Supertest",
+        "Karate"
+      ],
+      "e2e": [
+        "Cypress",
+        "Playwright",
+        "Selenium",
+        "Puppeteer",
+        "TestCafe"
+      ],
+      "cicd": [
+        "GitHub Actions",
+        "GitLab CI",
+        "CircleCI",
+        "Jenkins"
+      ]
+    },
+    "security": {
+      "sast": [
+        "SonarQube",
+        "Semgrep",
+        "CodeQL",
+        "Checkmarx",
+        "Fortify"
+      ],
+      "sca": [
+        "Snyk",
+        "Dependabot",
+        "WhiteSource",
+        "Black Duck",
+        "npm audit"
+      ],
+      "dast": [
+        "OWASP ZAP",
+        "Burp Suite",
+        "Acunetix",
+        "Netsparker"
+      ],
+      "container": [
+        "Trivy",
+        "Clair",
+        "Anchore",
+        "Aqua Security"
+      ],
+      "iac": [
+        "Checkov",
+        "tfsec",
+        "Terrascan",
+        "Terraform Sentinel"
+      ],
+      "secrets": [
+        "HashiCorp Vault",
+        "AWS Secrets Manager",
+        "Azure Key Vault",
+        "Doppler"
+      ],
+      "authentication": [
+        "JWT",
+        "OAuth 2.0",
+        "OpenID Connect",
+        "SAML 2.0"
+      ]
+    },
+    "monitoring": {
+      "metrics": [
+        "Prometheus",
+        "Grafana",
+        "InfluxDB",
+        "Graphite"
+      ],
+      "logging": [
+        "ELK Stack",
+        "Grafana Loki",
+        "Fluentd",
+        "Fluent Bit"
+      ],
+      "tracing": [
+        "Jaeger",
+        "Zipkin",
+        "OpenTelemetry",
+        "AWS X-Ray"
+      ],
+      "apm": [
+        "Datadog",
+        "New Relic",
+        "Dynatrace",
+        "Elastic APM",
+        "AppDynamics"
+      ],
+      "error_tracking": [
+        "Sentry",
+        "Rollbar",
+        "Bugsnag",
+        "Raygun"
+      ],
+      "incident_management": [
+        "PagerDuty",
+        "Opsgenie",
+        "VictorOps",
+        "Incident.io"
+      ]
+    }
+  },
+  "next_agent": "08-advanced-topics",
+  "related_agents": [
+    "06-devops-infrastructure",
+    "08-advanced-topics",
+    "03-api-development",
+    "04-architecture-patterns"
+  ],
+  "resources": {
+    "official_documentation": [
+      "https://owasp.org/Top10/",
+      "https://cheatsheetseries.owasp.org/",
+      "https://prometheus.io/docs/",
+      "https://grafana.com/docs/",
+      "https://opentelemetry.io/docs/",
+      "https://www.jaegertracing.io/docs/",
+      "https://jestjs.io/docs/",
+      "https://docs.pytest.org/",
+      "https://www.cypress.io/docs/",
+      "https://playwright.dev/docs/"
+    ],
+    "learning_platforms": [
+      "https://tryhackme.com",
+      "https://hackthebox.com",
+      "https://portswigger.net/web-security",
+      "https://testautomationu.applitools.com/",
+      "https://grafana.com/tutorials/",
+      "https://prometheus.io/docs/tutorials/"
+    ],
+    "books": [
+      "The DevOps Handbook - Gene Kim",
+      "Site Reliability Engineering - Google",
+      "Web Application Security - Andrew Hoffman",
+      "OWASP Testing Guide",
+      "Observability Engineering - Charity Majors",
+      "Test Driven Development: By Example - Kent Beck",
+      "The Art of Unit Testing - Roy Osherove"
+    ],
+    "certifications": [
+      "CISSP (Certified Information Systems Security Professional)",
+      "CEH (Certified Ethical Hacker)",
+      "OSCP (Offensive Security Certified Professional)",
+      "Security+ (CompTIA)",
+      "AWS Certified Security - Specialty",
+      "Azure Security Engineer Associate",
+      "Certified Kubernetes Security Specialist (CKS)"
+    ],
+    "tools_documentation": [
+      "https://docs.sonarqube.org/",
+      "https://docs.snyk.io/",
+      "https://docs.datadoghq.com/",
+      "https://docs.sentry.io/",
+      "https://www.elastic.co/guide/",
+      "https://docs.pagerduty.com/"
+    ],
+    "compliance_resources": [
+      "https://gdpr.eu/",
+      "https://www.hhs.gov/hipaa/",
+      "https://www.pcisecuritystandards.org/",
+      "https://www.aicpa.org/soc4so",
+      "https://www.nist.gov/cyberframework"
+    ]
+  },
+  "estimated_completion_date": "12 weeks",
+  "difficulty_progression": [
+    {
+      "week": "1-2",
+      "focus": "Testing fundamentals (unit, integration, E2E)",
+      "difficulty": "Medium"
+    },
+    {
+      "week": "3-5",
+      "focus": "Security foundations (OWASP Top 10, authentication, encryption)",
+      "difficulty": "Medium-Hard"
+    },
+    {
+      "week": "6-7",
+      "focus": "Security scanning and compliance",
+      "difficulty": "Medium-Hard"
+    },
+    {
+      "week": "8-10",
+      "focus": "Monitoring and observability (metrics, logs, traces)",
+      "difficulty": "Hard"
+    },
+    {
+      "week": "11",
+      "focus": "Alerting and incident response",
+      "difficulty": "Hard"
+    },
+    {
+      "week": "12",
+      "focus": "Integration project and production deployment",
+      "difficulty": "Hard"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Roadmap Team",
+    "tags": [
+      "testing",
+      "security",
+      "monitoring",
+      "observability",
+      "owasp",
+      "compliance",
+      "ci-cd",
+      "apm",
+      "incident-response"
+    ],
+    "difficulty_rating": 8,
+    "importance_rating": 10
+  }
+}

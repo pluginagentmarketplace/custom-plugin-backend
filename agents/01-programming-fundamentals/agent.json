@@ -1,0 +1,214 @@
+{
+  "agent_id": "01-programming-fundamentals",
+  "agent_name": "Programming Fundamentals & Language Selection",
+  "version": "1.0.0",
+  "description": "Master programming languages, package management, and version control systems to build a strong foundation for backend development",
+  "phase": 1,
+  "sequence": 1,
+  "duration_weeks": 8,
+  "difficulty_level": "Beginner to Intermediate",
+  "prerequisites": [
+    "Basic computer literacy",
+    "Understanding of programming fundamentals (variables, loops, functions)",
+    "Access to development machine"
+  ],
+  "learning_objectives": [
+    "Select appropriate programming language",
+    "Achieve proficiency in chosen language",
+    "Master package management and dependency handling",
+    "Become proficient with Git and GitHub",
+    "Establish professional development workflow"
+  ],
+  "skills": [
+    {
+      "skill_id": "1.1",
+      "skill_name": "Languages",
+      "file": "skills/languages.md",
+      "duration_hours": 80,
+      "description": "Programming language selection and mastery"
+    },
+    {
+      "skill_id": "1.2",
+      "skill_name": "Package Management",
+      "file": "skills/package-management.md",
+      "duration_hours": 20,
+      "description": "Dependency management and package ecosystems"
+    },
+    {
+      "skill_id": "1.3",
+      "skill_name": "Version Control",
+      "file": "skills/version-control.md",
+      "duration_hours": 30,
+      "description": "Git and GitHub collaboration workflows"
+    }
+  ],
+  "hands_on_projects": [
+    {
+      "project_name": "Language Setup & CLI Tool",
+      "description": "Set up development environment and build simple CLI application",
+      "duration_hours": 8,
+      "technologies": ["Chosen Language", "Package Manager"]
+    },
+    {
+      "project_name": "Project Management with Git",
+      "description": "Create GitHub repository, practice commits, branches, and pull requests",
+      "duration_hours": 6,
+      "technologies": ["Git", "GitHub"]
+    },
+    {
+      "project_name": "Dependency Management Project",
+      "description": "Build project with multiple dependencies, manage versions, security scanning",
+      "duration_hours": 6,
+      "technologies": ["Package Manager", "npm audit / pip check"]
+    },
+    {
+      "project_name": "Team Collaboration Simulation",
+      "description": "Simulate team workflow with multiple branches and pull requests",
+      "duration_hours": 6,
+      "technologies": ["Git", "GitHub", "Branching Strategy"]
+    }
+  ],
+  "assessment_criteria": [
+    {
+      "criterion": "Language Proficiency",
+      "weight": 25,
+      "assessment_method": "Build working CLI application demonstrating language features"
+    },
+    {
+      "criterion": "Package Management",
+      "weight": 15,
+      "assessment_method": "Manage dependencies in project, resolve conflicts, security audit"
+    },
+    {
+      "criterion": "Git Mastery",
+      "weight": 35,
+      "assessment_method": "Create and review pull requests, resolve conflicts, branching strategy"
+    },
+    {
+      "criterion": "Development Environment",
+      "weight": 15,
+      "assessment_method": "Set up IDE/editor with debugger, productivity tools, configuration"
+    },
+    {
+      "criterion": "Code Quality",
+      "weight": 10,
+      "assessment_method": "Code style, meaningful commits, documentation"
+    }
+  ],
+  "success_metrics": [
+    "Can write idiomatic code in chosen language",
+    "Manage project dependencies independently",
+    "Navigate and resolve Git workflows confidently",
+    "Contribute code through professional PR process",
+    "Debug and troubleshoot issues independently",
+    "Follow team conventions and standards"
+  ],
+  "tools_and_technologies": {
+    "languages": [
+      "JavaScript/Node.js",
+      "Go",
+      "Python",
+      "Java",
+      "C#",
+      "PHP",
+      "Ruby",
+      "Rust"
+    ],
+    "package_managers": [
+      "npm",
+      "yarn",
+      "pnpm",
+      "pip",
+      "conda",
+      "poetry",
+      "Maven",
+      "Gradle",
+      "NuGet",
+      "Composer",
+      "RubyGems",
+      "Bundler",
+      "Cargo",
+      "Go Modules"
+    ],
+    "version_control": [
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Bitbucket"
+    ],
+    "ides_and_editors": [
+      "VS Code",
+      "JetBrains IDEs",
+      "Vim/Neovim",
+      "Sublime Text"
+    ]
+  },
+  "next_agent": "02-database-management",
+  "related_agents": [
+    "02-database-management",
+    "03-api-development",
+    "04-architecture-patterns"
+  ],
+  "resources": {
+    "official_documentation": [
+      "https://www.python.org/doc/",
+      "https://nodejs.org/docs/",
+      "https://golang.org/doc/",
+      "https://docs.oracle.com/javase/"
+    ],
+    "learning_platforms": [
+      "https://codecademy.com",
+      "https://freecodecamp.org",
+      "https://coursera.org",
+      "https://udacity.com",
+      "https://pluralsight.com"
+    ],
+    "documentation_sites": [
+      "https://roadmap.sh",
+      "https://javascript.info",
+      "https://go.dev",
+      "https://docs.python.org"
+    ],
+    "git_resources": [
+      "https://git-scm.com/doc",
+      "https://github.com/resources",
+      "https://learngitbranching.js.org"
+    ]
+  },
+  "estimated_completion_date": "8 weeks",
+  "difficulty_progression": [
+    {
+      "week": 1,
+      "focus": "Language fundamentals and setup",
+      "difficulty": "Easy"
+    },
+    {
+      "week": "2-3",
+      "focus": "Core language concepts and OOP",
+      "difficulty": "Easy-Medium"
+    },
+    {
+      "week": "4-5",
+      "focus": "Standard library and package manager",
+      "difficulty": "Medium"
+    },
+    {
+      "week": "6-7",
+      "focus": "Git workflows and collaboration",
+      "difficulty": "Medium"
+    },
+    {
+      "week": 8,
+      "focus": "Integration project and review",
+      "difficulty": "Medium-Hard"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Roadmap Team",
+    "tags": ["fundamentals", "languages", "git", "package-management"],
+    "difficulty_rating": 2,
+    "importance_rating": 10
+  }
+}

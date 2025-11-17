@@ -1,0 +1,455 @@
+{
+  "agent_id": "04-architecture-patterns",
+  "agent_name": "Architecture & Design Patterns",
+  "version": "1.0.0",
+  "description": "Master architectural principles, design patterns, and system design to build scalable, maintainable, and robust backend systems",
+  "phase": 2,
+  "sequence": 4,
+  "duration_weeks": 14,
+  "difficulty_level": "Intermediate to Advanced",
+  "prerequisites": [
+    "Proficiency in object-oriented programming",
+    "Understanding of basic software design",
+    "Completed API Development fundamentals",
+    "Basic understanding of distributed systems"
+  ],
+  "learning_objectives": [
+    "Master SOLID principles and apply them in real code",
+    "Implement all 23 Gang of Four design patterns",
+    "Design microservices architectures",
+    "Implement event-driven systems with CQRS",
+    "Make informed architecture decisions",
+    "Apply DDD principles in complex domains",
+    "Build resilient distributed systems"
+  ],
+  "skills": [
+    {
+      "skill_id": "4.1",
+      "skill_name": "SOLID Principles",
+      "file": "skills/solid-principles.md",
+      "duration_hours": 40,
+      "description": "Five fundamental principles of object-oriented design: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion"
+    },
+    {
+      "skill_id": "4.2",
+      "skill_name": "Design Patterns (GoF)",
+      "file": "skills/design-patterns.md",
+      "duration_hours": 60,
+      "description": "All 23 Gang of Four patterns: Creational (5), Structural (7), and Behavioral (11) with real-world implementations"
+    },
+    {
+      "skill_id": "4.3",
+      "skill_name": "Microservices Architecture",
+      "file": "skills/microservices-architecture.md",
+      "duration_hours": 50,
+      "description": "Service decomposition, communication patterns, data management, service discovery, API gateway, deployment, and observability"
+    },
+    {
+      "skill_id": "4.4",
+      "skill_name": "Event-Driven Architecture & CQRS",
+      "file": "skills/event-driven-cqrs.md",
+      "duration_hours": 50,
+      "description": "Event-driven patterns, CQRS, Event Sourcing, message queues, async processing, and eventual consistency"
+    }
+  ],
+  "hands_on_projects": [
+    {
+      "project_name": "SOLID Refactoring Challenge",
+      "description": "Refactor a legacy codebase to apply all 5 SOLID principles. Demonstrate improved testability, maintainability, and extensibility",
+      "duration_hours": 12,
+      "technologies": ["TypeScript", "Design Patterns", "Refactoring"],
+      "deliverables": [
+        "Before/after code comparison",
+        "Documentation of SOLID violations fixed",
+        "Unit tests demonstrating improvements",
+        "Architecture decision records"
+      ]
+    },
+    {
+      "project_name": "Design Pattern Library",
+      "description": "Implement all 23 GoF patterns with real-world use cases, documentation, and examples",
+      "duration_hours": 20,
+      "technologies": ["TypeScript", "Design Patterns", "Documentation"],
+      "deliverables": [
+        "Working implementation of each pattern",
+        "When to use / when not to use guide",
+        "Real-world examples",
+        "Pattern comparison matrix"
+      ]
+    },
+    {
+      "project_name": "E-commerce Microservices Platform",
+      "description": "Build complete e-commerce platform with microservices: User, Product, Order, Payment, Inventory, Notification services",
+      "duration_hours": 40,
+      "technologies": [
+        "Node.js",
+        "REST & gRPC",
+        "RabbitMQ",
+        "Docker",
+        "API Gateway",
+        "Service Discovery"
+      ],
+      "deliverables": [
+        "6+ microservices",
+        "API Gateway",
+        "Service discovery implementation",
+        "Inter-service communication",
+        "Docker Compose setup",
+        "Observability dashboard"
+      ]
+    },
+    {
+      "project_name": "Event-Sourced Banking System",
+      "description": "Build banking system with Event Sourcing, CQRS, and event-driven architecture. Support accounts, transactions, audit trail",
+      "duration_hours": 30,
+      "technologies": [
+        "Event Sourcing",
+        "CQRS",
+        "Event Store",
+        "Projections",
+        "Kafka/RabbitMQ"
+      ],
+      "deliverables": [
+        "Event-sourced aggregates",
+        "Command and query separation",
+        "Event store implementation",
+        "Read model projections",
+        "Complete audit trail",
+        "Temporal queries support"
+      ]
+    },
+    {
+      "project_name": "Distributed Order Processing Saga",
+      "description": "Implement distributed transaction using Saga pattern for order processing across multiple services",
+      "duration_hours": 20,
+      "technologies": [
+        "Saga Pattern",
+        "Choreography",
+        "Orchestration",
+        "Compensating Transactions"
+      ],
+      "deliverables": [
+        "Choreography-based saga",
+        "Orchestration-based saga",
+        "Compensating transactions",
+        "Failure handling",
+        "State visualization"
+      ]
+    },
+    {
+      "project_name": "API Gateway with Service Mesh",
+      "description": "Build production-ready API Gateway with authentication, rate limiting, request aggregation, and circuit breakers",
+      "duration_hours": 18,
+      "technologies": [
+        "API Gateway",
+        "Circuit Breaker",
+        "Rate Limiting",
+        "Service Mesh (Istio/Linkerd)"
+      ],
+      "deliverables": [
+        "API Gateway implementation",
+        "Authentication/Authorization",
+        "Rate limiting per client",
+        "Request/response transformation",
+        "Circuit breaker integration",
+        "Observability metrics"
+      ]
+    }
+  ],
+  "assessment_criteria": [
+    {
+      "criterion": "SOLID Principles Mastery",
+      "weight": 15,
+      "assessment_method": "Code review demonstrating all 5 principles in practice, refactoring exercise"
+    },
+    {
+      "criterion": "Design Pattern Application",
+      "weight": 20,
+      "assessment_method": "Implement 10+ patterns correctly, explain when to use each, pattern selection decisions"
+    },
+    {
+      "criterion": "Microservices Architecture",
+      "weight": 25,
+      "assessment_method": "Design and implement complete microservices system with proper decomposition, communication, and data management"
+    },
+    {
+      "criterion": "Event-Driven Systems",
+      "weight": 20,
+      "assessment_method": "Build event-driven system with CQRS, handle eventual consistency, implement event sourcing"
+    },
+    {
+      "criterion": "Architecture Decision Making",
+      "weight": 10,
+      "assessment_method": "Write ADRs, justify architectural choices, evaluate trade-offs"
+    },
+    {
+      "criterion": "System Resilience",
+      "weight": 10,
+      "assessment_method": "Implement circuit breakers, retries, fallbacks, graceful degradation"
+    }
+  ],
+  "success_metrics": [
+    "Can identify and fix SOLID principle violations",
+    "Apply appropriate design patterns to solve problems",
+    "Decompose monolith into microservices effectively",
+    "Design event-driven architectures",
+    "Implement CQRS and Event Sourcing correctly",
+    "Make and document architecture decisions",
+    "Build resilient distributed systems",
+    "Handle eventual consistency scenarios",
+    "Implement Saga pattern for distributed transactions",
+    "Design API Gateway with advanced features"
+  ],
+  "tools_and_technologies": {
+    "languages": [
+      "TypeScript",
+      "Node.js",
+      "Go (optional)",
+      "Java (optional)"
+    ],
+    "frameworks": [
+      "Express",
+      "NestJS",
+      "gRPC"
+    ],
+    "message_brokers": [
+      "RabbitMQ",
+      "Apache Kafka",
+      "Redis Pub/Sub",
+      "AWS SQS/SNS"
+    ],
+    "databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "EventStore"
+    ],
+    "api_gateway": [
+      "Kong",
+      "Express Gateway",
+      "AWS API Gateway",
+      "Traefik"
+    ],
+    "service_mesh": [
+      "Istio",
+      "Linkerd",
+      "Consul Connect"
+    ],
+    "containerization": [
+      "Docker",
+      "Docker Compose",
+      "Kubernetes"
+    ],
+    "observability": [
+      "Prometheus",
+      "Grafana",
+      "Jaeger",
+      "ELK Stack"
+    ],
+    "service_discovery": [
+      "Consul",
+      "Eureka",
+      "Kubernetes Services"
+    ]
+  },
+  "architecture_patterns": {
+    "solid_principles": [
+      "Single Responsibility Principle (SRP)",
+      "Open/Closed Principle (OCP)",
+      "Liskov Substitution Principle (LSP)",
+      "Interface Segregation Principle (ISP)",
+      "Dependency Inversion Principle (DIP)"
+    ],
+    "creational_patterns": [
+      "Singleton",
+      "Factory Method",
+      "Abstract Factory",
+      "Builder",
+      "Prototype"
+    ],
+    "structural_patterns": [
+      "Adapter",
+      "Bridge",
+      "Composite",
+      "Decorator",
+      "Facade",
+      "Flyweight",
+      "Proxy"
+    ],
+    "behavioral_patterns": [
+      "Chain of Responsibility",
+      "Command",
+      "Iterator",
+      "Mediator",
+      "Memento",
+      "Observer",
+      "State",
+      "Strategy",
+      "Template Method",
+      "Visitor"
+    ],
+    "architectural_styles": [
+      "Monolithic",
+      "Microservices",
+      "Event-Driven",
+      "CQRS",
+      "Event Sourcing",
+      "Saga Pattern",
+      "API Gateway",
+      "Service Mesh"
+    ]
+  },
+  "key_concepts": [
+    "SOLID Principles",
+    "Gang of Four Design Patterns",
+    "Domain-Driven Design (DDD)",
+    "Bounded Contexts",
+    "Service Decomposition",
+    "Synchronous vs Asynchronous Communication",
+    "Database per Service",
+    "Saga Pattern",
+    "Event-Driven Architecture",
+    "CQRS (Command Query Responsibility Segregation)",
+    "Event Sourcing",
+    "API Gateway Patterns",
+    "Service Discovery",
+    "Circuit Breaker",
+    "Eventual Consistency",
+    "Message Queues",
+    "Event Streaming",
+    "Resilience Patterns",
+    "Observability",
+    "Service Mesh"
+  ],
+  "next_agent": "05-caching-performance",
+  "related_agents": [
+    "03-api-development",
+    "05-caching-performance",
+    "06-devops-infrastructure",
+    "07-testing-security"
+  ],
+  "resources": {
+    "books": [
+      "Design Patterns: Elements of Reusable Object-Oriented Software (Gang of Four)",
+      "Clean Code by Robert C. Martin",
+      "Clean Architecture by Robert C. Martin",
+      "Domain-Driven Design by Eric Evans",
+      "Building Microservices by Sam Newman",
+      "Microservices Patterns by Chris Richardson",
+      "Designing Data-Intensive Applications by Martin Kleppmann",
+      "Enterprise Integration Patterns by Gregor Hohpe",
+      "Implementing Domain-Driven Design by Vaughn Vernon"
+    ],
+    "online_resources": [
+      "https://refactoring.guru/design-patterns",
+      "https://microservices.io/patterns/",
+      "https://martinfowler.com/",
+      "https://docs.microsoft.com/en-us/azure/architecture/patterns/",
+      "https://aws.amazon.com/architecture/",
+      "https://www.patterns.dev/"
+    ],
+    "documentation": [
+      "https://www.rabbitmq.com/documentation.html",
+      "https://kafka.apache.org/documentation/",
+      "https://grpc.io/docs/",
+      "https://istio.io/latest/docs/",
+      "https://www.consul.io/docs"
+    ],
+    "practice_platforms": [
+      "https://github.com/donnemartin/system-design-primer",
+      "https://archkatas.herokuapp.com/",
+      "https://www.educative.io/courses/grokking-the-system-design-interview"
+    ]
+  },
+  "learning_path": {
+    "week_1_3": {
+      "focus": "SOLID Principles & Clean Code",
+      "topics": [
+        "Single Responsibility Principle",
+        "Open/Closed Principle",
+        "Liskov Substitution Principle",
+        "Interface Segregation Principle",
+        "Dependency Inversion Principle",
+        "Code Smells",
+        "Refactoring Techniques"
+      ],
+      "project": "SOLID Refactoring Challenge"
+    },
+    "week_4_7": {
+      "focus": "Design Patterns (GoF)",
+      "topics": [
+        "Creational Patterns (5)",
+        "Structural Patterns (7)",
+        "Behavioral Patterns (11)",
+        "Pattern Selection",
+        "Pattern Combinations"
+      ],
+      "project": "Design Pattern Library"
+    },
+    "week_8_11": {
+      "focus": "Microservices Architecture",
+      "topics": [
+        "Service Decomposition",
+        "Communication Patterns",
+        "Data Management",
+        "Service Discovery",
+        "API Gateway",
+        "Resilience Patterns",
+        "Observability"
+      ],
+      "project": "E-commerce Microservices Platform"
+    },
+    "week_12_14": {
+      "focus": "Event-Driven Architecture & CQRS",
+      "topics": [
+        "Event-Driven Patterns",
+        "CQRS",
+        "Event Sourcing",
+        "Message Queues",
+        "Saga Pattern",
+        "Eventual Consistency"
+      ],
+      "project": "Event-Sourced Banking System"
+    }
+  },
+  "estimated_completion_date": "14 weeks",
+  "difficulty_progression": [
+    {
+      "week": "1-3",
+      "focus": "SOLID Principles",
+      "difficulty": "Intermediate"
+    },
+    {
+      "week": "4-7",
+      "focus": "Design Patterns",
+      "difficulty": "Intermediate-Advanced"
+    },
+    {
+      "week": "8-11",
+      "focus": "Microservices",
+      "difficulty": "Advanced"
+    },
+    {
+      "week": "12-14",
+      "focus": "Event-Driven & CQRS",
+      "difficulty": "Advanced"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Roadmap Team",
+    "tags": [
+      "architecture",
+      "design-patterns",
+      "solid",
+      "microservices",
+      "event-driven",
+      "cqrs",
+      "ddd",
+      "distributed-systems"
+    ],
+    "difficulty_rating": 8,
+    "importance_rating": 10
+  }
+}

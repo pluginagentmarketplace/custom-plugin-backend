@@ -1,0 +1,555 @@
+{
+  "agent_id": "02-database-management",
+  "agent_name": "Database Management",
+  "version": "1.0.0",
+  "description": "Master relational and NoSQL databases, query optimization, data modeling, backup strategies, and replication for production-ready backend systems",
+  "phase": 1,
+  "sequence": 2,
+  "duration_weeks": 10,
+  "difficulty_level": "Intermediate to Advanced",
+  "prerequisites": [
+    "Programming fundamentals from Agent 1",
+    "Basic understanding of data structures",
+    "Command line proficiency",
+    "SQL basics (recommended but not required)"
+  ],
+  "learning_objectives": [
+    "Master PostgreSQL, MySQL, and other relational databases",
+    "Implement NoSQL databases (MongoDB, Redis, Cassandra, DynamoDB, Elasticsearch)",
+    "Design optimal database schemas and data models",
+    "Optimize queries and create effective indexing strategies",
+    "Implement backup and disaster recovery strategies",
+    "Configure database replication and high availability",
+    "Understand ACID properties and transaction management",
+    "Apply security best practices and compliance requirements",
+    "Monitor and troubleshoot database performance",
+    "Choose appropriate database for specific use cases"
+  ],
+  "skills": [
+    {
+      "skill_id": "2.1",
+      "skill_name": "Relational Databases",
+      "file": "skills/relational-databases.md",
+      "duration_hours": 80,
+      "description": "PostgreSQL, MySQL, MariaDB, T-SQL with advanced features, performance tuning, and best practices",
+      "topics": [
+        "PostgreSQL advanced features and extensions",
+        "MySQL storage engines and replication",
+        "MariaDB enhancements and Galera Cluster",
+        "T-SQL procedural programming",
+        "SQL fundamentals (DDL, DML, DCL, TCL)",
+        "ACID properties and transaction management",
+        "Isolation levels and concurrency control",
+        "Normalization and denormalization",
+        "Constraints and data integrity",
+        "Stored procedures and triggers"
+      ]
+    },
+    {
+      "skill_id": "2.2",
+      "skill_name": "NoSQL Databases",
+      "file": "skills/nosql-databases.md",
+      "duration_hours": 60,
+      "description": "MongoDB, Redis, Cassandra, DynamoDB, Elasticsearch with data modeling and use case comparisons",
+      "topics": [
+        "Document databases (MongoDB)",
+        "Key-value stores (Redis)",
+        "Wide-column stores (Cassandra)",
+        "Cloud-native databases (DynamoDB)",
+        "Search engines (Elasticsearch)",
+        "NoSQL data modeling patterns",
+        "CAP theorem and consistency models",
+        "Sharding and partitioning strategies",
+        "Replication in NoSQL systems",
+        "When to use each database type"
+      ]
+    },
+    {
+      "skill_id": "2.3",
+      "skill_name": "Query Optimization",
+      "file": "skills/query-optimization.md",
+      "duration_hours": 50,
+      "description": "Query optimization techniques, indexing strategies, EXPLAIN analysis, and performance tuning",
+      "topics": [
+        "Understanding EXPLAIN and execution plans",
+        "Index types and strategies",
+        "Composite and partial indexes",
+        "Query rewriting techniques",
+        "N+1 query problem and solutions",
+        "JOIN optimization",
+        "Subquery optimization",
+        "Caching strategies",
+        "Common anti-patterns",
+        "Database-specific optimizations"
+      ]
+    },
+    {
+      "skill_id": "2.4",
+      "skill_name": "Backup & Replication",
+      "file": "skills/backup-replication.md",
+      "duration_hours": 50,
+      "description": "Backup strategies, replication patterns, disaster recovery, and point-in-time recovery",
+      "topics": [
+        "Backup types (full, incremental, differential)",
+        "Point-in-time recovery (PITR)",
+        "Replication patterns (master-slave, multi-master)",
+        "High availability configurations",
+        "Disaster recovery planning",
+        "Automated backup strategies",
+        "Monitoring and verification",
+        "Multi-region setups",
+        "Failover procedures",
+        "RTO and RPO planning"
+      ]
+    }
+  ],
+  "hands_on_projects": [
+    {
+      "project_name": "E-Commerce Database Design (PostgreSQL)",
+      "description": "Design and implement a normalized database schema for an e-commerce platform with users, products, orders, payments, and reviews. Include complex queries, triggers, and stored procedures.",
+      "duration_hours": 16,
+      "technologies": ["PostgreSQL", "SQL", "psql", "pgAdmin"],
+      "deliverables": [
+        "ER diagram and normalized schema",
+        "Database implementation with constraints",
+        "Complex queries with JOINs and CTEs",
+        "Indexes for query optimization",
+        "Stored procedures for business logic",
+        "Triggers for audit logging"
+      ]
+    },
+    {
+      "project_name": "Social Media API with MongoDB",
+      "description": "Build a document database for a social media application with users, posts, comments, likes, and follower relationships. Implement aggregation pipelines and replica sets.",
+      "duration_hours": 12,
+      "technologies": ["MongoDB", "Aggregation Framework", "Replica Sets", "MongoDB Compass"],
+      "deliverables": [
+        "Document schema design",
+        "CRUD operations implementation",
+        "Aggregation pipeline for feeds",
+        "Indexing strategy",
+        "Replica set configuration",
+        "Change streams for real-time updates"
+      ]
+    },
+    {
+      "project_name": "Redis Caching Layer",
+      "description": "Implement a comprehensive caching layer using Redis with various data structures, TTL management, and cache invalidation patterns.",
+      "duration_hours": 8,
+      "technologies": ["Redis", "Redis CLI", "Node.js/Python client"],
+      "deliverables": [
+        "Cache-aside pattern implementation",
+        "Multiple data structures usage",
+        "TTL and expiration strategies",
+        "Rate limiting with Redis",
+        "Leaderboard with sorted sets",
+        "Pub/Sub messaging"
+      ]
+    },
+    {
+      "project_name": "Query Optimization Challenge",
+      "description": "Analyze and optimize slow queries in a large database. Use EXPLAIN plans, create indexes, and refactor queries for performance improvements.",
+      "duration_hours": 10,
+      "technologies": ["PostgreSQL/MySQL", "EXPLAIN", "Monitoring tools"],
+      "deliverables": [
+        "Slow query identification",
+        "EXPLAIN plan analysis",
+        "Index optimization",
+        "Query rewriting",
+        "N+1 query fixes",
+        "Performance benchmarks before/after"
+      ]
+    },
+    {
+      "project_name": "High Availability Setup",
+      "description": "Configure PostgreSQL streaming replication with automatic failover, monitoring, and point-in-time recovery capabilities.",
+      "duration_hours": 12,
+      "technologies": ["PostgreSQL", "Patroni/repmgr", "pgBouncer", "HAProxy"],
+      "deliverables": [
+        "Streaming replication setup",
+        "Automatic failover configuration",
+        "PITR implementation",
+        "Backup automation",
+        "Monitoring dashboard",
+        "Disaster recovery testing"
+      ]
+    },
+    {
+      "project_name": "Polyglot Persistence Microservices",
+      "description": "Design a microservices architecture using multiple databases (PostgreSQL for transactions, MongoDB for profiles, Redis for caching, Elasticsearch for search) with data consistency patterns.",
+      "duration_hours": 16,
+      "technologies": ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch", "Docker", "Docker Compose"],
+      "deliverables": [
+        "Multi-database architecture design",
+        "Service-specific database selection",
+        "Data consistency patterns",
+        "API gateway implementation",
+        "Cross-service queries",
+        "Monitoring and logging"
+      ]
+    }
+  ],
+  "assessment_criteria": [
+    {
+      "criterion": "Database Design & Modeling",
+      "weight": 25,
+      "assessment_method": "Design normalized schemas, create ER diagrams, choose appropriate data types, implement constraints, and make informed denormalization decisions",
+      "success_indicators": [
+        "Schemas are normalized to 3NF",
+        "Appropriate constraints applied",
+        "Foreign keys properly defined",
+        "Data types optimized",
+        "Denormalization justified"
+      ]
+    },
+    {
+      "criterion": "SQL & Query Proficiency",
+      "weight": 25,
+      "assessment_method": "Write complex queries using JOINs, CTEs, window functions, and subqueries. Demonstrate understanding of execution plans and query optimization",
+      "success_indicators": [
+        "Complex queries written correctly",
+        "CTEs and window functions used appropriately",
+        "EXPLAIN plans analyzed",
+        "Queries optimized for performance",
+        "Transactions handled correctly"
+      ]
+    },
+    {
+      "criterion": "NoSQL Implementation",
+      "weight": 20,
+      "assessment_method": "Choose appropriate NoSQL database, design data models for access patterns, implement proper indexing, and configure replication",
+      "success_indicators": [
+        "Correct database chosen for use case",
+        "Data modeled for query patterns",
+        "Indexes created strategically",
+        "Replication configured",
+        "Consistency levels understood"
+      ]
+    },
+    {
+      "criterion": "Performance Optimization",
+      "weight": 15,
+      "assessment_method": "Identify slow queries, analyze execution plans, design indexing strategies, implement caching, and tune configurations",
+      "success_indicators": [
+        "Slow queries identified and fixed",
+        "Indexes created based on analysis",
+        "Caching strategies implemented",
+        "Performance improved measurably",
+        "Database tuned appropriately"
+      ]
+    },
+    {
+      "criterion": "Production Operations",
+      "weight": 15,
+      "assessment_method": "Implement backup and recovery, configure replication and HA, perform migrations, apply security best practices, and monitor databases",
+      "success_indicators": [
+        "Backups automated and tested",
+        "Replication configured correctly",
+        "Zero-downtime migrations performed",
+        "Security best practices applied",
+        "Monitoring and alerting set up"
+      ]
+    }
+  ],
+  "success_metrics": [
+    "Can design robust database schemas for complex applications",
+    "Write optimized SQL queries with advanced features",
+    "Choose the right database type for specific use cases",
+    "Implement and query NoSQL databases effectively",
+    "Optimize query performance using execution plans and indexes",
+    "Configure database replication for high availability",
+    "Implement comprehensive backup strategies with PITR",
+    "Perform database migrations safely in production",
+    "Monitor database health and troubleshoot issues",
+    "Apply security best practices and compliance requirements",
+    "Scale databases horizontally and vertically",
+    "Design for polyglot persistence in microservices"
+  ],
+  "tools_and_technologies": {
+    "relational_databases": [
+      "PostgreSQL 16+",
+      "MySQL 8.0+",
+      "MariaDB 11+",
+      "Microsoft SQL Server 2022"
+    ],
+    "nosql_databases": [
+      "MongoDB 7.0+",
+      "Redis 7.x",
+      "Apache Cassandra 4.x+",
+      "Amazon DynamoDB",
+      "Elasticsearch 8.x"
+    ],
+    "database_tools": [
+      "DBeaver",
+      "pgAdmin 4",
+      "MySQL Workbench",
+      "MongoDB Compass",
+      "Redis Insight",
+      "DataGrip",
+      "TablePlus"
+    ],
+    "migration_tools": [
+      "Flyway",
+      "Liquibase",
+      "Alembic (Python)",
+      "Sequelize Migrations (Node.js)",
+      "Rails Migrations (Ruby)",
+      "golang-migrate"
+    ],
+    "backup_tools": [
+      "pg_dump / pg_basebackup",
+      "mysqldump / Percona XtraBackup",
+      "mongodump / MongoDB Atlas",
+      "WAL-E / WAL-G",
+      "pgBackRest",
+      "Barman"
+    ],
+    "monitoring_tools": [
+      "pg_stat_statements",
+      "Percona Monitoring and Management (PMM)",
+      "MongoDB Atlas",
+      "Prometheus + Grafana",
+      "DataDog",
+      "New Relic",
+      "pgBadger"
+    ],
+    "high_availability": [
+      "Patroni",
+      "repmgr",
+      "pgpool-II",
+      "PgBouncer",
+      "HAProxy",
+      "Keepalived"
+    ],
+    "containerization": [
+      "Docker",
+      "Docker Compose",
+      "Kubernetes",
+      "Helm"
+    ]
+  },
+  "next_agent": "03-api-development",
+  "related_agents": [
+    "01-programming-fundamentals",
+    "03-api-development",
+    "04-architecture-patterns",
+    "05-testing-security",
+    "06-performance-optimization"
+  ],
+  "resources": {
+    "official_documentation": [
+      "https://www.postgresql.org/docs/",
+      "https://dev.mysql.com/doc/",
+      "https://mariadb.com/kb/",
+      "https://docs.mongodb.com/",
+      "https://redis.io/documentation",
+      "https://cassandra.apache.org/doc/",
+      "https://docs.aws.amazon.com/dynamodb/",
+      "https://www.elastic.co/guide/"
+    ],
+    "learning_platforms": [
+      "https://www.postgresqltutorial.com/",
+      "https://www.mysqltutorial.org/",
+      "https://university.mongodb.com/",
+      "https://university.redis.com/",
+      "https://academy.datastax.com/",
+      "https://sqlbolt.com/",
+      "https://mode.com/sql-tutorial/",
+      "https://pgexercises.com/"
+    ],
+    "essential_books": [
+      "Designing Data-Intensive Applications by Martin Kleppmann",
+      "Database Internals by Alex Petrov",
+      "SQL Performance Explained by Markus Winand",
+      "Seven Databases in Seven Weeks by Eric Redmond",
+      "PostgreSQL: Up and Running by Regina Obe",
+      "High Performance MySQL by Baron Schwartz",
+      "MongoDB: The Definitive Guide by Shannon Bradshaw",
+      "Redis in Action by Josiah Carlson",
+      "Cassandra: The Definitive Guide by Jeff Carpenter"
+    ],
+    "practice_platforms": [
+      "https://leetcode.com/problemset/database/",
+      "https://www.hackerrank.com/domains/sql",
+      "https://sqlzoo.net/",
+      "https://www.sql-practice.com/",
+      "https://mystery.knightlab.com/"
+    ],
+    "communities": [
+      "Stack Overflow (database tags)",
+      "Reddit: r/database, r/PostgreSQL, r/mongodb, r/redis",
+      "PostgreSQL Slack/Discord",
+      "MongoDB Community Forums",
+      "Database Administrators Stack Exchange",
+      "Local database meetups"
+    ],
+    "blogs_and_articles": [
+      "https://use-the-index-luke.com/",
+      "https://www.craigkerstiens.com/",
+      "https://postgresweekly.com/",
+      "https://mysqlserverteam.com/",
+      "https://www.mongodb.com/blog",
+      "https://redis.com/blog/"
+    ]
+  },
+  "estimated_completion_date": "10 weeks full-time or 20 weeks part-time",
+  "difficulty_progression": [
+    {
+      "week": "1-2",
+      "focus": "PostgreSQL basics and SQL fundamentals",
+      "difficulty": "Easy-Medium",
+      "topics": [
+        "SQL syntax and basic queries",
+        "DDL and DML operations",
+        "Simple JOINs and aggregations",
+        "Basic indexing"
+      ]
+    },
+    {
+      "week": "3-4",
+      "focus": "Advanced SQL and transactions",
+      "difficulty": "Medium",
+      "topics": [
+        "Complex JOINs and subqueries",
+        "CTEs and window functions",
+        "Transactions and isolation levels",
+        "Stored procedures and triggers"
+      ]
+    },
+    {
+      "week": "5-6",
+      "focus": "NoSQL databases (MongoDB, Redis)",
+      "difficulty": "Medium",
+      "topics": [
+        "Document data modeling",
+        "MongoDB aggregation pipeline",
+        "Redis data structures",
+        "NoSQL indexing strategies"
+      ]
+    },
+    {
+      "week": "7",
+      "focus": "Wide-column and cloud databases",
+      "difficulty": "Medium-Hard",
+      "topics": [
+        "Cassandra data modeling",
+        "DynamoDB design patterns",
+        "Elasticsearch search and analytics",
+        "CAP theorem and consistency"
+      ]
+    },
+    {
+      "week": "8",
+      "focus": "Query optimization deep-dive",
+      "difficulty": "Hard",
+      "topics": [
+        "EXPLAIN plan analysis",
+        "Index optimization strategies",
+        "N+1 query solutions",
+        "Caching patterns"
+      ]
+    },
+    {
+      "week": "9",
+      "focus": "Backup and replication",
+      "difficulty": "Hard",
+      "topics": [
+        "Backup strategies and automation",
+        "Streaming and logical replication",
+        "Point-in-time recovery",
+        "High availability setups"
+      ]
+    },
+    {
+      "week": "10",
+      "focus": "Production operations and capstone",
+      "difficulty": "Hard",
+      "topics": [
+        "Disaster recovery planning",
+        "Monitoring and alerting",
+        "Security and compliance",
+        "Polyglot persistence project"
+      ]
+    }
+  ],
+  "common_challenges": [
+    {
+      "challenge": "N+1 Query Problem",
+      "solution": "Use eager loading, JOINs, or DataLoader pattern",
+      "resources": ["skills/query-optimization.md#n1-query-problem"]
+    },
+    {
+      "challenge": "Choosing Right Database",
+      "solution": "Understand use cases, access patterns, and trade-offs for each database type",
+      "resources": ["skill.md#database-selection-guide"]
+    },
+    {
+      "challenge": "Query Performance Issues",
+      "solution": "Use EXPLAIN plans, create appropriate indexes, optimize query structure",
+      "resources": ["skills/query-optimization.md"]
+    },
+    {
+      "challenge": "Data Modeling for NoSQL",
+      "solution": "Design for access patterns, not relationships; denormalize strategically",
+      "resources": ["skills/nosql-databases.md"]
+    },
+    {
+      "challenge": "Backup and Recovery",
+      "solution": "Implement automated backups, test restores regularly, document procedures",
+      "resources": ["skills/backup-replication.md"]
+    }
+  ],
+  "certification_paths": [
+    {
+      "name": "PostgreSQL Certified Professional",
+      "provider": "PostgreSQL",
+      "url": "https://www.postgresql.org/community/certification/",
+      "level": "Professional"
+    },
+    {
+      "name": "MySQL Database Administrator",
+      "provider": "Oracle",
+      "url": "https://education.oracle.com/mysql-certifications",
+      "level": "Professional"
+    },
+    {
+      "name": "MongoDB Certified Developer Associate",
+      "provider": "MongoDB University",
+      "url": "https://university.mongodb.com/certification",
+      "level": "Associate"
+    },
+    {
+      "name": "AWS Certified Database Specialty",
+      "provider": "Amazon Web Services",
+      "url": "https://aws.amazon.com/certification/certified-database-specialty/",
+      "level": "Specialty"
+    },
+    {
+      "name": "Google Cloud Professional Database Engineer",
+      "provider": "Google Cloud",
+      "url": "https://cloud.google.com/certification/cloud-database-engineer",
+      "level": "Professional"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Roadmap Team",
+    "tags": [
+      "databases",
+      "sql",
+      "nosql",
+      "postgresql",
+      "mongodb",
+      "redis",
+      "query-optimization",
+      "backup",
+      "replication",
+      "data-modeling"
+    ],
+    "difficulty_rating": 7,
+    "importance_rating": 10,
+    "time_investment": "high",
+    "prerequisite_level": "intermediate"
+  }
+}

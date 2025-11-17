@@ -1,0 +1,378 @@
+{
+  "agent_id": "05-caching-performance",
+  "agent_name": "Caching & Performance Optimization",
+  "version": "1.0.0",
+  "description": "Master caching strategies, in-memory data stores, load balancing, scaling techniques, and performance monitoring to build lightning-fast, scalable backend systems",
+  "phase": 2,
+  "sequence": 5,
+  "duration_weeks": 8,
+  "difficulty_level": "Intermediate to Advanced",
+  "prerequisites": [
+    "Database management fundamentals",
+    "API development basics",
+    "Understanding of HTTP/HTTPS protocols",
+    "Basic system architecture knowledge",
+    "Proficiency in at least one backend programming language"
+  ],
+  "learning_objectives": [
+    "Implement effective caching strategies for different use cases",
+    "Master Redis and Memcached for in-memory caching",
+    "Configure load balancing and implement horizontal scaling",
+    "Set up database replication and sharding",
+    "Identify and eliminate performance bottlenecks",
+    "Implement comprehensive monitoring and profiling",
+    "Conduct effective load testing and optimization"
+  ],
+  "skills": [
+    {
+      "skill_id": "5.1",
+      "skill_name": "Caching Strategies",
+      "file": "skills/caching-strategies.md",
+      "duration_hours": 40,
+      "description": "Master cache-aside, write-through, write-behind, and refresh-ahead patterns with TTL management and eviction policies"
+    },
+    {
+      "skill_id": "5.2",
+      "skill_name": "Redis & Memcached",
+      "file": "skills/redis-memcached.md",
+      "duration_hours": 50,
+      "description": "Deep dive into Redis data structures, persistence, clustering, pub/sub, and Memcached comparison"
+    },
+    {
+      "skill_id": "5.3",
+      "skill_name": "Load Balancing & Scaling",
+      "file": "skills/load-balancing-scaling.md",
+      "duration_hours": 45,
+      "description": "Implement load balancing algorithms, horizontal/vertical scaling, database replication, and sharding"
+    },
+    {
+      "skill_id": "5.4",
+      "skill_name": "Monitoring & Optimization",
+      "file": "skills/monitoring-optimization.md",
+      "duration_hours": 45,
+      "description": "Master APM tools, distributed tracing, profiling, bottleneck identification, and load testing"
+    }
+  ],
+  "hands_on_projects": [
+    {
+      "project_name": "Multi-Layer Caching System",
+      "description": "Implement cache-aside pattern with Redis, measure cache hit rates, and optimize TTL values",
+      "duration_hours": 12,
+      "technologies": ["Redis", "Python/Node.js", "Database"]
+    },
+    {
+      "project_name": "Session Store & Real-Time Leaderboard",
+      "description": "Build session management system and real-time game leaderboard using Redis data structures",
+      "duration_hours": 10,
+      "technologies": ["Redis", "Sorted Sets", "Hashes", "Pub/Sub"]
+    },
+    {
+      "project_name": "Rate Limiter Implementation",
+      "description": "Create sliding window rate limiter using Redis to prevent API abuse",
+      "duration_hours": 8,
+      "technologies": ["Redis", "Sorted Sets", "TTL"]
+    },
+    {
+      "project_name": "Load Balancer Configuration",
+      "description": "Set up Nginx load balancer with multiple algorithms and health checks",
+      "duration_hours": 10,
+      "technologies": ["Nginx", "HAProxy", "Docker"]
+    },
+    {
+      "project_name": "Database Replication Setup",
+      "description": "Configure master-slave replication for PostgreSQL/MySQL with read scaling",
+      "duration_hours": 12,
+      "technologies": ["PostgreSQL", "MySQL", "Docker", "Replication"]
+    },
+    {
+      "project_name": "Distributed Tracing Implementation",
+      "description": "Implement OpenTelemetry tracing with Jaeger for microservices",
+      "duration_hours": 10,
+      "technologies": ["OpenTelemetry", "Jaeger", "Distributed Tracing"]
+    },
+    {
+      "project_name": "Performance Monitoring Dashboard",
+      "description": "Create comprehensive monitoring dashboard with Prometheus and Grafana",
+      "duration_hours": 12,
+      "technologies": ["Prometheus", "Grafana", "Node Exporter", "Alerts"]
+    },
+    {
+      "project_name": "Load Testing Suite",
+      "description": "Develop load testing scenarios using k6 or Locust with performance analysis",
+      "duration_hours": 10,
+      "technologies": ["k6", "Locust", "JMeter"]
+    },
+    {
+      "project_name": "Capstone: High-Performance E-Commerce API",
+      "description": "Build production-ready e-commerce API with multi-layer caching, load balancing, monitoring, and auto-scaling to handle 10,000+ concurrent users",
+      "duration_hours": 40,
+      "technologies": ["Redis Cluster", "PostgreSQL Replicas", "Nginx", "Prometheus", "Grafana", "Jaeger", "k6"]
+    }
+  ],
+  "assessment_criteria": [
+    {
+      "criterion": "Caching Implementation",
+      "weight": 20,
+      "assessment_method": "Implement multiple caching strategies with >85% cache hit rate and proper invalidation"
+    },
+    {
+      "criterion": "Redis Mastery",
+      "weight": 20,
+      "assessment_method": "Build applications using various Redis data structures, pub/sub, and clustering"
+    },
+    {
+      "criterion": "Load Balancing & Scaling",
+      "weight": 20,
+      "assessment_method": "Configure load balancers, implement database replication, and demonstrate horizontal scaling"
+    },
+    {
+      "criterion": "Performance Optimization",
+      "weight": 20,
+      "assessment_method": "Identify bottlenecks using profiling tools, optimize queries and code, achieve performance targets"
+    },
+    {
+      "criterion": "Monitoring & Observability",
+      "weight": 10,
+      "assessment_method": "Set up comprehensive monitoring with APM, metrics, tracing, and alerting"
+    },
+    {
+      "criterion": "Capstone Project",
+      "weight": 10,
+      "assessment_method": "Build high-performance API meeting all requirements: 10K concurrent users, p95 < 200ms, >85% cache hit rate"
+    }
+  ],
+  "success_metrics": [
+    "Achieve >85% cache hit rate in production applications",
+    "Reduce database load by 50-70% through caching",
+    "Configure load balancers for high availability",
+    "Set up database replication with automatic failover",
+    "Identify and fix performance bottlenecks systematically",
+    "Implement comprehensive monitoring and alerting",
+    "Successfully conduct load tests and optimize based on results",
+    "Build API handling 10,000+ concurrent users with <200ms p95 latency"
+  ],
+  "tools_and_technologies": {
+    "caching_systems": [
+      "Redis",
+      "Memcached",
+      "Varnish",
+      "Application-level caching"
+    ],
+    "load_balancers": [
+      "Nginx",
+      "HAProxy",
+      "Traefik",
+      "Envoy",
+      "AWS ALB/NLB",
+      "Google Cloud Load Balancing",
+      "Azure Load Balancer"
+    ],
+    "databases": [
+      "PostgreSQL (with replication)",
+      "MySQL (with replication)",
+      "MongoDB (sharding)",
+      "Cassandra (distributed)"
+    ],
+    "monitoring_apm": [
+      "Prometheus",
+      "Grafana",
+      "Datadog",
+      "New Relic",
+      "Dynatrace",
+      "SigNoz",
+      "Jaeger",
+      "Zipkin",
+      "OpenTelemetry"
+    ],
+    "profiling_tools": [
+      "cProfile (Python)",
+      "py-spy (Python)",
+      "pprof (Go)",
+      "Node.js Profiler",
+      "JProfiler (Java)",
+      "YourKit",
+      "Blackfire"
+    ],
+    "load_testing": [
+      "k6",
+      "Apache JMeter",
+      "Locust",
+      "Gatling",
+      "Artillery"
+    ],
+    "cdn_services": [
+      "Cloudflare",
+      "AWS CloudFront",
+      "Fastly",
+      "Akamai",
+      "Azure CDN",
+      "Google Cloud CDN"
+    ]
+  },
+  "next_agent": "06-devops-infrastructure",
+  "related_agents": [
+    "02-database-management",
+    "03-api-development",
+    "04-architecture-patterns",
+    "06-devops-infrastructure"
+  ],
+  "resources": {
+    "official_documentation": [
+      "https://redis.io/documentation",
+      "https://github.com/memcached/memcached/wiki",
+      "https://nginx.org/en/docs/",
+      "https://www.postgresql.org/docs/current/performance-tips.html",
+      "https://prometheus.io/docs/",
+      "https://www.jaegertracing.io/docs/"
+    ],
+    "monitoring_tools": [
+      "https://prometheus.io/",
+      "https://grafana.com/",
+      "https://www.datadoghq.com/",
+      "https://newrelic.com/",
+      "https://signoz.io/",
+      "https://www.jaegertracing.io/"
+    ],
+    "load_testing": [
+      "https://k6.io/",
+      "https://jmeter.apache.org/",
+      "https://locust.io/",
+      "https://gatling.io/"
+    ],
+    "learning_platforms": [
+      "https://university.redis.com/",
+      "https://aws.amazon.com/training/",
+      "https://cloud.google.com/training/",
+      "https://www.coursera.org/",
+      "https://www.udemy.com/"
+    ],
+    "books": [
+      "Designing Data-Intensive Applications - Martin Kleppmann",
+      "High Performance Browser Networking - Ilya Grigorik",
+      "Web Scalability for Startup Engineers - Artur Ejsmont",
+      "Systems Performance - Brendan Gregg",
+      "Database Internals - Alex Petrov"
+    ],
+    "community": [
+      "https://reddit.com/r/redis",
+      "https://stackoverflow.com/questions/tagged/redis",
+      "https://stackoverflow.com/questions/tagged/performance",
+      "https://news.ycombinator.com/",
+      "https://dev.to/"
+    ]
+  },
+  "estimated_completion_date": "8 weeks",
+  "difficulty_progression": [
+    {
+      "week": "1-2",
+      "focus": "Caching fundamentals and Redis basics",
+      "difficulty": "Medium",
+      "key_activities": [
+        "Implement cache-aside pattern",
+        "Learn Redis data structures",
+        "Configure TTL and eviction policies"
+      ]
+    },
+    {
+      "week": "3-4",
+      "focus": "Advanced Redis and caching strategies",
+      "difficulty": "Medium-Hard",
+      "key_activities": [
+        "Build session store and leaderboard",
+        "Implement rate limiter",
+        "Set up Redis cluster",
+        "Explore pub/sub messaging"
+      ]
+    },
+    {
+      "week": "5-6",
+      "focus": "Load balancing and scaling",
+      "difficulty": "Hard",
+      "key_activities": [
+        "Configure Nginx load balancer",
+        "Set up database replication",
+        "Implement consistent hashing",
+        "Configure auto-scaling"
+      ]
+    },
+    {
+      "week": "7-8",
+      "focus": "Monitoring, optimization, and capstone",
+      "difficulty": "Hard",
+      "key_activities": [
+        "Implement distributed tracing",
+        "Set up monitoring dashboards",
+        "Conduct load testing",
+        "Build capstone e-commerce API",
+        "Optimize for performance targets"
+      ]
+    }
+  ],
+  "performance_benchmarks": {
+    "cache_hit_rate": "> 85%",
+    "p95_latency": "< 200ms",
+    "p99_latency": "< 500ms",
+    "concurrent_users": "10,000+",
+    "error_rate": "< 0.1%",
+    "database_load_reduction": "50-70%",
+    "uptime": "> 99.9%"
+  },
+  "key_formulas": {
+    "cache_hit_rate": "Cache Hits / (Cache Hits + Cache Misses) × 100%",
+    "response_time_improvement": "(DB_Time - Cache_Time) / DB_Time × 100%",
+    "apdex_score": "(Satisfied + Tolerating/2) / Total",
+    "connection_pool_size": "((core_count × 2) + effective_spindle_count)"
+  },
+  "common_optimizations": [
+    {
+      "optimization": "Implement Multi-Layer Caching",
+      "impact": "90-99% response time improvement",
+      "complexity": "Medium"
+    },
+    {
+      "optimization": "Database Connection Pooling",
+      "impact": "50-70% server load reduction",
+      "complexity": "Low"
+    },
+    {
+      "optimization": "Database Read Replicas",
+      "impact": "Scales read capacity horizontally",
+      "complexity": "Medium"
+    },
+    {
+      "optimization": "CDN for Static Assets",
+      "impact": "Significant latency reduction globally",
+      "complexity": "Low"
+    },
+    {
+      "optimization": "Query Optimization & Indexing",
+      "impact": "10-100x faster queries",
+      "complexity": "Medium"
+    },
+    {
+      "optimization": "Load Balancing",
+      "impact": "High availability + better resource utilization",
+      "complexity": "Medium"
+    },
+    {
+      "optimization": "Async/Non-blocking I/O",
+      "impact": "2-10x throughput increase",
+      "complexity": "High"
+    },
+    {
+      "optimization": "Horizontal Auto-Scaling",
+      "impact": "Handle traffic spikes automatically",
+      "complexity": "High"
+    }
+  ],
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Roadmap Team",
+    "tags": ["caching", "performance", "redis", "load-balancing", "scaling", "monitoring", "optimization"],
+    "difficulty_rating": 7,
+    "importance_rating": 10,
+    "industry_relevance": "Critical for production systems",
+    "average_salary_impact": "+$15,000 - $30,000"
+  }
+}

@@ -1,0 +1,402 @@
+{
+  "agent_id": "03-api-development",
+  "agent_name": "API Development",
+  "version": "1.0.0",
+  "description": "Master API design, implementation, and management across multiple paradigms including REST, GraphQL, gRPC, with comprehensive authentication, authorization, documentation, and testing strategies",
+  "phase": 1,
+  "sequence": 3,
+  "duration_weeks": 16,
+  "difficulty_level": "Intermediate to Advanced",
+  "prerequisites": [
+    "Completed Agent 1: Programming Fundamentals",
+    "Understanding of HTTP protocol",
+    "Basic understanding of databases (Agent 2 recommended)",
+    "Knowledge of JSON and data formats",
+    "Familiarity with command line and REST clients"
+  ],
+  "learning_objectives": [
+    "Design and implement RESTful APIs following best practices",
+    "Build GraphQL APIs with optimized resolvers",
+    "Implement gRPC services with Protocol Buffers",
+    "Secure APIs with multiple authentication methods",
+    "Implement robust authorization with RBAC and ABAC",
+    "Create comprehensive API documentation",
+    "Test APIs thoroughly with multiple strategies",
+    "Version APIs without breaking clients",
+    "Handle errors consistently and informatively"
+  ],
+  "skills": [
+    {
+      "skill_id": "3.1",
+      "skill_name": "REST APIs",
+      "file": "skills/rest-apis.md",
+      "duration_hours": 100,
+      "description": "RESTful architecture, Richardson Maturity Model, HTTP methods, resource naming, HATEOAS, pagination, filtering, and advanced REST patterns"
+    },
+    {
+      "skill_id": "3.2",
+      "skill_name": "GraphQL & gRPC",
+      "file": "skills/graphql-grpc.md",
+      "duration_hours": 80,
+      "description": "GraphQL schema design, queries, mutations, subscriptions, N+1 problem solutions, Protocol Buffers, gRPC services, and streaming patterns"
+    },
+    {
+      "skill_id": "3.3",
+      "skill_name": "Authentication & Authorization",
+      "file": "skills/authentication-authorization.md",
+      "duration_hours": 70,
+      "description": "JWT, OAuth 2.0, API keys, session-based auth, RBAC, ABAC, scopes, permissions, and security best practices"
+    },
+    {
+      "skill_id": "3.4",
+      "skill_name": "API Documentation & Testing",
+      "file": "skills/api-documentation-testing.md",
+      "duration_hours": 60,
+      "description": "OpenAPI/Swagger specifications, interactive documentation, error handling, versioning strategies, unit testing, integration testing, load testing, and security testing"
+    }
+  ],
+  "hands_on_projects": [
+    {
+      "project_name": "RESTful User Management API",
+      "description": "Build complete REST API with CRUD operations, pagination, filtering, sorting, and proper error handling",
+      "duration_hours": 20,
+      "technologies": ["Express/FastAPI/Gin", "JWT", "OpenAPI"]
+    },
+    {
+      "project_name": "GraphQL Blog Platform",
+      "description": "Create GraphQL API with posts, comments, users, implementing queries, mutations, subscriptions, and DataLoader",
+      "duration_hours": 18,
+      "technologies": ["Apollo Server", "GraphQL", "DataLoader"]
+    },
+    {
+      "project_name": "gRPC Microservices",
+      "description": "Build microservices with gRPC for inter-service communication, implementing all streaming patterns",
+      "duration_hours": 16,
+      "technologies": ["gRPC", "Protocol Buffers", "Streaming"]
+    },
+    {
+      "project_name": "E-commerce API with OAuth",
+      "description": "Implement e-commerce API with OAuth 2.0 authorization, multiple grant types, and RBAC",
+      "duration_hours": 22,
+      "technologies": ["OAuth 2.0", "JWT", "RBAC"]
+    },
+    {
+      "project_name": "API Gateway with Rate Limiting",
+      "description": "Create API gateway with rate limiting, API key management, and request routing",
+      "duration_hours": 14,
+      "technologies": ["Kong/Express Gateway", "Redis", "Rate Limiting"]
+    },
+    {
+      "project_name": "Comprehensive API Documentation",
+      "description": "Document API using OpenAPI 3.2, generate Swagger UI, create Postman collection",
+      "duration_hours": 10,
+      "technologies": ["OpenAPI", "Swagger UI", "Postman"]
+    },
+    {
+      "project_name": "API Testing Suite",
+      "description": "Build comprehensive test suite with unit, integration, load, and security tests",
+      "duration_hours": 16,
+      "technologies": ["Jest/pytest", "Supertest", "k6", "OWASP ZAP"]
+    }
+  ],
+  "assessment_criteria": [
+    {
+      "criterion": "REST API Design",
+      "weight": 20,
+      "assessment_method": "Build RESTful API following Richardson Maturity Model Level 2+, proper resource naming, HTTP methods, status codes"
+    },
+    {
+      "criterion": "GraphQL Implementation",
+      "weight": 15,
+      "assessment_method": "Create GraphQL API with optimized queries, mutations, subscriptions, solve N+1 problem"
+    },
+    {
+      "criterion": "gRPC Services",
+      "weight": 10,
+      "assessment_method": "Implement gRPC service with all streaming patterns"
+    },
+    {
+      "criterion": "Authentication & Authorization",
+      "weight": 20,
+      "assessment_method": "Implement JWT, OAuth 2.0, API keys, RBAC/ABAC authorization"
+    },
+    {
+      "criterion": "API Documentation",
+      "weight": 10,
+      "assessment_method": "Create comprehensive OpenAPI specification, interactive documentation"
+    },
+    {
+      "criterion": "Error Handling",
+      "weight": 10,
+      "assessment_method": "Implement consistent error responses, proper status codes, helpful messages"
+    },
+    {
+      "criterion": "Testing",
+      "weight": 10,
+      "assessment_method": "Write comprehensive test suite covering unit, integration, load, security"
+    },
+    {
+      "criterion": "API Security",
+      "weight": 5,
+      "assessment_method": "Implement HTTPS, CORS, rate limiting, input validation, security headers"
+    }
+  ],
+  "success_metrics": [
+    "Design RESTful APIs at Richardson Maturity Level 2+",
+    "Implement GraphQL APIs with optimized performance",
+    "Build gRPC services for high-performance communication",
+    "Secure APIs with multiple authentication methods",
+    "Implement fine-grained authorization (RBAC/ABAC)",
+    "Create comprehensive API documentation",
+    "Write thorough API test suites",
+    "Handle errors consistently with proper status codes",
+    "Version APIs without breaking existing clients",
+    "Implement rate limiting and throttling",
+    "Deploy production-ready APIs with monitoring"
+  ],
+  "tools_and_technologies": {
+    "rest_frameworks": [
+      "Express.js (Node.js)",
+      "FastAPI (Python)",
+      "Django REST Framework (Python)",
+      "Flask (Python)",
+      "Gin (Go)",
+      "Echo (Go)",
+      "Chi (Go)",
+      "Spring Boot (Java)",
+      "ASP.NET Core (C#)",
+      "Laravel (PHP)",
+      "Symfony (PHP)"
+    ],
+    "graphql_tools": [
+      "Apollo Server",
+      "Apollo Client",
+      "Relay",
+      "GraphQL Yoga",
+      "Hasura",
+      "Prisma",
+      "GraphQL Playground",
+      "GraphiQL",
+      "DataLoader"
+    ],
+    "grpc_tools": [
+      "Protocol Buffers (protoc)",
+      "gRPC libraries (Node.js, Python, Go, Java)",
+      "grpc-web",
+      "Bloom RPC",
+      "grpcurl",
+      "grpcui"
+    ],
+    "authentication": [
+      "jsonwebtoken (Node.js)",
+      "python-jose (Python)",
+      "Passport.js",
+      "Auth0",
+      "Okta",
+      "Keycloak",
+      "AWS Cognito",
+      "Firebase Auth"
+    ],
+    "documentation_tools": [
+      "Swagger UI",
+      "Swagger Editor",
+      "Redoc",
+      "Postman",
+      "Stoplight",
+      "Slate",
+      "Docusaurus",
+      "ReadMe.io",
+      "Apidog"
+    ],
+    "testing_tools": [
+      "Jest",
+      "Mocha",
+      "Vitest",
+      "pytest",
+      "JUnit",
+      "Postman/Newman",
+      "REST Client (VS Code)",
+      "k6",
+      "Artillery",
+      "Locust",
+      "OWASP ZAP",
+      "Burp Suite"
+    ],
+    "api_management": [
+      "Kong",
+      "Apigee",
+      "AWS API Gateway",
+      "Azure API Management",
+      "Tyk",
+      "Express Gateway"
+    ],
+    "monitoring": [
+      "DataDog",
+      "New Relic",
+      "Sentry",
+      "Prometheus",
+      "Grafana",
+      "ELK Stack"
+    ]
+  },
+  "next_agent": "04-architecture-patterns",
+  "related_agents": [
+    "01-programming-fundamentals",
+    "02-database-management",
+    "04-architecture-patterns",
+    "05-caching-performance",
+    "07-testing-security"
+  ],
+  "resources": {
+    "rest_resources": [
+      "https://restfulapi.net/",
+      "https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm",
+      "https://martinfowler.com/articles/richardsonMaturityModel.html",
+      "https://httpstatuses.com/"
+    ],
+    "graphql_resources": [
+      "https://graphql.org/",
+      "https://www.apollographql.com/docs/",
+      "https://relay.dev/",
+      "https://the-guild.dev/graphql"
+    ],
+    "grpc_resources": [
+      "https://grpc.io/",
+      "https://developers.google.com/protocol-buffers",
+      "https://grpc.io/docs/languages/"
+    ],
+    "oauth_resources": [
+      "https://oauth.net/2/",
+      "https://tools.ietf.org/html/rfc6749",
+      "https://jwt.io/",
+      "https://openid.net/connect/"
+    ],
+    "api_design": [
+      "https://spec.openapis.org/oas/latest.html",
+      "https://apiguide.readthedocs.io/",
+      "https://github.com/shieldfy/API-Security-Checklist",
+      "https://swagger.io/resources/articles/best-practices-in-api-design/"
+    ],
+    "testing_resources": [
+      "https://testingjavascript.com/",
+      "https://k6.io/docs/",
+      "https://docs.pact.io/"
+    ],
+    "learning_platforms": [
+      "https://roadmap.sh/backend",
+      "https://learning.postman.com/",
+      "https://university.apisec.ai/"
+    ]
+  },
+  "estimated_completion_date": "16 weeks",
+  "difficulty_progression": [
+    {
+      "week": "1-2",
+      "focus": "HTTP fundamentals, REST principles, basic CRUD API",
+      "difficulty": "Easy-Medium"
+    },
+    {
+      "week": "3-4",
+      "focus": "Advanced REST features, error handling, pagination",
+      "difficulty": "Medium"
+    },
+    {
+      "week": "5-6",
+      "focus": "Authentication (JWT, OAuth 2.0, API keys)",
+      "difficulty": "Medium"
+    },
+    {
+      "week": "7-8",
+      "focus": "Authorization (RBAC, ABAC, scopes)",
+      "difficulty": "Medium-Hard"
+    },
+    {
+      "week": "9-10",
+      "focus": "GraphQL basics and advanced features",
+      "difficulty": "Medium-Hard"
+    },
+    {
+      "week": "11-12",
+      "focus": "gRPC and Protocol Buffers",
+      "difficulty": "Hard"
+    },
+    {
+      "week": "13-14",
+      "focus": "API documentation and versioning",
+      "difficulty": "Medium"
+    },
+    {
+      "week": "15-16",
+      "focus": "Testing, monitoring, production deployment",
+      "difficulty": "Hard"
+    }
+  ],
+  "industry_trends_2025": [
+    "API Security: 80%+ businesses face strict API security requirements",
+    "GraphQL Adoption: Continued growth in frontend-driven applications",
+    "gRPC in Production: More companies adopting for microservices",
+    "API-First Design: Organizations prioritizing API design before implementation",
+    "Automated Documentation: 45% reduction in inconsistencies",
+    "AI-Enhanced APIs: Integration of AI/ML capabilities",
+    "WebAssembly APIs: Emerging pattern for high-performance",
+    "Zero Trust Security: Enhanced authentication and authorization"
+  ],
+  "compliance_considerations": [
+    "GDPR (data privacy)",
+    "HIPAA (healthcare)",
+    "PCI DSS (payment data)",
+    "SOC 2 (security controls)",
+    "ISO 27001 (information security)",
+    "CCPA (California privacy)",
+    "OAuth 2.1 (updated OAuth specification)"
+  ],
+  "best_practices_checklist": {
+    "design": [
+      "Use nouns for resource names, not verbs",
+      "Use plural nouns for collections",
+      "Use lowercase and hyphens in URIs",
+      "Design consistent endpoint structure",
+      "Follow RESTful principles",
+      "Consider idempotency for mutations",
+      "Plan for versioning from the start"
+    ],
+    "security": [
+      "Always use HTTPS in production",
+      "Implement authentication for protected resources",
+      "Apply authorization checks on every request",
+      "Validate and sanitize all inputs",
+      "Implement rate limiting",
+      "Use secure password hashing",
+      "Rotate secrets regularly",
+      "Log security events",
+      "Implement CORS properly",
+      "Use security headers"
+    ],
+    "performance": [
+      "Implement caching strategies",
+      "Use compression (gzip, brotli)",
+      "Optimize database queries",
+      "Implement pagination",
+      "Use connection pooling",
+      "Monitor and optimize slow endpoints"
+    ],
+    "documentation": [
+      "Document all endpoints",
+      "Provide request/response examples",
+      "Document authentication requirements",
+      "List all possible error responses",
+      "Include getting started guide",
+      "Keep documentation up-to-date",
+      "Provide code samples",
+      "Document rate limits"
+    ]
+  },
+  "metadata": {
+    "created_date": "2025-11-17",
+    "last_updated": "2025-11-17",
+    "author": "Backend Development Roadmap Team",
+    "tags": ["api", "rest", "graphql", "grpc", "authentication", "oauth", "documentation", "testing"],
+    "difficulty_rating": 7,
+    "importance_rating": 10
+  }
+}

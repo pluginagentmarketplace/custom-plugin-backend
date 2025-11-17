@@ -1,0 +1,2405 @@
+{
+  "architecture_and_design_patterns": {
+    "metadata": {
+      "title": "Backend Architecture & Design Patterns Comprehensive Guide",
+      "description": "Complete reference for architectural concepts and pattern implementations",
+      "last_updated": "2025-11-17",
+      "source": "Industry best practices and standards"
+    },
+    "solid_principles": {
+      "description": "Five fundamental principles of object-oriented programming and design",
+      "principles": [
+        {
+          "name": "Single Responsibility Principle (SRP)",
+          "acronym": "S",
+          "definition": "A class should have only one reason to change, meaning it should have only one job or responsibility",
+          "benefits": [
+            "Easier to understand and maintain",
+            "Reduces coupling between components",
+            "Improves testability",
+            "Facilitates code reuse"
+          ],
+          "example": {
+            "bad_practice": "class UserManager { saveUser() { /* DB logic */ } sendEmail() { /* Email logic */ } validateUser() { /* Validation logic */ } }",
+            "good_practice": "class UserRepository { saveUser() {} } class EmailService { sendEmail() {} } class UserValidator { validateUser() {} }",
+            "explanation": "Separate classes for database operations, email sending, and validation"
+          },
+          "implementation_tips": [
+            "Each class should focus on a single concept or actor",
+            "If a class has multiple reasons to change, split it",
+            "Look for 'and' or 'or' in class descriptions as a sign to split"
+          ]
+        },
+        {
+          "name": "Open/Closed Principle (OCP)",
+          "acronym": "O",
+          "definition": "Software entities should be open for extension but closed for modification",
+          "benefits": [
+            "Reduces risk of breaking existing code",
+            "Promotes code reusability",
+            "Enables plugin architectures",
+            "Facilitates parallel development"
+          ],
+          "example": {
+            "bad_practice": "class PaymentProcessor { process(type) { if(type === 'credit') {...} else if(type === 'paypal') {...} } }",
+            "good_practice": "interface PaymentMethod { process() } class CreditCardPayment implements PaymentMethod {} class PayPalPayment implements PaymentMethod {}",
+            "explanation": "Use abstraction and polymorphism to extend functionality without modifying existing code"
+          },
+          "implementation_tips": [
+            "Use interfaces and abstract classes",
+            "Apply Strategy pattern for varying behaviors",
+            "Favor composition over inheritance",
+            "Use dependency injection for flexibility"
+          ]
+        },
+        {
+          "name": "Liskov Substitution Principle (LSP)",
+          "acronym": "L",
+          "definition": "Objects of a superclass should be replaceable with objects of its subclasses without breaking the application",
+          "benefits": [
+            "Ensures correct inheritance hierarchies",
+            "Prevents unexpected behaviors",
+            "Improves code reliability",
+            "Enables polymorphism without side effects"
+          ],
+          "example": {
+            "bad_practice": "class Bird { fly() {} } class Penguin extends Bird { fly() { throw new Error('Cannot fly') } }",
+            "good_practice": "class Bird {} class FlyingBird extends Bird { fly() {} } class Penguin extends Bird { swim() {} }",
+            "explanation": "Subclasses should not violate the contract of the base class"
+          },
+          "implementation_tips": [
+            "Subclasses should not strengthen preconditions",
+            "Subclasses should not weaken postconditions",
+            "Subclasses should not throw new exceptions not in base class",
+            "Use composition when inheritance violates LSP"
+          ]
+        },
+        {
+          "name": "Interface Segregation Principle (ISP)",
+          "acronym": "I",
+          "definition": "Clients should not be forced to depend on interfaces they do not use",
+          "benefits": [
+            "Reduces coupling",
+            "Increases cohesion",
+            "Improves flexibility",
+            "Simplifies implementations"
+          ],
+          "example": {
+            "bad_practice": "interface Worker { work() eat() sleep() code() } class Robot implements Worker { eat() { throw Error } }",
+            "good_practice": "interface Workable { work() } interface Eatable { eat() } interface Sleepable { sleep() } interface Codeable { code() }",
+            "explanation": "Create specific interfaces rather than one general-purpose interface"
+          },
+          "implementation_tips": [
+            "Keep interfaces small and focused",
+            "Split large interfaces into smaller ones",
+            "Clients should only know about methods they use",
+            "Use role interfaces for different client types"
+          ]
+        },
+        {
+          "name": "Dependency Inversion Principle (DIP)",
+          "acronym": "D",
+          "definition": "High-level modules should not depend on low-level modules. Both should depend on abstractions",
+          "benefits": [
+            "Reduces coupling between modules",
+            "Increases flexibility and reusability",
+            "Facilitates testing with mocks",
+            "Enables dependency injection"
+          ],
+          "example": {
+            "bad_practice": "class UserService { private db = new MySQLDatabase(); save(user) { this.db.insert(user) } }",
+            "good_practice": "interface Database { insert(data) } class UserService { constructor(private db: Database) {} save(user) { this.db.insert(user) } }",
+            "explanation": "Depend on abstractions (interfaces) not concrete implementations"
+          },
+          "implementation_tips": [
+            "Use dependency injection containers",
+            "Program to interfaces, not implementations",
+            "Apply Inversion of Control (IoC)",
+            "Use abstract factories for creating dependencies"
+          ]
+        }
+      ]
+    },
+    "design_patterns": {
+      "description": "Reusable solutions to commonly occurring problems in software design",
+      "categories": {
+        "creational_patterns": {
+          "description": "Deal with object creation mechanisms, trying to create objects in a manner suitable to the situation",
+          "patterns": [
+            {
+              "name": "Singleton",
+              "category": "Creational",
+              "intent": "Ensure a class has only one instance and provide a global point of access to it",
+              "use_cases": [
+                "Database connection pools",
+                "Configuration managers",
+                "Logging services",
+                "Cache managers"
+              ],
+              "implementation": {
+                "typescript": "class Singleton { private static instance: Singleton; private constructor() {} static getInstance(): Singleton { if (!Singleton.instance) { Singleton.instance = new Singleton(); } return Singleton.instance; } }",
+                "python": "class Singleton: _instance = None; def __new__(cls): if cls._instance is None: cls._instance = super().__new__(cls); return cls._instance"
+              },
+              "pros": [
+                "Controlled access to sole instance",
+                "Reduced namespace pollution",
+                "Permits refinement of operations"
+              ],
+              "cons": [
+                "Difficult to unit test",
+                "Violates Single Responsibility Principle",
+                "Can create hidden dependencies",
+                "Thread-safety concerns"
+              ]
+            },
+            {
+              "name": "Factory Method",
+              "category": "Creational",
+              "intent": "Define an interface for creating an object, but let subclasses decide which class to instantiate",
+              "use_cases": [
+                "Framework libraries that need to create objects",
+                "When the exact type of object isn't known until runtime",
+                "Document editors creating different document types",
+                "Database connection creation"
+              ],
+              "implementation": {
+                "concept": "abstract class Creator { abstract factoryMethod(): Product; operation() { const product = this.factoryMethod(); return product.doStuff(); } }"
+              },
+              "pros": [
+                "Loose coupling between creator and products",
+                "Single Responsibility Principle",
+                "Open/Closed Principle",
+                "Flexibility in creating objects"
+              ],
+              "cons": [
+                "Can increase complexity",
+                "Requires creating many subclasses"
+              ]
+            },
+            {
+              "name": "Abstract Factory",
+              "category": "Creational",
+              "intent": "Provide an interface for creating families of related or dependent objects without specifying their concrete classes",
+              "use_cases": [
+                "UI toolkit with different themes",
+                "Cross-platform applications",
+                "Database access layers supporting multiple databases",
+                "Product families (e.g., Windows/Mac UI elements)"
+              ],
+              "implementation": {
+                "concept": "interface GUIFactory { createButton(): Button; createCheckbox(): Checkbox; } class WindowsFactory implements GUIFactory {} class MacFactory implements GUIFactory {}"
+              },
+              "pros": [
+                "Ensures product compatibility",
+                "Isolates concrete classes",
+                "Easy to exchange product families",
+                "Promotes consistency"
+              ],
+              "cons": [
+                "Complexity increases with new products",
+                "Difficult to support new product types"
+              ]
+            },
+            {
+              "name": "Builder",
+              "category": "Creational",
+              "intent": "Separate the construction of a complex object from its representation, allowing the same construction process to create different representations",
+              "use_cases": [
+                "Creating complex objects with many optional parameters",
+                "Document converters",
+                "Query builders",
+                "Configuration objects"
+              ],
+              "implementation": {
+                "concept": "class UserBuilder { private user = new User(); setName(name) { this.user.name = name; return this; } setEmail(email) { this.user.email = email; return this; } build() { return this.user; } }"
+              },
+              "pros": [
+                "Step-by-step construction",
+                "Reuse construction code",
+                "Isolates complex construction code",
+                "Better control over construction"
+              ],
+              "cons": [
+                "Increases overall code complexity",
+                "More classes to maintain"
+              ]
+            },
+            {
+              "name": "Prototype",
+              "category": "Creational",
+              "intent": "Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype",
+              "use_cases": [
+                "When object creation is expensive",
+                "Avoiding subclasses of creator",
+                "Runtime object configuration",
+                "Game object spawning"
+              ],
+              "implementation": {
+                "concept": "interface Cloneable { clone(): Cloneable; } class ConcretePrototype implements Cloneable { clone() { return Object.create(this); } }"
+              },
+              "pros": [
+                "Reduces need for subclassing",
+                "Hides complexity of creation",
+                "Performance benefits",
+                "Runtime flexibility"
+              ],
+              "cons": [
+                "Deep copying can be complex",
+                "Circular references issues",
+                "Cloning complex objects is difficult"
+              ]
+            }
+          ]
+        },
+        "structural_patterns": {
+          "description": "Deal with object composition and typically identify simple ways to realize relationships between different objects",
+          "patterns": [
+            {
+              "name": "Adapter",
+              "category": "Structural",
+              "intent": "Convert the interface of a class into another interface clients expect, allowing classes to work together that couldn't otherwise",
+              "use_cases": [
+                "Legacy code integration",
+                "Third-party library integration",
+                "API version compatibility",
+                "Multiple data source integration"
+              ],
+              "implementation": {
+                "concept": "interface Target { request(): void; } class Adaptee { specificRequest(): void {} } class Adapter implements Target { constructor(private adaptee: Adaptee) {} request() { this.adaptee.specificRequest(); } }"
+              },
+              "pros": [
+                "Single Responsibility Principle",
+                "Open/Closed Principle",
+                "Increases class reusability",
+                "Flexible design"
+              ],
+              "cons": [
+                "Increases overall code complexity",
+                "Sometimes simpler to change the service class"
+              ]
+            },
+            {
+              "name": "Bridge",
+              "category": "Structural",
+              "intent": "Decouple an abstraction from its implementation so that the two can vary independently",
+              "use_cases": [
+                "Cross-platform applications",
+                "Multiple database support",
+                "Device drivers",
+                "Graphics rendering systems"
+              ],
+              "implementation": {
+                "concept": "interface Implementation { operation(): void; } class Abstraction { constructor(protected impl: Implementation) {} operation() { this.impl.operation(); } }"
+              },
+              "pros": [
+                "Decouples interface from implementation",
+                "Improves extensibility",
+                "Hides implementation details",
+                "Open/Closed Principle"
+              ],
+              "cons": [
+                "Increases complexity for simple scenarios",
+                "More classes to manage"
+              ]
+            },
+            {
+              "name": "Composite",
+              "category": "Structural",
+              "intent": "Compose objects into tree structures to represent part-whole hierarchies, allowing clients to treat individual objects and compositions uniformly",
+              "use_cases": [
+                "File system structures",
+                "UI component hierarchies",
+                "Organization charts",
+                "Graphics drawing applications"
+              ],
+              "implementation": {
+                "concept": "interface Component { operation(): void; } class Leaf implements Component {} class Composite implements Component { children: Component[]; add(c: Component) {} operation() { children.forEach(c => c.operation()); } }"
+              },
+              "pros": [
+                "Simplifies client code",
+                "Easy to add new components",
+                "Open/Closed Principle",
+                "Flexibility in structure"
+              ],
+              "cons": [
+                "Can make design overly general",
+                "Difficult to restrict components"
+              ]
+            },
+            {
+              "name": "Decorator",
+              "category": "Structural",
+              "intent": "Attach additional responsibilities to an object dynamically, providing a flexible alternative to subclassing for extending functionality",
+              "use_cases": [
+                "Adding features to UI components",
+                "Stream processing (compression, encryption)",
+                "Logging and monitoring",
+                "Authorization and validation"
+              ],
+              "implementation": {
+                "concept": "interface Component { operation(): void; } class ConcreteComponent implements Component {} class Decorator implements Component { constructor(protected component: Component) {} operation() { this.component.operation(); } }"
+              },
+              "pros": [
+                "More flexible than static inheritance",
+                "Responsibilities can be added/removed at runtime",
+                "Single Responsibility Principle",
+                "Combines behaviors"
+              ],
+              "cons": [
+                "Many small objects",
+                "Complex to configure",
+                "Order of decorators matters"
+              ]
+            },
+            {
+              "name": "Facade",
+              "category": "Structural",
+              "intent": "Provide a unified interface to a set of interfaces in a subsystem, defining a higher-level interface that makes the subsystem easier to use",
+              "use_cases": [
+                "Simplifying complex libraries",
+                "Layered architecture",
+                "API gateways",
+                "Framework initialization"
+              ],
+              "implementation": {
+                "concept": "class Facade { constructor(private subsystem1, private subsystem2) {} operation() { this.subsystem1.op1(); this.subsystem2.op2(); } }"
+              },
+              "pros": [
+                "Isolates clients from subsystem",
+                "Promotes weak coupling",
+                "Simplifies usage",
+                "Layering principle"
+              ],
+              "cons": [
+                "Can become a god object",
+                "May limit access to advanced features"
+              ]
+            },
+            {
+              "name": "Flyweight",
+              "category": "Structural",
+              "intent": "Use sharing to support large numbers of fine-grained objects efficiently by sharing common state",
+              "use_cases": [
+                "Text rendering (character objects)",
+                "Game particle systems",
+                "Memory-constrained environments",
+                "Object pooling"
+              ],
+              "implementation": {
+                "concept": "class FlyweightFactory { private flyweights = new Map(); getFlyweight(key) { if (!this.flyweights.has(key)) { this.flyweights.set(key, new Flyweight(key)); } return this.flyweights.get(key); } }"
+              },
+              "pros": [
+                "Reduces memory consumption",
+                "Improves performance",
+                "Efficient object reuse"
+              ],
+              "cons": [
+                "Complexity increases",
+                "Runtime costs for lookups",
+                "Thread-safety concerns"
+              ]
+            },
+            {
+              "name": "Proxy",
+              "category": "Structural",
+              "intent": "Provide a surrogate or placeholder for another object to control access to it",
+              "use_cases": [
+                "Lazy initialization (Virtual Proxy)",
+                "Access control (Protection Proxy)",
+                "Remote service access (Remote Proxy)",
+                "Caching (Cache Proxy)",
+                "Logging (Logging Proxy)"
+              ],
+              "implementation": {
+                "concept": "interface Subject { request(): void; } class RealSubject implements Subject {} class Proxy implements Subject { constructor(private realSubject: RealSubject) {} request() { if (this.checkAccess()) { this.realSubject.request(); } } }"
+              },
+              "pros": [
+                "Controls access to objects",
+                "Lazy initialization",
+                "Additional functionality without changing object",
+                "Open/Closed Principle"
+              ],
+              "cons": [
+                "Response time may increase",
+                "Additional complexity"
+              ]
+            }
+          ]
+        },
+        "behavioral_patterns": {
+          "description": "Deal with object collaboration and the delegation of responsibilities among objects",
+          "patterns": [
+            {
+              "name": "Chain of Responsibility",
+              "category": "Behavioral",
+              "intent": "Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request",
+              "use_cases": [
+                "Event bubbling in UI",
+                "Logging frameworks with multiple handlers",
+                "Request filtering/middleware",
+                "Authorization chains"
+              ],
+              "implementation": {
+                "concept": "abstract class Handler { protected next: Handler; setNext(handler: Handler) { this.next = handler; return handler; } handle(request) { if (this.next) { return this.next.handle(request); } } }"
+              },
+              "pros": [
+                "Decouples sender and receiver",
+                "Flexible responsibility assignment",
+                "Single Responsibility Principle",
+                "Open/Closed Principle"
+              ],
+              "cons": [
+                "Request might not be handled",
+                "Debugging can be difficult",
+                "Performance concerns with long chains"
+              ]
+            },
+            {
+              "name": "Command",
+              "category": "Behavioral",
+              "intent": "Encapsulate a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations",
+              "use_cases": [
+                "Undo/Redo operations",
+                "Transaction management",
+                "Job queues",
+                "Macro recording",
+                "Remote control systems"
+              ],
+              "implementation": {
+                "concept": "interface Command { execute(): void; undo(): void; } class ConcreteCommand implements Command { constructor(private receiver: Receiver) {} execute() { this.receiver.action(); } }"
+              },
+              "pros": [
+                "Decouples invoker from receiver",
+                "Easy to add new commands",
+                "Supports undo/redo",
+                "Command queuing and logging"
+              ],
+              "cons": [
+                "Increases number of classes",
+                "Can be overly complex for simple operations"
+              ]
+            },
+            {
+              "name": "Iterator",
+              "category": "Behavioral",
+              "intent": "Provide a way to access elements of an aggregate object sequentially without exposing its underlying representation",
+              "use_cases": [
+                "Collection traversal",
+                "Tree/graph navigation",
+                "Database result sets",
+                "File system traversal"
+              ],
+              "implementation": {
+                "concept": "interface Iterator<T> { hasNext(): boolean; next(): T; } interface Iterable<T> { createIterator(): Iterator<T>; }"
+              },
+              "pros": [
+                "Single Responsibility Principle",
+                "Open/Closed Principle",
+                "Parallel iteration",
+                "Deferred iteration"
+              ],
+              "cons": [
+                "Overkill for simple collections",
+                "Less efficient than direct access"
+              ]
+            },
+            {
+              "name": "Mediator",
+              "category": "Behavioral",
+              "intent": "Define an object that encapsulates how a set of objects interact, promoting loose coupling by keeping objects from referring to each other explicitly",
+              "use_cases": [
+                "UI dialog boxes",
+                "Chat room servers",
+                "Air traffic control",
+                "Event coordination"
+              ],
+              "implementation": {
+                "concept": "interface Mediator { notify(sender: Component, event: string): void; } class ConcreteMediator implements Mediator { notify(sender, event) { /* coordinate components */ } }"
+              },
+              "pros": [
+                "Reduces coupling between components",
+                "Centralizes complex communications",
+                "Single Responsibility Principle",
+                "Easier to understand interactions"
+              ],
+              "cons": [
+                "Mediator can become overly complex",
+                "God object anti-pattern risk"
+              ]
+            },
+            {
+              "name": "Memento",
+              "category": "Behavioral",
+              "intent": "Capture and externalize an object's internal state without violating encapsulation, so the object can be restored to this state later",
+              "use_cases": [
+                "Undo mechanisms",
+                "Database transactions",
+                "Snapshot creation",
+                "Game save states"
+              ],
+              "implementation": {
+                "concept": "class Memento { constructor(private state: any) {} getState() { return this.state; } } class Originator { save(): Memento { return new Memento(this.state); } restore(m: Memento) { this.state = m.getState(); } }"
+              },
+              "pros": [
+                "Preserves encapsulation",
+                "Simplifies originator",
+                "State history management"
+              ],
+              "cons": [
+                "Memory intensive",
+                "Caretaker must track memento lifecycle",
+                "Dynamic language challenges"
+              ]
+            },
+            {
+              "name": "Observer",
+              "category": "Behavioral",
+              "intent": "Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically",
+              "use_cases": [
+                "Event handling systems",
+                "Model-View-Controller (MVC)",
+                "Pub/Sub messaging",
+                "Real-time data updates",
+                "Reactive programming"
+              ],
+              "implementation": {
+                "concept": "interface Observer { update(subject: Subject): void; } class Subject { private observers: Observer[] = []; attach(o: Observer) {} notify() { observers.forEach(o => o.update(this)); } }"
+              },
+              "pros": [
+                "Open/Closed Principle",
+                "Dynamic relationships at runtime",
+                "Loose coupling",
+                "Broadcast communication"
+              ],
+              "cons": [
+                "Random notification order",
+                "Memory leaks if not unsubscribed",
+                "Unexpected updates"
+              ]
+            },
+            {
+              "name": "State",
+              "category": "Behavioral",
+              "intent": "Allow an object to alter its behavior when its internal state changes, appearing to change its class",
+              "use_cases": [
+                "TCP connection states",
+                "Document workflow",
+                "Vending machines",
+                "Game character states"
+              ],
+              "implementation": {
+                "concept": "interface State { handle(context: Context): void; } class Context { private state: State; setState(state: State) { this.state = state; } request() { this.state.handle(this); } }"
+              },
+              "pros": [
+                "Single Responsibility Principle",
+                "Open/Closed Principle",
+                "Eliminates complex conditionals",
+                "State-specific behavior encapsulation"
+              ],
+              "cons": [
+                "Overkill for few states",
+                "Increases number of classes"
+              ]
+            },
+            {
+              "name": "Strategy",
+              "category": "Behavioral",
+              "intent": "Define a family of algorithms, encapsulate each one, and make them interchangeable, letting the algorithm vary independently from clients",
+              "use_cases": [
+                "Sorting algorithms",
+                "Payment methods",
+                "Compression algorithms",
+                "Route finding",
+                "Validation strategies"
+              ],
+              "implementation": {
+                "concept": "interface Strategy { execute(data): any; } class Context { constructor(private strategy: Strategy) {} setStrategy(strategy: Strategy) {} executeStrategy(data) { return this.strategy.execute(data); } }"
+              },
+              "pros": [
+                "Open/Closed Principle",
+                "Runtime algorithm switching",
+                "Isolates implementation details",
+                "Eliminates conditionals"
+              ],
+              "cons": [
+                "Clients must be aware of strategies",
+                "Increases number of objects",
+                "Communication overhead"
+              ]
+            },
+            {
+              "name": "Template Method",
+              "category": "Behavioral",
+              "intent": "Define the skeleton of an algorithm in an operation, deferring some steps to subclasses without changing the algorithm's structure",
+              "use_cases": [
+                "Framework hooks",
+                "Data parsing",
+                "Game AI",
+                "Document generation"
+              ],
+              "implementation": {
+                "concept": "abstract class AbstractClass { templateMethod() { this.step1(); this.step2(); this.hook(); } abstract step1(): void; abstract step2(): void; hook() {} }"
+              },
+              "pros": [
+                "Code reuse",
+                "Control over algorithm structure",
+                "Open/Closed Principle",
+                "Eliminates duplicate code"
+              ],
+              "cons": [
+                "Limited flexibility",
+                "Liskov Substitution violations possible",
+                "Template can be too restrictive"
+              ]
+            },
+            {
+              "name": "Visitor",
+              "category": "Behavioral",
+              "intent": "Represent an operation to be performed on elements of an object structure, letting you define a new operation without changing the classes of the elements",
+              "use_cases": [
+                "Compiler abstract syntax trees",
+                "Document object model operations",
+                "Reporting on object structures",
+                "Export operations"
+              ],
+              "implementation": {
+                "concept": "interface Visitor { visitConcreteElementA(e: ConcreteElementA): void; } interface Element { accept(v: Visitor): void; }"
+              },
+              "pros": [
+                "Open/Closed Principle",
+                "Single Responsibility Principle",
+                "Accumulates state",
+                "Works across class hierarchies"
+              ],
+              "cons": [
+                "Must update all visitors for new elements",
+                "Breaking encapsulation",
+                "Complex to implement"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "clean_code_principles": {
+      "description": "Principles and practices for writing maintainable, readable, and efficient code",
+      "core_principles": [
+        {
+          "name": "Meaningful Names",
+          "description": "Use intention-revealing, pronounceable, and searchable names",
+          "guidelines": [
+            "Use intention-revealing names (getUserById vs get)",
+            "Avoid disinformation (accountList should be accounts unless it's actually a List)",
+            "Make meaningful distinctions (Product vs ProductInfo vs ProductData)",
+            "Use pronounceable names (genymdhms vs generationTimestamp)",
+            "Use searchable names (MAX_CLASSES_PER_STUDENT vs 7)",
+            "Avoid encodings (IShapeFactory vs ShapeFactory)",
+            "Class names should be nouns (Customer, Account)",
+            "Method names should be verbs (save, delete, getUser)"
+          ]
+        },
+        {
+          "name": "Functions",
+          "description": "Functions should be small, do one thing, and do it well",
+          "guidelines": [
+            "Small functions (ideally < 20 lines)",
+            "Do one thing (Single Responsibility)",
+            "One level of abstraction per function",
+            "Descriptive names (don't fear long names)",
+            "Minimal arguments (0-2 ideal, 3 acceptable, >3 requires refactoring)",
+            "No side effects (do what the name says, nothing more)",
+            "Command Query Separation (either change state OR return information)",
+            "Prefer exceptions to returning error codes",
+            "Extract try/catch blocks into functions",
+            "DRY (Don't Repeat Yourself)"
+          ]
+        },
+        {
+          "name": "Comments",
+          "description": "Good code is self-documenting; comments should explain why, not what",
+          "guidelines": [
+            "Don't comment bad code—rewrite it",
+            "Explain intent, not implementation",
+            "Clarify ambiguous return values or arguments",
+            "Warn of consequences",
+            "TODO comments for future work",
+            "Amplify importance of seemingly trivial code",
+            "Avoid: redundant comments, misleading comments, commented-out code",
+            "Legal comments at file beginning if required",
+            "Javadoc for public APIs only"
+          ]
+        },
+        {
+          "name": "Formatting",
+          "description": "Consistent code formatting improves readability",
+          "guidelines": [
+            "Vertical formatting: files should be small (200-500 lines)",
+            "Newspaper metaphor: most important concepts first",
+            "Vertical openness: blank lines separate concepts",
+            "Vertical density: related code should be close",
+            "Vertical distance: related concepts vertically close",
+            "Variable declarations close to usage",
+            "Instance variables at top of class",
+            "Dependent functions close together",
+            "Horizontal formatting: lines < 120 characters",
+            "Horizontal openness and density for readability",
+            "Indentation for hierarchy and scope"
+          ]
+        },
+        {
+          "name": "Objects and Data Structures",
+          "description": "Understand the difference between objects and data structures",
+          "guidelines": [
+            "Data abstraction: hide implementation, expose interface",
+            "Objects hide data, expose operations",
+            "Data structures expose data, have no meaningful operations",
+            "Law of Demeter: object should not know internals of objects it manipulates",
+            "Avoid train wrecks: a.getB().getC().doSomething()",
+            "Hybrids are confusing (half object, half data structure)",
+            "Data Transfer Objects (DTOs) for data communication",
+            "Active Record pattern for database tables"
+          ]
+        },
+        {
+          "name": "Error Handling",
+          "description": "Error handling is important but shouldn't obscure logic",
+          "guidelines": [
+            "Use exceptions rather than return codes",
+            "Write try-catch-finally statement first",
+            "Use unchecked exceptions",
+            "Provide context with exceptions",
+            "Define exception classes based on caller's needs",
+            "Define normal flow using Special Case Pattern",
+            "Don't return null (return empty collections or Optional)",
+            "Don't pass null (avoid null parameters)",
+            "Wrap third-party APIs for easier exception handling"
+          ]
+        },
+        {
+          "name": "Unit Tests",
+          "description": "Tests enable change and ensure correctness",
+          "guidelines": [
+            "Three Laws of TDD: write test before production code",
+            "Keep tests clean (as important as production code)",
+            "Tests must change as production code evolves",
+            "One assert per test (guideline, not rule)",
+            "Single concept per test",
+            "F.I.R.S.T: Fast, Independent, Repeatable, Self-Validating, Timely",
+            "Readable tests (Build-Operate-Check pattern)",
+            "Domain-specific testing language",
+            "Clean tests === maintainable tests"
+          ]
+        },
+        {
+          "name": "Classes",
+          "description": "Classes should be small and have a single responsibility",
+          "guidelines": [
+            "Small classes (measure by responsibilities, not lines)",
+            "Single Responsibility Principle",
+            "Class name describes responsibility",
+            "Cohesion: methods and variables are interdependent",
+            "Maintain cohesion results in many small classes",
+            "Organize for change (OCP - Open/Closed Principle)",
+            "Isolate from change (DIP - Dependency Inversion)",
+            "Private by default, increase visibility only when needed"
+          ]
+        },
+        {
+          "name": "Systems",
+          "description": "System architecture and design for scalability",
+          "guidelines": [
+            "Separate constructing a system from using it",
+            "Dependency Injection (Inversion of Control)",
+            "Scaling up: start simple, scale as needed",
+            "Cross-cutting concerns (AOP - Aspect Oriented Programming)",
+            "Test drive system architecture",
+            "Optimize decision making (defer until last responsible moment)",
+            "Use standards wisely (don't over-engineer)",
+            "Systems need domain-specific languages"
+          ]
+        },
+        {
+          "name": "Emergence",
+          "description": "Simple design rules for emergent architecture",
+          "four_rules": [
+            "Runs all tests (verifiable system)",
+            "Contains no duplication (DRY principle)",
+            "Expresses intent of programmer (clear code)",
+            "Minimizes number of classes and methods (not dogmatic about size)"
+          ]
+        },
+        {
+          "name": "Concurrency",
+          "description": "Writing correct concurrent programs is hard",
+          "guidelines": [
+            "Concurrency is a decoupling strategy",
+            "Myths: always improves performance, design doesn't change",
+            "Concurrency incurs overhead",
+            "Single Responsibility Principle for concurrency",
+            "Limit scope of data (use copies, immutable objects)",
+            "Use thread-safe collections",
+            "Know execution models: Producer-Consumer, Readers-Writers, Dining Philosophers",
+            "Beware dependencies between synchronized methods",
+            "Keep synchronized sections small",
+            "Writing correct shutdown code is hard",
+            "Test threaded code early and often",
+            "Treat spurious failures as threading issues",
+            "Get non-threaded code working first"
+          ]
+        },
+        {
+          "name": "Code Smells",
+          "description": "Common signs that code needs refactoring",
+          "smells": [
+            "Rigidity: difficult to change",
+            "Fragility: breaks in many places when changed",
+            "Immobility: difficult to reuse",
+            "Needless Complexity: over-engineering",
+            "Needless Repetition: DRY violation",
+            "Opacity: hard to understand",
+            "Long methods",
+            "Large classes",
+            "Long parameter lists",
+            "Divergent change: one class changes for many reasons",
+            "Shotgun surgery: one change affects many classes",
+            "Feature envy: method more interested in other class",
+            "Data clumps: data items always together",
+            "Primitive obsession: using primitives instead of objects",
+            "Switch statements (prefer polymorphism)",
+            "Parallel inheritance hierarchies",
+            "Lazy class: doesn't do enough to justify existence",
+            "Speculative generality: unused abstractions",
+            "Temporary field: instance variable set only in certain circumstances",
+            "Message chains: a.getB().getC().getD()",
+            "Middle man: class delegates most work",
+            "Inappropriate intimacy: classes too familiar with each other",
+            "Alternative classes with different interfaces",
+            "Incomplete library class",
+            "Data class: only getters/setters",
+            "Refused bequest: subclass doesn't use inherited functionality",
+            "Comments: often a smell that code needs refactoring"
+          ]
+        }
+      ]
+    },
+    "domain_driven_design": {
+      "description": "An approach to software development that centers on the core business domain and domain logic",
+      "core_concepts": {
+        "building_blocks": [
+          {
+            "name": "Entity",
+            "definition": "An object defined by its identity rather than attributes, continuing through time and different representations",
+            "characteristics": [
+              "Has unique identity",
+              "Mutable",
+              "Has lifecycle",
+              "Tracked through system"
+            ],
+            "example": "User, Order, Product with unique IDs",
+            "implementation_tips": [
+              "Implement equals() based on identity",
+              "Generate unique identifiers",
+              "Consider lifecycle events",
+              "Protect invariants"
+            ]
+          },
+          {
+            "name": "Value Object",
+            "definition": "An object that describes characteristics but has no identity, defined by its attributes",
+            "characteristics": [
+              "Immutable",
+              "No identity",
+              "Compared by value",
+              "Interchangeable"
+            ],
+            "example": "Money, Address, DateRange, Email",
+            "implementation_tips": [
+              "Make immutable",
+              "Implement value-based equals()",
+              "No setters, only creation",
+              "Can be shared safely"
+            ]
+          },
+          {
+            "name": "Aggregate",
+            "definition": "A cluster of domain objects treated as a single unit with one entity as the aggregate root",
+            "characteristics": [
+              "Consistency boundary",
+              "Root entity controls access",
+              "Transactional consistency",
+              "References by ID only"
+            ],
+            "example": "Order (root) with OrderItems, Customer with Addresses",
+            "implementation_tips": [
+              "Keep aggregates small",
+              "One transaction per aggregate",
+              "External references by ID",
+              "Root enforces invariants"
+            ]
+          },
+          {
+            "name": "Repository",
+            "definition": "Mechanism for encapsulating storage, retrieval, and search behavior, simulating a collection of objects",
+            "characteristics": [
+              "Collection-like interface",
+              "Persistence abstraction",
+              "Query encapsulation",
+              "One per aggregate root"
+            ],
+            "example": "UserRepository, OrderRepository",
+            "implementation_tips": [
+              "Create repository per aggregate root",
+              "Use domain language in queries",
+              "Return domain objects",
+              "Hide infrastructure details"
+            ]
+          },
+          {
+            "name": "Factory",
+            "definition": "Encapsulates complex object and aggregate creation",
+            "characteristics": [
+              "Complex creation logic",
+              "Ensures valid state",
+              "Hides construction details",
+              "Can reconstruct from storage"
+            ],
+            "example": "OrderFactory.createFromCart(), UserFactory.reconstitute()",
+            "implementation_tips": [
+              "Use when creation is complex",
+              "Ensure invariants",
+              "Separate factory from entity",
+              "Consider factory method on aggregate root"
+            ]
+          },
+          {
+            "name": "Domain Service",
+            "definition": "Operation that doesn't naturally belong to an entity or value object",
+            "characteristics": [
+              "Stateless",
+              "Domain logic",
+              "Coordinates multiple aggregates",
+              "Named after domain activity"
+            ],
+            "example": "PaymentService, ShippingCalculator, InventoryAllocator",
+            "implementation_tips": [
+              "Use when behavior doesn't fit entity/value object",
+              "Keep stateless",
+              "Use domain language",
+              "Avoid anemic domain model"
+            ]
+          },
+          {
+            "name": "Domain Event",
+            "definition": "Something significant that happened in the domain",
+            "characteristics": [
+              "Immutable",
+              "Past tense naming",
+              "Contains relevant data",
+              "Timestamp included"
+            ],
+            "example": "OrderPlaced, UserRegistered, PaymentProcessed",
+            "implementation_tips": [
+              "Name in past tense",
+              "Include occurrence time",
+              "Make immutable",
+              "Include relevant identifiers"
+            ]
+          }
+        ],
+        "strategic_design": [
+          {
+            "name": "Bounded Context",
+            "definition": "Explicit boundary within which a domain model is defined and applicable",
+            "description": "Each bounded context has its own ubiquitous language and model",
+            "characteristics": [
+              "Clear boundaries",
+              "Own models",
+              "Own database schema",
+              "Can evolve independently"
+            ],
+            "example": "Sales context, Shipping context, Billing context",
+            "implementation_tips": [
+              "Identify by business capability",
+              "Each can have different model for same concept",
+              "Communication through well-defined interfaces",
+              "Can use different technologies"
+            ]
+          },
+          {
+            "name": "Ubiquitous Language",
+            "definition": "Common language used by developers and domain experts",
+            "description": "Language that is structured around the domain model and used by all team members",
+            "characteristics": [
+              "Shared by developers and domain experts",
+              "Reflected in code",
+              "Evolves with understanding",
+              "Specific to bounded context"
+            ],
+            "implementation_tips": [
+              "Use in conversations",
+              "Use in code (class/method names)",
+              "Document in glossary",
+              "Challenge ambiguous terms"
+            ]
+          },
+          {
+            "name": "Context Mapping",
+            "definition": "Describing relationships between bounded contexts",
+            "patterns": [
+              {
+                "name": "Partnership",
+                "description": "Two contexts succeed or fail together, coordinated development"
+              },
+              {
+                "name": "Shared Kernel",
+                "description": "Shared subset of domain model, requires coordination"
+              },
+              {
+                "name": "Customer-Supplier",
+                "description": "Upstream-downstream relationship where downstream depends on upstream"
+              },
+              {
+                "name": "Conformist",
+                "description": "Downstream conforms to upstream model"
+              },
+              {
+                "name": "Anticorruption Layer",
+                "description": "Translation layer to prevent upstream model from corrupting downstream"
+              },
+              {
+                "name": "Open Host Service",
+                "description": "Protocol for access as a set of services"
+              },
+              {
+                "name": "Published Language",
+                "description": "Well-documented shared language for communication"
+              },
+              {
+                "name": "Separate Ways",
+                "description": "No connection between contexts"
+              }
+            ]
+          },
+          {
+            "name": "Subdomains",
+            "definition": "Parts of the overall business domain",
+            "types": [
+              {
+                "name": "Core Domain",
+                "description": "Primary competitive advantage, most important subdomain",
+                "strategy": "Invest heavily, best developers, custom development"
+              },
+              {
+                "name": "Supporting Subdomain",
+                "description": "Necessary but not core, supports the business",
+                "strategy": "Can be custom or bought, less investment than core"
+              },
+              {
+                "name": "Generic Subdomain",
+                "description": "Solved problem, not business specific",
+                "strategy": "Buy off-the-shelf, use libraries/frameworks"
+              }
+            ]
+          }
+        ],
+        "patterns": [
+          {
+            "name": "Layered Architecture",
+            "layers": [
+              "User Interface (Presentation)",
+              "Application Layer (orchestration)",
+              "Domain Layer (business logic)",
+              "Infrastructure Layer (persistence, external)"
+            ],
+            "principle": "Each layer depends only on layers below"
+          },
+          {
+            "name": "Hexagonal Architecture (Ports & Adapters)",
+            "description": "Domain at center, surrounded by ports (interfaces) and adapters (implementations)",
+            "benefits": [
+              "Technology agnostic domain",
+              "Easy testing",
+              "Flexible infrastructure"
+            ]
+          },
+          {
+            "name": "CQRS (Command Query Responsibility Segregation)",
+            "description": "Separate models for reads and writes",
+            "benefits": [
+              "Optimized read and write models",
+              "Scalability",
+              "Flexibility"
+            ],
+            "considerations": [
+              "Eventual consistency",
+              "Increased complexity",
+              "Synchronization needed"
+            ]
+          },
+          {
+            "name": "Event Sourcing",
+            "description": "Store all changes as sequence of events",
+            "benefits": [
+              "Complete audit trail",
+              "Temporal queries",
+              "Event replay",
+              "Natural fit with event-driven"
+            ],
+            "considerations": [
+              "Complexity",
+              "Event versioning",
+              "Snapshot strategy needed"
+            ]
+          }
+        ]
+      }
+    },
+    "microservices_architecture": {
+      "description": "Architectural style that structures an application as a collection of loosely coupled services",
+      "core_principles": [
+        {
+          "principle": "Single Responsibility",
+          "description": "Each microservice should focus on doing one thing well",
+          "benefits": ["Easier to understand", "Easier to maintain", "Independent deployment"]
+        },
+        {
+          "principle": "Autonomy",
+          "description": "Services are independently deployable and scalable",
+          "benefits": ["Team autonomy", "Technology diversity", "Fault isolation"]
+        },
+        {
+          "principle": "Decentralization",
+          "description": "Decentralized data management and governance",
+          "benefits": ["Polyglot persistence", "No single point of failure", "Flexibility"]
+        },
+        {
+          "principle": "Resilience",
+          "description": "Design for failure",
+          "benefits": ["Graceful degradation", "System stability", "High availability"]
+        },
+        {
+          "principle": "Observable",
+          "description": "Centralized logging, monitoring, and tracing",
+          "benefits": ["Debuggability", "Performance monitoring", "Business insights"]
+        },
+        {
+          "principle": "Automated",
+          "description": "CI/CD, automated testing, infrastructure as code",
+          "benefits": ["Fast deployment", "Consistency", "Reduced errors"]
+        }
+      ],
+      "characteristics": [
+        "Componentization via services",
+        "Organized around business capabilities",
+        "Products not projects",
+        "Smart endpoints and dumb pipes",
+        "Decentralized governance",
+        "Decentralized data management",
+        "Infrastructure automation",
+        "Design for failure",
+        "Evolutionary design"
+      ],
+      "communication_patterns": [
+        {
+          "name": "Synchronous HTTP/REST",
+          "description": "Request-response using HTTP REST APIs",
+          "use_cases": ["Real-time queries", "Simple CRUD operations"],
+          "pros": ["Simple", "Universal", "Tooling support"],
+          "cons": ["Tight coupling", "Blocking", "Cascading failures"]
+        },
+        {
+          "name": "Synchronous gRPC",
+          "description": "High-performance RPC using Protocol Buffers",
+          "use_cases": ["Service-to-service communication", "Performance critical"],
+          "pros": ["Fast", "Type-safe", "Bi-directional streaming"],
+          "cons": ["Complexity", "Less human-readable", "Browser support limited"]
+        },
+        {
+          "name": "Asynchronous Messaging",
+          "description": "Event-driven communication via message brokers",
+          "use_cases": ["Event notification", "Long-running processes", "High throughput"],
+          "pros": ["Loose coupling", "Async processing", "Resilience"],
+          "cons": ["Complexity", "Eventual consistency", "Debugging harder"]
+        }
+      ],
+      "data_management": [
+        {
+          "pattern": "Database per Service",
+          "description": "Each service owns its database",
+          "benefits": ["Loose coupling", "Technology choice", "Independent scaling"],
+          "challenges": ["Data consistency", "Queries across services", "Data duplication"]
+        },
+        {
+          "pattern": "Saga Pattern",
+          "description": "Distributed transaction management using events or orchestration",
+          "types": [
+            {
+              "name": "Choreography",
+              "description": "Services coordinate through events"
+            },
+            {
+              "name": "Orchestration",
+              "description": "Central coordinator manages the saga"
+            }
+          ]
+        },
+        {
+          "pattern": "API Composition",
+          "description": "Query multiple services and combine results",
+          "use_case": "Retrieving data from multiple services"
+        },
+        {
+          "pattern": "CQRS",
+          "description": "Separate read and write models",
+          "use_case": "Complex queries across services"
+        },
+        {
+          "pattern": "Event Sourcing",
+          "description": "Store state changes as events",
+          "use_case": "Audit trail, temporal queries, event-driven"
+        }
+      ],
+      "deployment_patterns": [
+        {
+          "pattern": "Multiple Services per Host",
+          "description": "Multiple service instances on single host",
+          "pros": ["Resource efficient"],
+          "cons": ["Poor isolation", "Dependency conflicts"]
+        },
+        {
+          "pattern": "Service Instance per VM",
+          "description": "Each service instance in own VM",
+          "pros": ["Isolation"],
+          "cons": ["Resource intensive", "Slow deployment"]
+        },
+        {
+          "pattern": "Service Instance per Container",
+          "description": "Each service instance in container (Docker)",
+          "pros": ["Lightweight", "Fast", "Isolation", "Portable"],
+          "cons": ["Container management complexity"]
+        },
+        {
+          "pattern": "Serverless",
+          "description": "Deploy as functions (AWS Lambda, Azure Functions)",
+          "pros": ["No infrastructure management", "Auto-scaling", "Pay per use"],
+          "cons": ["Cold starts", "Vendor lock-in", "Limits"]
+        }
+      ],
+      "service_discovery": [
+        {
+          "pattern": "Client-Side Discovery",
+          "description": "Client queries service registry and load balances",
+          "examples": ["Netflix Eureka", "Consul"],
+          "pros": ["Simple", "Fewer network hops"],
+          "cons": ["Client complexity", "Coupling"]
+        },
+        {
+          "pattern": "Server-Side Discovery",
+          "description": "Router queries service registry",
+          "examples": ["AWS ELB", "Kubernetes Service"],
+          "pros": ["Simple clients", "Centralized"],
+          "cons": ["Additional hop", "Router as bottleneck"]
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Distributed System Complexity",
+          "mitigation": ["Service mesh", "Observability tools", "Standardization"]
+        },
+        {
+          "challenge": "Data Consistency",
+          "mitigation": ["Eventual consistency", "Saga pattern", "CQRS/Event Sourcing"]
+        },
+        {
+          "challenge": "Network Latency",
+          "mitigation": ["Caching", "Async communication", "Service collocation"]
+        },
+        {
+          "challenge": "Testing",
+          "mitigation": ["Contract testing", "Component testing", "Chaos engineering"]
+        },
+        {
+          "challenge": "Deployment Complexity",
+          "mitigation": ["CI/CD automation", "Container orchestration", "Infrastructure as Code"]
+        },
+        {
+          "challenge": "Monitoring & Debugging",
+          "mitigation": ["Centralized logging", "Distributed tracing", "Metrics aggregation"]
+        }
+      ]
+    },
+    "monolithic_vs_distributed": {
+      "comparison": {
+        "monolithic_architecture": {
+          "definition": "Single unified application where all components are interconnected and interdependent",
+          "characteristics": [
+            "Single codebase",
+            "Single deployment unit",
+            "Shared database",
+            "In-process communication",
+            "Single technology stack"
+          ],
+          "pros": [
+            "Simple development initially",
+            "Easy to test (single unit)",
+            "Simple deployment",
+            "No network latency",
+            "Strong consistency",
+            "Easier debugging",
+            "Simple transactions"
+          ],
+          "cons": [
+            "Scaling issues (all-or-nothing)",
+            "Large codebase over time",
+            "Long build/deployment times",
+            "Technology lock-in",
+            "Coordination overhead for large teams",
+            "Difficult to understand over time",
+            "Risk of failure affecting entire app"
+          ],
+          "when_to_use": [
+            "Starting new project with uncertain requirements",
+            "Small team",
+            "Simple domain",
+            "Limited scalability needs",
+            "Tight deadline"
+          ]
+        },
+        "distributed_architecture": {
+          "definition": "System composed of multiple independent services that communicate over network",
+          "characteristics": [
+            "Multiple codebases",
+            "Independent deployments",
+            "Decentralized data",
+            "Network communication",
+            "Polyglot architecture"
+          ],
+          "pros": [
+            "Independent scaling",
+            "Technology diversity",
+            "Team autonomy",
+            "Fault isolation",
+            "Faster deployment of individual services",
+            "Better for large teams",
+            "Can handle complexity better"
+          ],
+          "cons": [
+            "Complex infrastructure",
+            "Network latency and failures",
+            "Eventual consistency",
+            "Distributed transactions hard",
+            "Testing complexity",
+            "Operational overhead",
+            "Debugging difficulties",
+            "Data inconsistency risks"
+          ],
+          "when_to_use": [
+            "Large, complex domain",
+            "Multiple teams",
+            "Different scaling needs per component",
+            "Need for different technologies",
+            "High availability requirements"
+          ]
+        }
+      },
+      "migration_strategies": [
+        {
+          "strategy": "Strangler Fig Pattern",
+          "description": "Gradually replace monolith by building new services around it",
+          "steps": [
+            "Identify bounded contexts",
+            "Create facade/proxy",
+            "Implement new service",
+            "Redirect traffic to new service",
+            "Remove old code from monolith",
+            "Repeat until monolith eliminated"
+          ]
+        },
+        {
+          "strategy": "Branch by Abstraction",
+          "description": "Create abstraction layer, switch implementation gradually",
+          "use_case": "Low-risk incremental migration"
+        },
+        {
+          "strategy": "Parallel Run",
+          "description": "Run old and new systems simultaneously, compare results",
+          "use_case": "High-risk migrations requiring validation"
+        }
+      ],
+      "decision_factors": [
+        {
+          "factor": "Team Size",
+          "monolithic": "Small team (< 10 developers)",
+          "distributed": "Large/multiple teams"
+        },
+        {
+          "factor": "Domain Complexity",
+          "monolithic": "Simple, well-understood domain",
+          "distributed": "Complex domain with multiple subdomains"
+        },
+        {
+          "factor": "Scalability",
+          "monolithic": "Uniform scaling acceptable",
+          "distributed": "Different components need different scaling"
+        },
+        {
+          "factor": "Deployment Frequency",
+          "monolithic": "Infrequent releases",
+          "distributed": "Frequent, independent releases needed"
+        },
+        {
+          "factor": "Technology",
+          "monolithic": "Single technology sufficient",
+          "distributed": "Need different technologies per service"
+        },
+        {
+          "factor": "Organizational",
+          "monolithic": "Centralized organization",
+          "distributed": "Autonomous teams"
+        }
+      ]
+    },
+    "event_driven_architecture": {
+      "description": "Architectural pattern where system state changes trigger events that are consumed by interested parties",
+      "core_concepts": [
+        {
+          "concept": "Event",
+          "definition": "Significant change in state",
+          "characteristics": [
+            "Immutable",
+            "Past tense (OrderPlaced, UserRegistered)",
+            "Contains relevant data",
+            "Timestamp",
+            "Event ID"
+          ]
+        },
+        {
+          "concept": "Event Producer",
+          "definition": "Component that detects and publishes events",
+          "responsibilities": ["Detect state changes", "Create event", "Publish to channel"]
+        },
+        {
+          "concept": "Event Consumer",
+          "definition": "Component that subscribes to and processes events",
+          "responsibilities": ["Subscribe to events", "Process events", "Handle failures"]
+        },
+        {
+          "concept": "Event Channel",
+          "definition": "Medium for transmitting events",
+          "types": ["Message queues", "Event streaming platforms", "Service bus"]
+        }
+      ],
+      "patterns": [
+        {
+          "pattern": "Event Notification",
+          "description": "Notify other systems that something happened",
+          "characteristics": ["Minimal data", "Decoupling", "Consumer pulls details if needed"],
+          "use_case": "Loose coupling between systems"
+        },
+        {
+          "pattern": "Event-Carried State Transfer",
+          "description": "Event contains all data consumers need",
+          "characteristics": ["Full data in event", "Consumers maintain local copy", "Reduces queries"],
+          "use_case": "Reduce coupling and query load"
+        },
+        {
+          "pattern": "Event Sourcing",
+          "description": "Store all state changes as sequence of events",
+          "characteristics": ["Event log as source of truth", "Rebuild state by replaying", "Complete audit trail"],
+          "use_case": "Audit, temporal queries, event replay"
+        },
+        {
+          "pattern": "CQRS",
+          "description": "Separate read and write models",
+          "characteristics": ["Command side writes", "Query side reads", "Eventual consistency"],
+          "use_case": "Complex queries, scalability"
+        }
+      ],
+      "topologies": [
+        {
+          "topology": "Mediator Topology",
+          "description": "Central event mediator orchestrates event flow",
+          "components": ["Event queue", "Event mediator", "Event processors"],
+          "pros": ["Control over workflow", "Error handling", "Transaction management"],
+          "cons": ["Mediator bottleneck", "Coupling to mediator"],
+          "use_case": "Complex workflows with orchestration"
+        },
+        {
+          "topology": "Broker Topology",
+          "description": "Distributed event processing with no central coordinator",
+          "components": ["Event broker", "Event processors", "Processing flow"],
+          "pros": ["High scalability", "No single point of failure", "Loose coupling"],
+          "cons": ["Complex workflows hard", "Error handling distributed"],
+          "use_case": "Simple event flows, high scalability"
+        }
+      ],
+      "benefits": [
+        "Loose coupling between components",
+        "Scalability (async processing)",
+        "Resilience (failure isolation)",
+        "Flexibility (add consumers without changing producers)",
+        "Real-time processing",
+        "Event replay and audit",
+        "Better user experience (responsiveness)"
+      ],
+      "challenges": [
+        {
+          "challenge": "Eventual Consistency",
+          "description": "Data not immediately consistent across system",
+          "mitigation": ["Design for eventual consistency", "Compensating transactions", "User awareness"]
+        },
+        {
+          "challenge": "Event Ordering",
+          "description": "Events may arrive out of order",
+          "mitigation": ["Sequence numbers", "Timestamps", "Partitioning strategies"]
+        },
+        {
+          "challenge": "Duplicate Events",
+          "description": "Events may be delivered multiple times",
+          "mitigation": ["Idempotent consumers", "Event deduplication", "Transaction IDs"]
+        },
+        {
+          "challenge": "Error Handling",
+          "description": "Distributed error handling is complex",
+          "mitigation": ["Dead letter queues", "Retry policies", "Circuit breakers", "Compensating actions"]
+        },
+        {
+          "challenge": "Debugging",
+          "description": "Difficult to trace event flows",
+          "mitigation": ["Distributed tracing", "Correlation IDs", "Centralized logging", "Event monitoring"]
+        },
+        {
+          "challenge": "Schema Evolution",
+          "description": "Events change over time",
+          "mitigation": ["Versioning strategy", "Schema registry", "Backward compatibility"]
+        }
+      ],
+      "implementation_considerations": [
+        "Event naming conventions (past tense)",
+        "Event granularity (not too fine, not too coarse)",
+        "Event schema design",
+        "Event versioning strategy",
+        "Idempotency guarantees",
+        "Ordering guarantees",
+        "At-least-once vs exactly-once delivery",
+        "Event retention policy",
+        "Monitoring and alerting",
+        "Testing strategies (event replay, consumer testing)"
+      ]
+    },
+    "message_queues_async_processing": {
+      "description": "Asynchronous communication using message queues for decoupled, reliable message delivery",
+      "message_queue_concepts": [
+        {
+          "concept": "Message Queue",
+          "definition": "Temporary storage for messages between sender and receiver",
+          "characteristics": ["FIFO or priority-based", "Persistent or in-memory", "Point-to-point"],
+          "use_cases": ["Task queues", "Job processing", "Load leveling"]
+        },
+        {
+          "concept": "Topic/Publish-Subscribe",
+          "definition": "One-to-many message distribution",
+          "characteristics": ["Multiple subscribers", "Message broadcast", "Filter/routing"],
+          "use_cases": ["Event distribution", "Notifications", "Data replication"]
+        },
+        {
+          "concept": "Message Broker",
+          "definition": "Intermediary for message routing and delivery",
+          "responsibilities": ["Message routing", "Persistence", "Delivery guarantees", "Protocol translation"],
+          "examples": ["RabbitMQ", "Apache Kafka", "AWS SQS/SNS", "Azure Service Bus"]
+        }
+      ],
+      "messaging_patterns": [
+        {
+          "pattern": "Point-to-Point (Queue)",
+          "description": "One producer, one consumer per message",
+          "characteristics": ["Message consumed once", "Load distribution", "Competing consumers"],
+          "use_case": "Task distribution among workers"
+        },
+        {
+          "pattern": "Publish-Subscribe (Topic)",
+          "description": "One producer, multiple consumers",
+          "characteristics": ["Message copied to all subscribers", "Broadcast", "Fan-out"],
+          "use_case": "Event notification to multiple services"
+        },
+        {
+          "pattern": "Request-Reply",
+          "description": "Async request with reply",
+          "characteristics": ["Correlation ID", "Reply queue", "Timeout handling"],
+          "use_case": "Async RPC, query services"
+        },
+        {
+          "pattern": "Priority Queue",
+          "description": "Messages processed by priority",
+          "characteristics": ["High priority first", "SLA differentiation"],
+          "use_case": "Critical vs normal operations"
+        },
+        {
+          "pattern": "Dead Letter Queue",
+          "description": "Queue for failed messages",
+          "characteristics": ["Failed message storage", "Manual inspection", "Retry or discard"],
+          "use_case": "Error handling and investigation"
+        },
+        {
+          "pattern": "Competing Consumers",
+          "description": "Multiple consumers on same queue",
+          "characteristics": ["Load balancing", "Parallel processing", "Scalability"],
+          "use_case": "High throughput processing"
+        },
+        {
+          "pattern": "Message Router",
+          "description": "Route messages based on content",
+          "characteristics": ["Content-based routing", "Dynamic routing", "Filter patterns"],
+          "use_case": "Conditional message distribution"
+        }
+      ],
+      "delivery_guarantees": [
+        {
+          "guarantee": "At-Most-Once",
+          "description": "Message delivered zero or one time, may be lost",
+          "implementation": "Fire and forget, no acknowledgment",
+          "use_case": "Metrics, logs, non-critical data"
+        },
+        {
+          "guarantee": "At-Least-Once",
+          "description": "Message delivered one or more times, may duplicate",
+          "implementation": "Acknowledgment with retries",
+          "use_case": "Most common, requires idempotent consumers"
+        },
+        {
+          "guarantee": "Exactly-Once",
+          "description": "Message delivered exactly one time",
+          "implementation": "Complex, distributed transactions or deduplication",
+          "use_case": "Financial transactions, critical operations"
+        }
+      ],
+      "async_processing_patterns": [
+        {
+          "pattern": "Fire and Forget",
+          "description": "Send message without waiting for response",
+          "pros": ["Fast", "Decoupled", "Non-blocking"],
+          "cons": ["No confirmation", "Error handling delayed"],
+          "use_case": "Notifications, logging, metrics"
+        },
+        {
+          "pattern": "Request-Acknowledge",
+          "description": "Wait for acknowledgment that message received",
+          "pros": ["Confirmation", "Reliability"],
+          "cons": ["Slight delay", "Still eventual"],
+          "use_case": "Commands, important operations"
+        },
+        {
+          "pattern": "Request-Response",
+          "description": "Wait for processing result",
+          "pros": ["Get result", "Sync-like"],
+          "cons": ["Longer wait", "Timeout handling"],
+          "use_case": "Queries, calculations"
+        },
+        {
+          "pattern": "Background Job",
+          "description": "Queue work for later processing",
+          "pros": ["Offload work", "Better UX", "Load leveling"],
+          "cons": ["Eventual processing", "Status tracking needed"],
+          "use_case": "Report generation, email sending, data processing"
+        },
+        {
+          "pattern": "Batch Processing",
+          "description": "Collect messages and process in batches",
+          "pros": ["Efficiency", "Throughput", "Resource optimization"],
+          "cons": ["Latency", "Complexity"],
+          "use_case": "ETL, analytics, bulk operations"
+        },
+        {
+          "pattern": "Saga Pattern",
+          "description": "Long-running transaction as series of steps",
+          "types": ["Choreography", "Orchestration"],
+          "use_case": "Distributed transactions, workflows"
+        }
+      ],
+      "popular_technologies": [
+        {
+          "name": "RabbitMQ",
+          "type": "Message Broker",
+          "characteristics": ["AMQP protocol", "Flexible routing", "Rich plugin ecosystem"],
+          "strengths": ["Reliability", "Ease of use", "Good documentation"],
+          "use_cases": ["General messaging", "Task queues", "RPC"]
+        },
+        {
+          "name": "Apache Kafka",
+          "type": "Event Streaming Platform",
+          "characteristics": ["High throughput", "Distributed log", "Persistent", "Replay capability"],
+          "strengths": ["Scalability", "Durability", "Event sourcing"],
+          "use_cases": ["Event streaming", "Log aggregation", "Real-time analytics"]
+        },
+        {
+          "name": "AWS SQS",
+          "type": "Managed Queue Service",
+          "characteristics": ["Fully managed", "Scalable", "Standard and FIFO queues"],
+          "strengths": ["No ops", "Integration with AWS", "Reliability"],
+          "use_cases": ["Decoupling AWS services", "Background jobs"]
+        },
+        {
+          "name": "Redis Streams/Pub/Sub",
+          "type": "In-memory messaging",
+          "characteristics": ["Fast", "Multiple patterns", "Persistence optional"],
+          "strengths": ["Performance", "Simplicity"],
+          "use_cases": ["Real-time messaging", "Caching with messaging"]
+        },
+        {
+          "name": "Azure Service Bus",
+          "type": "Managed messaging service",
+          "characteristics": ["Queues and topics", "Advanced features", "Enterprise patterns"],
+          "strengths": ["Feature-rich", "Azure integration"],
+          "use_cases": ["Enterprise messaging", "Azure applications"]
+        },
+        {
+          "name": "Google Cloud Pub/Sub",
+          "type": "Managed messaging service",
+          "characteristics": ["Global", "Scalable", "Push and pull delivery"],
+          "strengths": ["GCP integration", "Scalability"],
+          "use_cases": ["Event ingestion", "Streaming analytics"]
+        }
+      ],
+      "best_practices": [
+        "Design idempotent consumers",
+        "Use dead letter queues for error handling",
+        "Monitor queue depth and consumer lag",
+        "Set appropriate message TTL",
+        "Use correlation IDs for tracing",
+        "Implement retry with exponential backoff",
+        "Choose appropriate delivery guarantee",
+        "Version message schemas",
+        "Handle poison messages",
+        "Use circuit breakers for downstream dependencies",
+        "Implement proper error handling and logging",
+        "Set up alerting for queue issues",
+        "Test async scenarios thoroughly",
+        "Consider message ordering requirements",
+        "Plan for message schema evolution"
+      ]
+    },
+    "service_mesh_circuit_breaker": {
+      "service_mesh": {
+        "definition": "Infrastructure layer for handling service-to-service communication with capabilities like load balancing, service discovery, security, and observability",
+        "core_capabilities": [
+          {
+            "capability": "Traffic Management",
+            "features": [
+              "Load balancing (round-robin, least request, random)",
+              "Circuit breaking",
+              "Timeouts and retries",
+              "Fault injection",
+              "Traffic splitting (A/B testing, canary)",
+              "Request routing",
+              "Rate limiting"
+            ]
+          },
+          {
+            "capability": "Security",
+            "features": [
+              "mTLS (mutual TLS) encryption",
+              "Certificate management",
+              "Authentication",
+              "Authorization policies",
+              "Service identity"
+            ]
+          },
+          {
+            "capability": "Observability",
+            "features": [
+              "Distributed tracing",
+              "Metrics collection",
+              "Access logging",
+              "Service topology visualization",
+              "Golden signals (latency, traffic, errors, saturation)"
+            ]
+          },
+          {
+            "capability": "Resilience",
+            "features": [
+              "Circuit breakers",
+              "Retries with backoff",
+              "Timeout policies",
+              "Bulkhead isolation",
+              "Health checks"
+            ]
+          }
+        ],
+        "architecture": {
+          "data_plane": {
+            "description": "Handles actual traffic between services",
+            "component": "Sidecar proxy (e.g., Envoy)",
+            "responsibilities": [
+              "Traffic interception",
+              "Load balancing",
+              "Health checks",
+              "Authentication",
+              "Metrics collection"
+            ]
+          },
+          "control_plane": {
+            "description": "Manages and configures proxies",
+            "component": "Control plane services",
+            "responsibilities": [
+              "Proxy configuration",
+              "Service discovery",
+              "Certificate distribution",
+              "Policy management",
+              "Telemetry aggregation"
+            ]
+          }
+        },
+        "popular_implementations": [
+          {
+            "name": "Istio",
+            "description": "Feature-rich service mesh with Envoy proxy",
+            "strengths": ["Comprehensive features", "Strong ecosystem", "Mature"],
+            "complexity": "High",
+            "use_case": "Large-scale production deployments"
+          },
+          {
+            "name": "Linkerd",
+            "description": "Lightweight, Kubernetes-native service mesh",
+            "strengths": ["Simplicity", "Performance", "Easy to adopt"],
+            "complexity": "Low to Medium",
+            "use_case": "Kubernetes environments, simplicity priority"
+          },
+          {
+            "name": "Consul Connect",
+            "description": "Service mesh from HashiCorp",
+            "strengths": ["Multi-platform", "Integrated with Consul", "Flexibility"],
+            "complexity": "Medium",
+            "use_case": "Multi-cloud, hybrid environments"
+          },
+          {
+            "name": "AWS App Mesh",
+            "description": "AWS-managed service mesh",
+            "strengths": ["AWS integration", "Managed service", "No ops"],
+            "complexity": "Low",
+            "use_case": "AWS environments"
+          }
+        ],
+        "benefits": [
+          "Centralized traffic management",
+          "Enhanced security (mTLS)",
+          "Improved observability",
+          "Resilience patterns out-of-box",
+          "Language agnostic",
+          "Separates infrastructure concerns from app code",
+          "Consistent policies across services"
+        ],
+        "challenges": [
+          "Operational complexity",
+          "Performance overhead (proxy latency)",
+          "Learning curve",
+          "Resource consumption (sidecar per pod)",
+          "Debugging complexity",
+          "Version management"
+        ]
+      },
+      "circuit_breaker_pattern": {
+        "definition": "Design pattern that prevents cascading failures by detecting failures and stopping calls to failing service",
+        "problem": "When a service fails, clients keep trying, wasting resources and potentially causing cascading failures",
+        "solution": "Monitor failures and 'open circuit' to stop calls, allowing failed service to recover",
+        "states": [
+          {
+            "state": "Closed",
+            "description": "Normal operation, requests flow through",
+            "behavior": "Monitor failures, count consecutive failures or failure rate",
+            "transition": "Open when failure threshold exceeded"
+          },
+          {
+            "state": "Open",
+            "description": "Circuit is open, requests fail immediately",
+            "behavior": "Fail fast without calling service, return cached response or error",
+            "transition": "Half-Open after timeout period"
+          },
+          {
+            "state": "Half-Open",
+            "description": "Testing if service recovered",
+            "behavior": "Allow limited test requests through",
+            "transition": "Closed if requests succeed, Open if they fail"
+          }
+        ],
+        "configuration_parameters": [
+          {
+            "parameter": "Failure Threshold",
+            "description": "Number/percentage of failures to open circuit",
+            "typical_value": "5 consecutive failures or 50% failure rate"
+          },
+          {
+            "parameter": "Timeout",
+            "description": "Time circuit stays open before half-open",
+            "typical_value": "30-60 seconds"
+          },
+          {
+            "parameter": "Success Threshold",
+            "description": "Successful requests in half-open to close circuit",
+            "typical_value": "2-5 successful requests"
+          },
+          {
+            "parameter": "Monitored Exceptions",
+            "description": "Which exceptions count as failures",
+            "typical_value": "Timeouts, connection errors, 5xx responses"
+          }
+        ],
+        "implementation_example": {
+          "concept": "class CircuitBreaker { state = 'CLOSED'; failures = 0; call(fn) { if (state === 'OPEN') { if (shouldAttemptReset()) { state = 'HALF_OPEN'; } else { throw new Error('Circuit open'); } } try { const result = fn(); onSuccess(); return result; } catch (error) { onFailure(); throw error; } } }"
+        },
+        "libraries": [
+          {
+            "name": "Hystrix (Netflix, archived)",
+            "language": "Java",
+            "features": ["Circuit breaker", "Bulkhead", "Thread pool isolation", "Fallbacks"]
+          },
+          {
+            "name": "Resilience4j",
+            "language": "Java",
+            "features": ["Lightweight", "Functional", "Multiple patterns", "Metrics"]
+          },
+          {
+            "name": "Polly",
+            "language": ".NET",
+            "features": ["Circuit breaker", "Retry", "Timeout", "Bulkhead", "Fallback"]
+          },
+          {
+            "name": "opossum",
+            "language": "Node.js",
+            "features": ["Circuit breaker", "Metrics", "Events", "Fallbacks"]
+          }
+        ],
+        "related_patterns": [
+          {
+            "pattern": "Retry",
+            "description": "Automatically retry failed operations",
+            "consideration": "Use with exponential backoff, don't retry on circuit open"
+          },
+          {
+            "pattern": "Timeout",
+            "description": "Limit time waiting for response",
+            "consideration": "Essential for circuit breaker to detect slow services"
+          },
+          {
+            "pattern": "Bulkhead",
+            "description": "Isolate resources to prevent one failure affecting others",
+            "consideration": "Limit concurrent calls per service"
+          },
+          {
+            "pattern": "Fallback",
+            "description": "Return default/cached value when service fails",
+            "consideration": "Provide degraded functionality instead of total failure"
+          },
+          {
+            "pattern": "Cache",
+            "description": "Store previous responses for reuse",
+            "consideration": "Return cached data when circuit open"
+          }
+        ],
+        "benefits": [
+          "Prevents cascading failures",
+          "Fail fast (better UX than hanging)",
+          "Gives failing service time to recover",
+          "Reduces resource waste",
+          "Enables graceful degradation",
+          "Improves system stability"
+        ],
+        "considerations": [
+          "Set appropriate thresholds (not too sensitive)",
+          "Monitor circuit breaker state",
+          "Implement fallback strategies",
+          "Consider different circuits for different failure types",
+          "Alert when circuits open frequently",
+          "Test circuit breaker behavior",
+          "Document circuit breaker configuration"
+        ]
+      }
+    },
+    "api_gateway_patterns": {
+      "definition": "Single entry point for clients, routing requests to appropriate backend services",
+      "core_responsibilities": [
+        "Request routing and composition",
+        "Authentication and authorization",
+        "Rate limiting and throttling",
+        "Caching",
+        "Request/response transformation",
+        "Protocol translation",
+        "Load balancing",
+        "Logging and monitoring",
+        "SSL termination"
+      ],
+      "patterns": [
+        {
+          "pattern": "API Gateway",
+          "description": "Single entry point for all clients",
+          "characteristics": [
+            "Centralized routing",
+            "Cross-cutting concerns",
+            "Service abstraction"
+          ],
+          "pros": [
+            "Centralized management",
+            "Simplified client",
+            "Single security point",
+            "Protocol translation"
+          ],
+          "cons": [
+            "Single point of failure",
+            "Potential bottleneck",
+            "Additional hop",
+            "Can become complex"
+          ],
+          "use_case": "General microservices architecture"
+        },
+        {
+          "pattern": "Backend for Frontend (BFF)",
+          "description": "Separate gateway per client type (web, mobile, IoT)",
+          "characteristics": [
+            "Client-specific",
+            "Optimized responses",
+            "Different aggregations"
+          ],
+          "pros": [
+            "Optimized for client",
+            "Parallel development",
+            "Better performance",
+            "Client autonomy"
+          ],
+          "cons": [
+            "Code duplication",
+            "More services to maintain",
+            "Consistency challenges"
+          ],
+          "use_case": "Multiple distinct client types with different needs"
+        },
+        {
+          "pattern": "API Composition",
+          "description": "Gateway composes data from multiple services",
+          "characteristics": [
+            "Aggregates responses",
+            "Parallel calls",
+            "Data joining"
+          ],
+          "pros": [
+            "Reduced client complexity",
+            "Fewer client requests",
+            "Optimized data transfer"
+          ],
+          "cons": [
+            "Gateway complexity",
+            "Failure handling",
+            "Performance impact"
+          ],
+          "use_case": "Client needs data from multiple services"
+        },
+        {
+          "pattern": "API Translation",
+          "description": "Translate between protocols (REST to gRPC, SOAP to REST)",
+          "characteristics": [
+            "Protocol conversion",
+            "Format transformation",
+            "Legacy integration"
+          ],
+          "pros": [
+            "Client compatibility",
+            "Legacy support",
+            "Flexibility"
+          ],
+          "cons": [
+            "Translation overhead",
+            "Complexity"
+          ],
+          "use_case": "Supporting multiple protocols or legacy systems"
+        },
+        {
+          "pattern": "GraphQL Gateway",
+          "description": "Gateway exposing GraphQL API aggregating multiple services",
+          "characteristics": [
+            "Schema stitching",
+            "Query optimization",
+            "Flexible queries"
+          ],
+          "pros": [
+            "Client flexibility",
+            "Reduced over-fetching",
+            "Strong typing"
+          ],
+          "cons": [
+            "Complex queries",
+            "N+1 problem",
+            "Caching challenges"
+          ],
+          "use_case": "Flexible client data requirements"
+        }
+      ],
+      "key_capabilities": [
+        {
+          "capability": "Authentication & Authorization",
+          "description": "Verify identity and permissions at gateway",
+          "techniques": [
+            "JWT validation",
+            "OAuth2/OIDC integration",
+            "API keys",
+            "mTLS",
+            "RBAC/ABAC"
+          ],
+          "benefits": [
+            "Centralized security",
+            "Services don't handle auth",
+            "Consistent policies"
+          ]
+        },
+        {
+          "capability": "Rate Limiting & Throttling",
+          "description": "Control request rate to prevent abuse",
+          "strategies": [
+            "Fixed window",
+            "Sliding window",
+            "Token bucket",
+            "Leaky bucket",
+            "Per-client limits",
+            "Per-API limits"
+          ],
+          "benefits": [
+            "Prevent abuse",
+            "Fair usage",
+            "Cost control",
+            "DDoS protection"
+          ]
+        },
+        {
+          "capability": "Request/Response Transformation",
+          "description": "Modify requests and responses",
+          "examples": [
+            "Add/remove headers",
+            "Data format conversion",
+            "Field mapping",
+            "Response filtering",
+            "Payload enrichment"
+          ],
+          "benefits": [
+            "Client compatibility",
+            "Versioning support",
+            "Security (hide internal structure)"
+          ]
+        },
+        {
+          "capability": "Caching",
+          "description": "Cache responses to reduce backend load",
+          "strategies": [
+            "Response caching",
+            "Cache-Control headers",
+            "ETags",
+            "Per-endpoint caching",
+            "Cache invalidation"
+          ],
+          "benefits": [
+            "Reduced latency",
+            "Lower backend load",
+            "Better scalability",
+            "Cost savings"
+          ]
+        },
+        {
+          "capability": "Load Balancing",
+          "description": "Distribute requests across service instances",
+          "algorithms": [
+            "Round robin",
+            "Least connections",
+            "Weighted",
+            "IP hash",
+            "Health-aware"
+          ],
+          "benefits": [
+            "High availability",
+            "Scalability",
+            "Even distribution"
+          ]
+        },
+        {
+          "capability": "Service Discovery Integration",
+          "description": "Dynamic routing based on service registry",
+          "features": [
+            "Automatic service lookup",
+            "Health checking",
+            "Dynamic routing",
+            "Failure detection"
+          ],
+          "benefits": [
+            "Dynamic scaling",
+            "Automatic failover",
+            "No hardcoded endpoints"
+          ]
+        },
+        {
+          "capability": "Observability",
+          "description": "Logging, metrics, and tracing",
+          "features": [
+            "Access logs",
+            "Performance metrics",
+            "Distributed tracing",
+            "Error tracking",
+            "Audit logs"
+          ],
+          "benefits": [
+            "Debugging",
+            "Performance monitoring",
+            "Security auditing",
+            "Business insights"
+          ]
+        }
+      ],
+      "popular_implementations": [
+        {
+          "name": "Kong",
+          "type": "Open-source, cloud-native",
+          "strengths": ["Plugin ecosystem", "Scalable", "Feature-rich"],
+          "use_case": "Production-grade API management"
+        },
+        {
+          "name": "AWS API Gateway",
+          "type": "Managed service",
+          "strengths": ["AWS integration", "Serverless", "Managed"],
+          "use_case": "AWS-based architectures"
+        },
+        {
+          "name": "Azure API Management",
+          "type": "Managed service",
+          "strengths": ["Enterprise features", "Azure integration", "Developer portal"],
+          "use_case": "Azure enterprise applications"
+        },
+        {
+          "name": "Google Cloud API Gateway",
+          "type": "Managed service",
+          "strengths": ["GCP integration", "OpenAPI support"],
+          "use_case": "GCP applications"
+        },
+        {
+          "name": "Nginx",
+          "type": "Reverse proxy / API Gateway",
+          "strengths": ["Performance", "Flexibility", "Mature"],
+          "use_case": "High-performance routing"
+        },
+        {
+          "name": "Traefik",
+          "type": "Modern, dynamic",
+          "strengths": ["Container-native", "Auto-discovery", "Easy config"],
+          "use_case": "Docker/Kubernetes environments"
+        },
+        {
+          "name": "Envoy",
+          "type": "Modern proxy",
+          "strengths": ["Advanced features", "Service mesh", "Observability"],
+          "use_case": "Service mesh, complex routing"
+        },
+        {
+          "name": "Express Gateway",
+          "type": "Node.js-based",
+          "strengths": ["JavaScript ecosystem", "Extensible", "Lightweight"],
+          "use_case": "Node.js microservices"
+        },
+        {
+          "name": "Apigee",
+          "type": "Enterprise API management",
+          "strengths": ["Full lifecycle management", "Analytics", "Monetization"],
+          "use_case": "Enterprise API programs"
+        }
+      ],
+      "design_considerations": [
+        {
+          "consideration": "Resilience",
+          "practices": [
+            "Circuit breakers",
+            "Timeouts",
+            "Retries",
+            "Fallback responses",
+            "Bulkhead isolation"
+          ]
+        },
+        {
+          "consideration": "Security",
+          "practices": [
+            "HTTPS/TLS termination",
+            "Input validation",
+            "CORS configuration",
+            "Security headers",
+            "DDoS protection",
+            "API key management"
+          ]
+        },
+        {
+          "consideration": "Performance",
+          "practices": [
+            "Connection pooling",
+            "Response compression",
+            "Caching strategy",
+            "Async processing",
+            "Resource limits"
+          ]
+        },
+        {
+          "consideration": "Scalability",
+          "practices": [
+            "Stateless design",
+            "Horizontal scaling",
+            "Load balancing",
+            "Rate limiting",
+            "Caching"
+          ]
+        },
+        {
+          "consideration": "Monitoring",
+          "practices": [
+            "Request logging",
+            "Metrics (latency, throughput, errors)",
+            "Distributed tracing",
+            "Alerting",
+            "Dashboards"
+          ]
+        }
+      ],
+      "anti_patterns": [
+        {
+          "anti_pattern": "Smart Gateway",
+          "description": "Gateway contains business logic",
+          "problem": "Violates separation of concerns, hard to maintain",
+          "solution": "Keep gateway thin, business logic in services"
+        },
+        {
+          "anti_pattern": "Chatty Composition",
+          "description": "Gateway makes many sequential service calls",
+          "problem": "High latency, cascading failures",
+          "solution": "Parallel calls, caching, BFF pattern"
+        },
+        {
+          "anti_pattern": "Shared Database",
+          "description": "Gateway accesses service databases",
+          "problem": "Tight coupling, violates service boundaries",
+          "solution": "Call service APIs, not databases"
+        },
+        {
+          "anti_pattern": "Mega Gateway",
+          "description": "Single gateway for everything",
+          "problem": "Single point of failure, bottleneck",
+          "solution": "Multiple gateways (BFF), federation"
+        }
+      ],
+      "best_practices": [
+        "Keep gateway stateless",
+        "Version APIs (URL or header)",
+        "Use OpenAPI/Swagger specs",
+        "Implement health checks",
+        "Set appropriate timeouts",
+        "Use circuit breakers",
+        "Cache aggressively where appropriate",
+        "Monitor golden signals (latency, traffic, errors, saturation)",
+        "Implement rate limiting per client",
+        "Use correlation IDs for tracing",
+        "Validate input at gateway",
+        "Return consistent error responses",
+        "Document APIs comprehensively",
+        "Test gateway thoroughly (load, security, failure scenarios)",
+        "Plan for graceful degradation"
+      ]
+    }
+  }
+}
