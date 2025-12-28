@@ -1,68 +1,64 @@
 ---
-name: devops-infrastructure
+name: devops
 description: Deploy applications with Docker and Kubernetes, automate with CI/CD, manage infrastructure with code, and configure cloud platforms and networking.
+sasmp_version: "1.3.0"
+bonded_agent: devops-infrastructure-agent
+bond_type: PRIMARY_BOND
 ---
 
-# DevOps & Infrastructure
+# DevOps & Infrastructure Skill
 
-This skill teaches deploying and managing backend systems.
+**Bonded to:** `devops-infrastructure-agent`
+
+---
 
 ## Quick Start
 
-DevOps involves:
-- **Containerization**: Package applications with dependencies
-- **Orchestration**: Manage multiple containers
-- **Automation**: CI/CD pipelines for deployment
-- **Infrastructure**: Define resources as code
-- **Operations**: Monitor and maintain systems
+```bash
+# Example: Invoke devops skill
+"Containerize my FastAPI application with Docker"
+```
 
-## Key Concepts
+---
 
-### Containerization
-- Docker images and containers
-- Dockerfile best practices
-- Multi-stage builds
-- Image optimization
+## Instructions
 
-### Kubernetes
-- Pods, deployments, services
-- Ingress for routing
-- ConfigMaps and secrets
-- StatefulSets, DaemonSets
+1. **Containerize**: Create optimized Docker images
+2. **Orchestrate**: Deploy to Kubernetes
+3. **Automate**: Set up CI/CD pipelines
+4. **Provision**: Use Infrastructure as Code
+5. **Monitor**: Configure observability
 
-### CI/CD
-- GitHub Actions, GitLab CI, Jenkins
-- Automated testing
-- Container image building
-- Deployment automation
+---
 
-### Infrastructure as Code
-- Terraform for provisioning
-- Ansible for configuration
-- CloudFormation (AWS)
-- Idempotent operations
+## Technology Selection
 
-### Cloud Platforms
-- AWS (EC2, ECS, EKS, Lambda, RDS)
-- GCP (Compute Engine, GKE, Cloud Functions)
-- Azure (VMs, AKS, Functions)
+| Category | Tools |
+|----------|-------|
+| Containers | Docker, Podman |
+| Orchestration | Kubernetes, ECS |
+| CI/CD | GitHub Actions, GitLab CI |
+| IaC | Terraform, Ansible |
+| Cloud | AWS, GCP, Azure |
 
-## Networking & Security
-- TCP/IP and OSI model
-- DNS and domains
-- SSL/TLS certificates
-- Firewalls and security groups
-- Load balancing
+---
 
-## Hands-On Projects
+## Examples
 
-- Create Docker container
-- Deploy to Kubernetes
-- Set up CI/CD pipeline
-- Write Terraform code
-- Configure cloud resources
+### Example 1: Dockerfile
+```
+Input: "Create Dockerfile for Python FastAPI"
+Output: Multi-stage build with Alpine, non-root user
+```
 
-## See Also
-- Agent 6: DevOps & Infrastructure (12-week guide)
-- Docker and Kubernetes documentation
-- Terraform Registry for examples
+### Example 2: CI/CD
+```
+Input: "Set up GitHub Actions for my project"
+Output: Workflow with test, build, deploy stages
+```
+
+---
+
+## References
+
+See `references/` directory for detailed documentation.

@@ -1,0 +1,15 @@
+{
+  "name": "pluginagentmarketplace-backend",
+  "owner": {
+    "name": "Plugin Agent Marketplace",
+    "email": "plugins@pluginagentmarketplace.com"
+  },
+  "plugins": [
+    {
+      "name": "backend-development-assistant",
+      "source": "./",
+      "description": "Professional backend development plugin with 7 agents and 7 skills",
+      "version": "2.0.0"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+# HTTP Security Headers Configuration
+# Apply these headers to all responses
+
+headers:
+  # Prevent XSS attacks
+  Content-Security-Policy: "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+
+  # Prevent MIME sniffing
+  X-Content-Type-Options: "nosniff"
+
+  # Prevent clickjacking
+  X-Frame-Options: "DENY"
+
+  # Enable XSS filter
+  X-XSS-Protection: "1; mode=block"
+
+  # Control referrer information
+  Referrer-Policy: "strict-origin-when-cross-origin"
+
+  # HTTP Strict Transport Security (HTTPS only)
+  Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"
+
+  # Control browser features
+  Permissions-Policy: "geolocation=(), microphone=(), camera=()"
+
+  # Remove server identification
+  X-Powered-By: null
+  Server: null
+
+# FastAPI middleware example
+fastapi_example: |
+  from fastapi import FastAPI
+  from fastapi.middleware.cors import CORSMiddleware
+
+  app = FastAPI()
+
+  @app.middleware("http")
+  async def add_security_headers(request, call_next):
+      response = await call_next(request)
+      response.headers["X-Content-Type-Options"] = "nosniff"
+      response.headers["X-Frame-Options"] = "DENY"
+      response.headers["X-XSS-Protection"] = "1; mode=block"
+      return response

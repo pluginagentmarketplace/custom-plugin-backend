@@ -1,38 +1,62 @@
 # Dependencies
 node_modules/
 __pycache__/
+*.pyc
+*.pyo
+.Python
+venv/
+env/
+.venv/
 *.egg-info/
-.env
-.venv
 
 # IDE
-.vscode/
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
-
-# OS
 .DS_Store
-Thumbs.db
 
-# Build
+# Build outputs
 dist/
 build/
-*.pyc
 *.js.map
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.local
 
 # Logs
 *.log
 npm-debug.log*
+logs/
 
-# Test coverage
+# Coverage
 coverage/
 .coverage
-
-# Temporary files
-*.tmp
-*.bak
+htmlcov/
 
 # Cache
 .cache/
+.pytest_cache/
+.mypy_cache/
+
+# Secrets (never commit)
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# OS
+Thumbs.db
+
+# Docker
+.docker/

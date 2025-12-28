@@ -1,46 +1,33 @@
 {
-  "name": "custom-plugin-backend",
-  "description": "Comprehensive backend development learning system with 7 specialized agents covering programming fundamentals, databases, APIs, architecture, performance, DevOps, and security",
-  "version": "1.0.0",
+  "name": "backend-development-assistant",
+  "version": "2.0.0",
+  "description": "Professional backend development plugin with 7 specialized agents and 7 skills covering programming fundamentals, databases, APIs, architecture, caching, DevOps, and security for Claude Code.",
   "author": {
-    "name": "Backend Development Learning Team"
+    "name": "Plugin Agent Marketplace",
+    "email": "plugins@pluginagentmarketplace.com",
+    "url": "https://github.com/pluginagentmarketplace"
   },
-  "agents": [
-    "01-programming-fundamentals",
-    "02-database-management",
-    "03-api-development",
-    "04-architecture-patterns",
-    "05-caching-performance",
-    "06-devops-infrastructure",
-    "07-testing-security"
-  ],
-  "commands": [
-    "learn",
-    "browse-agent",
-    "assess",
-    "projects"
-  ],
-  "skills": [
-    "languages",
-    "databases",
-    "api-design",
-    "architecture",
-    "performance",
-    "devops",
-    "security"
-  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": "https://github.com/pluginagentmarketplace/custom-plugin-backend",
+  "homepage": "https://github.com/pluginagentmarketplace/custom-plugin-backend",
   "keywords": [
     "backend",
-    "learning",
-    "agent",
-    "skill",
-    "programming",
-    "databases",
     "api",
+    "database",
     "microservices",
     "devops",
-    "security"
-  ],
-  "repository": "https://github.com/pluginagentmarketplace/custum-plugin-backend",
-  "license": "MIT"
+    "security",
+    "fastapi",
+    "nodejs",
+    "python",
+    "go",
+    "postgresql",
+    "mongodb",
+    "redis",
+    "docker",
+    "kubernetes",
+    "claude-code",
+    "plugin",
+    "ai-assistant"
+  ]
 }

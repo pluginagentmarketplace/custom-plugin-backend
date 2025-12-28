@@ -1,0 +1,62 @@
+# Gang of Four Design Patterns Reference
+
+creational:
+  singleton:
+    purpose: "Ensure single instance"
+    use_when: "Database connections, configuration, logging"
+
+  factory:
+    purpose: "Create objects without specifying class"
+    use_when: "Multiple similar object types, decoupling"
+
+  builder:
+    purpose: "Construct complex objects step by step"
+    use_when: "Complex object creation, many optional parameters"
+
+  prototype:
+    purpose: "Clone existing objects"
+    use_when: "Expensive object creation, similar objects"
+
+structural:
+  adapter:
+    purpose: "Convert interface to another"
+    use_when: "Integrating legacy code, third-party libraries"
+
+  decorator:
+    purpose: "Add behavior dynamically"
+    use_when: "Extending functionality without inheritance"
+
+  facade:
+    purpose: "Simplified interface to complex system"
+    use_when: "Simplifying subsystems, reducing dependencies"
+
+  proxy:
+    purpose: "Control access to object"
+    use_when: "Lazy loading, access control, caching"
+
+behavioral:
+  observer:
+    purpose: "Notify multiple objects of changes"
+    use_when: "Event systems, pub/sub, UI updates"
+
+  strategy:
+    purpose: "Interchangeable algorithms"
+    use_when: "Multiple algorithms, runtime selection"
+
+  command:
+    purpose: "Encapsulate actions as objects"
+    use_when: "Undo/redo, queuing, logging"
+
+  chain_of_responsibility:
+    purpose: "Pass request along handler chain"
+    use_when: "Multiple handlers, middleware"
+
+selection_guide:
+  - scenario: "Need notification system"
+    pattern: "observer"
+  - scenario: "Need undo functionality"
+    pattern: "command"
+  - scenario: "Need to simplify complex API"
+    pattern: "facade"
+  - scenario: "Need database connection pool"
+    pattern: "singleton"

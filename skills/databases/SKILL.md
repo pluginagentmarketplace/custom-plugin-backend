@@ -1,50 +1,64 @@
 ---
-name: database-management
+name: databases
 description: Master relational and NoSQL databases. Learn PostgreSQL, MySQL, MongoDB, Redis, and other technologies for data persistence, optimization, and scaling.
+sasmp_version: "1.3.0"
+bonded_agent: database-management-agent
+bond_type: PRIMARY_BOND
 ---
 
-# Database Management
+# Database Management Skill
 
-This skill teaches data persistence, optimization, and scaling strategies.
+**Bonded to:** `database-management-agent`
+
+---
 
 ## Quick Start
 
-Database selection depends on:
-- **Data structure** (relational vs document)
-- **Consistency requirements** (ACID vs eventual consistency)
-- **Scale needs** (read/write patterns, volume)
-- **Query patterns** (OLTP vs OLAP)
+```bash
+# Example: Invoke databases skill
+"Design a database schema for my e-commerce application"
+```
 
-## Database Categories
+---
 
-### Relational Databases
-PostgreSQL, MySQL, MariaDB, T-SQL
-- Best for: Transactional data, structured data
-- Features: ACID, joins, complex queries
+## Instructions
 
-### NoSQL Databases
-MongoDB, Redis, Cassandra, DynamoDB, Elasticsearch
-- Best for: Document storage, key-value, time-series
-- Features: Horizontal scaling, flexibility
+1. **Analyze Requirements**: Understand data patterns and access needs
+2. **Select Database**: Choose SQL vs NoSQL based on requirements
+3. **Design Schema**: Create data models and relationships
+4. **Optimize Queries**: Implement indexes and query optimization
+5. **Set Up Operations**: Configure backup, replication, monitoring
 
-## Key Concepts
+---
 
-- **ACID properties**: Atomicity, Consistency, Isolation, Durability
-- **Indexes**: B-tree, hash, full-text
-- **Query optimization**: EXPLAIN plans, execution strategies
-- **Replication**: Master-slave, master-master
-- **Sharding**: Horizontal partitioning
-- **Backup & recovery**: PITR, disaster recovery
+## Database Selection Guide
 
-## Hands-On
+| Type | Best For | Examples |
+|------|----------|----------|
+| Relational | ACID, Complex queries | PostgreSQL, MySQL |
+| Document | Flexible schema | MongoDB |
+| Key-Value | Caching, Sessions | Redis |
+| Wide-Column | Time series | Cassandra |
+| Search | Full-text search | Elasticsearch |
 
-- Design database schemas
-- Write and optimize SQL queries
-- Set up replication
-- Implement backup strategies
-- Tune performance
+---
 
-## See Also
-- Agent 2: Database Management (comprehensive guide)
-- PostgreSQL and MongoDB official documentation
-- DBeaver, pgAdmin tools
+## Examples
+
+### Example 1: Schema Design
+```
+Input: "Design schema for user authentication system"
+Output: Users table with proper indexes, password hashing, session management
+```
+
+### Example 2: Query Optimization
+```
+Input: "My queries are slow on large table"
+Output: Add appropriate indexes, use EXPLAIN ANALYZE, consider partitioning
+```
+
+---
+
+## References
+
+See `references/` directory for detailed documentation.

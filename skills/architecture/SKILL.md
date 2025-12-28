@@ -1,58 +1,63 @@
 ---
-name: system-architecture
+name: architecture
 description: Master architectural design with SOLID principles, design patterns, microservices, and event-driven systems. Learn to design scalable backend systems.
+sasmp_version: "1.3.0"
+bonded_agent: architecture-patterns-agent
+bond_type: PRIMARY_BOND
 ---
 
-# System Architecture
+# System Architecture Skill
 
-This skill teaches designing robust, scalable backend systems.
+**Bonded to:** `architecture-patterns-agent`
+
+---
 
 ## Quick Start
 
-System architecture involves:
-- **Design principles**: SOLID, clean code, DDD
-- **Patterns**: Established solutions to recurring problems
-- **Architecture styles**: Monolithic, microservices, event-driven
-- **Trade-offs**: Scalability vs complexity, consistency vs availability
+```bash
+# Example: Invoke architecture skill
+"Help me decompose this monolith into microservices"
+```
 
-## Core Concepts
+---
 
-### SOLID Principles
-- Single Responsibility
-- Open/Closed
-- Liskov Substitution
-- Interface Segregation
-- Dependency Inversion
+## Instructions
 
-### Design Patterns
-- **Creational**: Singleton, Factory, Builder
-- **Structural**: Adapter, Decorator, Facade
-- **Behavioral**: Observer, Strategy, Command
+1. **Analyze Requirements**: Understand system needs and constraints
+2. **Apply SOLID**: Use SOLID principles for clean design
+3. **Select Patterns**: Choose appropriate design patterns
+4. **Design Architecture**: Select monolithic or distributed approach
+5. **Validate Design**: Review for scalability and maintainability
 
-### Architecture Styles
-- **Monolithic**: Single codebase, simple but harder to scale
-- **Microservices**: Independent services, more complex but scalable
-- **Event-Driven**: Services communicate via events, loose coupling
+---
 
-## Key Topics
+## Architecture Styles
 
-- Microservice decomposition
-- Service communication patterns
-- Data consistency and sagas
-- Circuit breakers and resilience
-- API gateways
-- Service discovery
-- Event sourcing and CQRS
+| Style | Best For | Complexity |
+|-------|----------|------------|
+| Monolithic | Simple apps, MVPs | Low |
+| Microservices | Large teams, scaling | High |
+| Event-Driven | Real-time, async | Medium |
+| Serverless | Variable load | Medium |
 
-## Hands-On Projects
+---
 
-- Refactor code with SOLID
-- Implement design patterns
-- Decompose into microservices
-- Build event-sourced system
-- Design API gateway
+## Examples
 
-## See Also
-- Agent 4: Architecture & Design Patterns (14-week guide)
-- "Microservices Patterns" by Chris Richardson
-- Enterprise Integration Patterns website
+### Example 1: Design Pattern
+```
+Input: "Which pattern for notification system?"
+Output: Observer pattern for publish-subscribe notifications
+```
+
+### Example 2: Microservices
+```
+Input: "Decompose e-commerce monolith"
+Output: User, Product, Order, Payment, Notification services
+```
+
+---
+
+## References
+
+See `references/` directory for detailed documentation.

@@ -1,17 +1,32 @@
-MIT License
+Custom License
 
-Copyright (c) 2025 plugin
+Copyright (c) 2025 Dr. Umit Kacar & Muhsin Elcicek
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+All rights reserved.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This software and associated documentation files (the "Software") are the
+proprietary property of the copyright holders. The Software is licensed,
+not sold.
 
+GRANT OF LICENSE:
+Subject to the terms of this license, you are granted a non-exclusive,
+non-transferable, limited license to use the Software for personal and
+commercial purposes.
+
+RESTRICTIONS:
+1. You may not modify, adapt, or create derivative works of the Software
+   without prior written consent from the copyright holders.
+2. You may not redistribute, sublicense, sell, or transfer the Software
+   or any rights therein to any third party.
+3. You may not reverse engineer, decompile, or disassemble the Software.
+4. You may not remove or alter any proprietary notices, labels, or marks
+   on the Software.
+
+ATTRIBUTION:
+When using this Software or its components in any project, you must
+provide appropriate credit to the original authors.
+
+DISCLAIMER:
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,3 +34,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+For licensing inquiries or permissions, please contact:
+plugins@pluginagentmarketplace.com

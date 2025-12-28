@@ -1,0 +1,101 @@
+# Language Comparison Matrix for Backend Development
+# Use this to help select the right language for your project
+
+languages:
+  javascript:
+    name: "JavaScript/Node.js"
+    type: "Interpreted"
+    paradigm: ["Event-driven", "Functional", "OOP"]
+    best_for:
+      - "Real-time applications"
+      - "Full-stack development"
+      - "API servers"
+      - "Microservices"
+    performance: "Good"
+    learning_curve: "Easy"
+    ecosystem:
+      package_manager: "npm, yarn, pnpm"
+      frameworks: ["Express", "Fastify", "NestJS", "Koa"]
+      testing: ["Jest", "Mocha", "Vitest"]
+    popularity_rank: 1
+    recommended: true
+
+  python:
+    name: "Python"
+    type: "Interpreted"
+    paradigm: ["OOP", "Functional", "Procedural"]
+    best_for:
+      - "Machine Learning/AI"
+      - "Data Science"
+      - "Scripting"
+      - "REST APIs"
+    performance: "Moderate"
+    learning_curve: "Easy"
+    ecosystem:
+      package_manager: "pip, poetry, conda"
+      frameworks: ["FastAPI", "Django", "Flask"]
+      testing: ["pytest", "unittest"]
+    popularity_rank: 2
+    recommended: true
+
+  go:
+    name: "Go"
+    type: "Compiled"
+    paradigm: ["Procedural", "Concurrent"]
+    best_for:
+      - "Microservices"
+      - "Cloud infrastructure"
+      - "CLI tools"
+      - "High-performance APIs"
+    performance: "Excellent"
+    learning_curve: "Medium"
+    ecosystem:
+      package_manager: "Go Modules"
+      frameworks: ["Gin", "Echo", "Fiber", "Chi"]
+      testing: ["testing package", "testify"]
+    popularity_rank: 3
+    recommended: true
+
+  java:
+    name: "Java"
+    type: "Compiled (JVM)"
+    paradigm: ["OOP", "Functional (Java 8+)"]
+    best_for:
+      - "Enterprise applications"
+      - "Android development"
+      - "Large systems"
+    performance: "Good"
+    learning_curve: "Medium"
+    ecosystem:
+      package_manager: "Maven, Gradle"
+      frameworks: ["Spring Boot", "Quarkus", "Micronaut"]
+      testing: ["JUnit", "TestNG", "Mockito"]
+    popularity_rank: 4
+
+  rust:
+    name: "Rust"
+    type: "Compiled"
+    paradigm: ["Systems", "Functional", "Concurrent"]
+    best_for:
+      - "Systems programming"
+      - "Performance-critical services"
+      - "WebAssembly"
+    performance: "Excellent"
+    learning_curve: "Hard"
+    ecosystem:
+      package_manager: "Cargo"
+      frameworks: ["Actix", "Rocket", "Axum"]
+      testing: ["built-in test framework"]
+    popularity_rank: 5
+
+selection_criteria:
+  - requirement: "Need high performance"
+    recommendation: ["go", "rust"]
+  - requirement: "Quick prototyping"
+    recommendation: ["python", "javascript"]
+  - requirement: "Enterprise/Large team"
+    recommendation: ["java", "csharp"]
+  - requirement: "ML/AI integration"
+    recommendation: ["python"]
+  - requirement: "Full-stack with same language"
+    recommendation: ["javascript"]

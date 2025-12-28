@@ -1,75 +1,64 @@
 ---
-name: security-practices
+name: security
 description: Secure backend applications against OWASP threats. Implement authentication, encryption, scanning, compliance, and incident response procedures.
+sasmp_version: "1.3.0"
+bonded_agent: testing-security-agent
+bond_type: PRIMARY_BOND
 ---
 
-# Security Practices
+# Security Practices Skill
 
-This skill teaches securing and maintaining safe backend systems.
+**Bonded to:** `testing-security-agent`
+
+---
 
 ## Quick Start
 
-Security involves:
-- **Threat prevention**: Defend against OWASP Top 10
-- **Authentication**: Who are you?
-- **Authorization**: What can you do?
-- **Encryption**: Protect data
-- **Scanning**: Find vulnerabilities
-- **Compliance**: Meet regulations
+```bash
+# Example: Invoke security skill
+"Audit my application for OWASP Top 10 vulnerabilities"
+```
 
-## OWASP Top 10
+---
 
-1. **Broken Access Control** - Wrong permissions
-2. **Cryptographic Failures** - Weak encryption
-3. **Injection** - SQL, NoSQL, command injection
-4. **Authentication** - Weak password, session attacks
-5. **Software and Data Integrity** - Untrusted updates
-6. **Vulnerable Components** - Outdated libraries
-7. **Identification and Authentication** - Session management
-8. **Data Integrity Failures** - Missing encryption
-9. **Access Control** - Missing checks
-10. **Server-Side Request Forgery (SSRF)** - Untrusted URLs
+## Instructions
 
-## Key Concepts
+1. **Security Assessment**: Identify vulnerabilities and risks
+2. **Implement Auth**: Add authentication and authorization
+3. **Encrypt Data**: Protect data at rest and in transit
+4. **Set Up Scanning**: Configure SAST, DAST, SCA
+5. **Ensure Compliance**: Meet GDPR, HIPAA, PCI-DSS
 
-### Authentication
-- Passwords: Hashing (bcrypt, argon2)
-- JWT: Stateless tokens
-- OAuth2: Delegated auth
-- MFA: Multiple factors
+---
 
-### Authorization
-- RBAC: Role-based access
-- ABAC: Attribute-based access
-- API scopes and permissions
-- Resource ownership
+## OWASP Top 10 Quick Reference
 
-### Encryption
-- **At Rest**: AES-256, database encryption
-- **In Transit**: TLS 1.3, HTTPS
-- **Key Management**: Vaults, key rotation
+| # | Vulnerability | Prevention |
+|---|---------------|------------|
+| 1 | Broken Access Control | Enforce least privilege |
+| 2 | Cryptographic Failures | Use strong encryption |
+| 3 | Injection | Parameterized queries |
+| 4 | Insecure Design | Threat modeling |
+| 5 | Security Misconfiguration | Secure defaults |
 
-### Scanning Tools
-- **SAST**: SonarQube, Semgrep (source code)
-- **DAST**: Burp Suite, OWASP ZAP (running app)
-- **SCA**: Snyk, Dependabot (dependencies)
-- **Container**: Trivy, Clair
+---
 
-### Compliance
-- **GDPR**: Privacy rights, data protection
-- **HIPAA**: Healthcare data protection
-- **PCI-DSS**: Payment card security
-- **SOC 2**: Trust service criteria
+## Examples
 
-## Hands-On Projects
+### Example 1: JWT Security
+```
+Input: "Implement secure JWT authentication"
+Output: Short-lived tokens, refresh rotation, secure storage
+```
 
-- Fix security vulnerabilities
-- Implement authentication
-- Set up scanning tools
-- Implement compliance
-- Create incident procedures
+### Example 2: Vulnerability Scan
+```
+Input: "Set up security scanning pipeline"
+Output: Configure Snyk, SonarQube, Trivy in CI/CD
+```
 
-## See Also
-- Agent 7: Testing, Security & Monitoring (12-week guide)
-- OWASP Top 10 and Cheat Sheets
-- "The Web Application Hacker's Handbook"
+---
+
+## References
+
+See `references/` directory for detailed documentation.
