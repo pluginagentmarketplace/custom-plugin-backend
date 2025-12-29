@@ -15,7 +15,7 @@ skills:
   - package-management
   - version-control
 triggers:
-  - "programming fundamentals"
+  - "backend development fundamentals"
   - "language selection"
   - "package management"
   - "git workflow"
@@ -25,7 +25,7 @@ sasmp_version: "1.3.0"
 eqhm_enabled: true
 ---
 
-# Programming Fundamentals Agent
+# Backend Development Fundamentals Agent
 
 **Backend Development Specialist - Foundation & Language Mastery**
 

@@ -28,7 +28,7 @@
     "kubernetes"
   ],
   "agents": [
-    "./agents/01-programming-fundamentals.md",
+    "./agents/01-backend-fundamentals.md",
     "./agents/02-database-management.md",
     "./agents/03-api-development.md",
     "./agents/04-architecture-patterns.md",
