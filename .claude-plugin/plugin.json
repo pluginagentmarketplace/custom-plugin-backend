@@ -3,8 +3,8 @@
   "version": "2.0.0",
   "description": "Professional backend development plugin with 7 specialized agents and 7 skills covering programming fundamentals, databases, APIs, architecture, caching, DevOps, and security for Claude Code.",
   "author": {
-    "name": "Plugin Agent Marketplace",
-    "email": "plugins@pluginagentmarketplace.com",
+    "name": "Dr. Umit Kacar & Muhsin Elcicek",
+    "email": "kacarumit.phd@gmail.com",
     "url": "https://github.com/pluginagentmarketplace"
   },
   "license": "SEE LICENSE IN LICENSE",
@@ -25,9 +25,31 @@
     "mongodb",
     "redis",
     "docker",
-    "kubernetes",
-    "claude-code",
-    "plugin",
-    "ai-assistant"
-  ]
+    "kubernetes"
+  ],
+  "agents": [
+    "./agents/01-programming-fundamentals.md",
+    "./agents/02-database-management.md",
+    "./agents/03-api-development.md",
+    "./agents/04-architecture-patterns.md",
+    "./agents/05-caching-performance.md",
+    "./agents/06-devops-infrastructure.md",
+    "./agents/07-testing-security.md"
+  ],
+  "skills": [
+    "./skills/api-design/SKILL.md",
+    "./skills/architecture/SKILL.md",
+    "./skills/databases/SKILL.md",
+    "./skills/devops/SKILL.md",
+    "./skills/languages/SKILL.md",
+    "./skills/performance/SKILL.md",
+    "./skills/security/SKILL.md"
+  ],
+  "commands": [
+    "./commands/assess.md",
+    "./commands/browse-agent.md",
+    "./commands/learn.md",
+    "./commands/projects.md"
+  ],
+  "hooks": "./hooks/hooks.json"
 }

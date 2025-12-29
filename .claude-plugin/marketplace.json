@@ -1,8 +1,9 @@
 {
   "name": "pluginagentmarketplace-backend",
   "owner": {
-    "name": "Plugin Agent Marketplace",
-    "email": "plugins@pluginagentmarketplace.com"
+    "name": "Dr. Umit Kacar & Muhsin Elcicek",
+    "email": "kacarumit.phd@gmail.com",
+    "url": "https://github.com/pluginagentmarketplace"
   },
   "plugins": [
     {
