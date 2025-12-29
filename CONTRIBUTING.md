@@ -1,102 +1,89 @@
-# Contributing to Backend Development Assistant
+# Contributing to Backend Plugin
 
-Thank you for your interest in contributing! This document provides guidelines for contributing to this plugin.
+Thank you for your interest in contributing to this Claude Code plugin!
 
-## Code of Conduct
+## 📋 How to Contribute
 
-By participating in this project, you agree to maintain a respectful and inclusive environment.
+1. **Fork** the repository
+2. **Create** your feature branch (`git checkout -b feature/amazing-feature`)
+3. **Follow** the Golden Format for new skills
+4. **Test** your changes thoroughly
+5. **Commit** your changes (`git commit -m 'feat: Add amazing feature'`)
+6. **Push** to the branch (`git push origin feature/amazing-feature`)
+7. **Open** a Pull Request
 
-## How to Contribute
+## 📐 Guidelines
 
-### Reporting Issues
+### SASMP v1.3.0 Compliance
 
-1. Check existing issues to avoid duplicates
-2. Use a clear and descriptive title
-3. Provide detailed reproduction steps
-4. Include relevant error messages or logs
+All contributions must follow SASMP (Standardized Agent/Skill Metadata Protocol) v1.3.0:
 
-### Suggesting Enhancements
-
-1. Describe the enhancement clearly
-2. Explain the use case and benefits
-3. Consider backward compatibility
-
-### Pull Requests
-
-1. Fork the repository
-2. Create a feature branch from `main`
-3. Make your changes following our guidelines
-4. Test your changes thoroughly
-5. Submit a pull request with a clear description
-
-## Development Guidelines
+- Agents must include `sasmp_version: "1.3.0"` and `eqhm_enabled: true`
+- Skills must include `bonded_agent` and `bond_type` fields
+- Commands must have YAML frontmatter
 
 ### Agent Development
-
-All agents must follow SASMP v1.3.0:
 
 ```yaml
 ---
 name: agent-name
-description: Clear description
+description: Agent description
 model: sonnet
-domain: custom-plugin-backend
-tools: Read, Write, Edit, Bash, Grep, Glob
-skills:
-  - bonded-skill-name
-triggers:
-  - "trigger phrase"
+tools: Read, Write, Bash
 sasmp_version: "1.3.0"
 eqhm_enabled: true
 ---
 ```
 
-### Skill Development
-
-All skills must follow Golden Format:
+### Skill Development (Golden Format)
 
 ```
-skills/
-└── skill-name/
-    ├── SKILL.md          # Main skill file with SASMP frontmatter
-    ├── assets/           # Templates and configurations
-    │   └── README.md
-    ├── scripts/          # Executable scripts
-    │   └── README.md
-    └── references/       # Documentation
-        └── README.md
+skills/skill-name/
+├── SKILL.md          # Main skill definition
+├── assets/           # Templates, configs, schemas
+├── scripts/          # Automation scripts
+└── references/       # Documentation, guides
 ```
 
-### Commit Messages
+SKILL.md frontmatter:
+```yaml
+---
+name: skill-name
+description: Skill description
+sasmp_version: "1.3.0"
+bonded_agent: agent-name
+bond_type: PRIMARY_BOND
+---
+```
 
-Follow conventional commits:
+### Command Development
 
-- `feat:` New feature
-- `fix:` Bug fix
-- `docs:` Documentation
-- `refactor:` Code refactoring
-- `test:` Tests
-- `chore:` Maintenance
+```yaml
+---
+name: command-name
+description: Command description
+allowed-tools: Read, Glob
+---
+```
 
-### Code Style
+## ✅ Testing Requirements
 
-- Use clear, descriptive names
-- Add comments for complex logic
-- Follow existing patterns in the codebase
+- Test all new features locally
+- Verify agent/skill bonding
+- Run `/plugin validate` before submitting
+- Ensure no E-code errors
 
-## Testing
+## 🔒 Code of Conduct
 
-Before submitting:
+- Be respectful and constructive
+- Follow existing code style
+- Document your changes
+- Test before submitting
 
-1. Verify agent frontmatter is valid YAML
-2. Check all skill directories have required files
-3. Test scripts are executable
-4. Validate JSON files are properly formatted
+## ❓ Questions?
 
-## Questions?
-
-Open an issue with the `question` label or contact plugins@pluginagentmarketplace.com.
+Open an issue for any questions or suggestions.
 
 ---
 
-Thank you for contributing!
+© 2025 Dr. Umit Kacar & Muhsin Elcicek. All Rights Reserved.
