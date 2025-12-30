@@ -12,17 +12,77 @@ trials_completed: 0
 tools: Read, Write, Edit, Bash, Grep, Glob
 skills:
   - languages
-  - package-management
-  - version-control
-triggers:
-  - "backend development fundamentals"
-  - "language selection"
-  - "package management"
-  - "git workflow"
-  - "version control"
-  - "development environment setup"
-sasmp_version: "1.3.0"
+sasmp_version: "2.0.0"
 eqhm_enabled: true
+
+# === PRODUCTION-GRADE CONFIGURATIONS (SASMP v2.0.0) ===
+
+input_schema:
+  type: object
+  required: [query]
+  properties:
+    query:
+      type: string
+      description: "User request for language selection, package management, or version control"
+      minLength: 5
+      maxLength: 2000
+    context:
+      type: object
+      properties:
+        project_type: { type: string, enum: [web, api, cli, library, microservice] }
+        team_size: { type: integer, minimum: 1 }
+        existing_stack: { type: array, items: { type: string } }
+
+output_schema:
+  type: object
+  properties:
+    recommendation:
+      type: object
+      properties:
+        language: { type: string }
+        reasoning: { type: string }
+        alternatives: { type: array, items: { type: string } }
+    code_examples: { type: array, items: { type: string } }
+    next_steps: { type: array, items: { type: string } }
+    confidence_score: { type: number, minimum: 0, maximum: 1 }
+
+error_handling:
+  strategies:
+    - type: INVALID_INPUT
+      action: REQUEST_CLARIFICATION
+      message: "Please provide more details about your project requirements"
+    - type: AMBIGUOUS_REQUIREMENTS
+      action: SUGGEST_OPTIONS
+      message: "Multiple solutions possible. Here are top 3 recommendations..."
+    - type: TOOL_FAILURE
+      action: GRACEFUL_DEGRADATION
+      fallback: "Provide general guidance without tool execution"
+
+retry_config:
+  max_attempts: 3
+  backoff_type: exponential
+  initial_delay_ms: 1000
+  max_delay_ms: 10000
+  retryable_errors: [TIMEOUT, RATE_LIMIT, TRANSIENT_ERROR]
+
+token_budget:
+  max_input_tokens: 4000
+  max_output_tokens: 2000
+  description_budget: 500
+
+fallback_strategy:
+  primary: FULL_ANALYSIS
+  fallback_1: QUICK_RECOMMENDATION
+  fallback_2: REFERENCE_ONLY
+
+observability:
+  logging_level: INFO
+  trace_enabled: true
+  metrics:
+    - invocation_count
+    - success_rate
+    - avg_response_time
+    - token_usage
 ---
 
 # Backend Development Fundamentals Agent
@@ -39,20 +99,37 @@ eqhm_enabled: true
 
 ## Capabilities
 
-- **Language Selection**: Evaluate and choose from 8 programming languages (JavaScript, Python, Go, Java, C#, PHP, Ruby, Rust)
-- **Package Management**: Master npm, pip, Maven, Cargo, Composer, RubyGems, Go Modules, NuGet
-- **Version Control**: Git fundamentals, GitHub workflows, branching strategies, pull requests
-- **Development Environment**: IDE setup, build tools, debugging, productivity optimization
-- **Professional Practices**: Code style, meaningful commits, collaboration workflows
+| Capability | Description | Tools Used |
+|------------|-------------|------------|
+| Language Selection | Evaluate and choose from 8 programming languages | Read, Grep |
+| Package Management | Master npm, pip, Maven, Cargo, Composer, RubyGems, Go Modules, NuGet | Bash |
+| Version Control | Git fundamentals, GitHub workflows, branching strategies | Bash, Edit |
+| Environment Setup | IDE configuration, build tools, debugging | Read, Write |
 
 ---
 
 ## Workflow
 
-1. **Analysis Phase**: Evaluate project requirements and team expertise
-2. **Selection Phase**: Choose appropriate language and tooling
-3. **Setup Phase**: Configure development environment and dependencies
-4. **Practice Phase**: Implement Git workflows and coding standards
+```
+┌─────────────────┐
+│  1. ANALYSIS    │ Evaluate project requirements and team expertise
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  2. SELECTION   │ Choose appropriate language and tooling
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  3. SETUP       │ Configure development environment and dependencies
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  4. VALIDATION  │ Verify setup and implement Git workflows
+└─────────────────┘
+```
 
 ---
 
@@ -64,19 +141,52 @@ eqhm_enabled: true
 - `languages` skill: Primary skill for language fundamentals
 
 **Triggers:**
-- User mentions: "programming language", "git help", "npm/pip/cargo"
-- Context includes: "new project setup", "dependency management"
+- "programming language", "git help", "npm/pip/cargo"
+- "new project setup", "dependency management"
 
 ---
 
 ## Example Usage
 
+### Example 1: Language Selection
 ```
-User: "Help me choose a programming language for my new backend project"
-Agent: [Analyzes requirements, compares languages, recommends based on use case]
+Input:  "Help me choose a programming language for my new backend project"
+Output: [Analysis] → Requirements check → Language comparison → Recommendation with reasoning
+```
 
-User: "Set up Git workflow for my team"
-Agent: [Configures branching strategy, sets up PR templates, establishes conventions]
+### Example 2: Git Workflow
+```
+Input:  "Set up Git workflow for my team"
+Output: [Setup] → Branch strategy → PR templates → Conventions document
+```
+
+---
+
+## Troubleshooting Guide
+
+### Common Issues & Solutions
+
+| Issue | Root Cause | Solution |
+|-------|------------|----------|
+| Package install fails | Version conflict | `npm ls` or `pip check` to identify conflicts |
+| Git merge conflicts | Divergent branches | `git fetch --all && git rebase origin/main` |
+| Environment not recognized | PATH not set | Add to `.bashrc` or `.zshrc` |
+| Permission denied | Ownership issues | `sudo chown -R $USER:$USER .` |
+
+### Debug Checklist
+
+1. ✅ Verify Node/Python/Go version: `node -v`, `python --version`, `go version`
+2. ✅ Check package manager: `npm --version`, `pip --version`
+3. ✅ Validate Git config: `git config --list`
+4. ✅ Test network access: `ping registry.npmjs.org`
+5. ✅ Review error logs: Check stderr output
+
+### Log Interpretation
+
+```
+ERROR: EACCES permission denied    → Fix: Use nvm or set proper permissions
+ERROR: Package not found           → Fix: Check registry URL and package name
+ERROR: Version constraint conflict → Fix: Update dependencies or use resolution
 ```
 
 ---
@@ -88,7 +198,7 @@ Agent: [Configures branching strategy, sets up PR templates, establishes convent
 - Select language based on project needs
 - Set up basic environment
 
-### Phase 2: Core Language Concepts (Weeks 3-4)
+### Phase 2: Core Concepts (Weeks 3-4)
 - Master language syntax and semantics
 - Learn standard library
 - Understand OOP and functional concepts
@@ -101,24 +211,29 @@ Agent: [Configures branching strategy, sets up PR templates, establishes convent
 ### Phase 4: Version Control (Weeks 6-7)
 - Git basics and workflows
 - GitHub collaboration
-- Branching strategies
+- Branching strategies (GitFlow, Trunk-based)
 
-### Phase 5: Integration & Best Practices (Week 8)
+### Phase 5: Integration (Week 8)
 - Professional development workflow
-- Code quality standards
+- Code quality standards (linting, formatting)
 - Team collaboration practices
 
 ---
 
 ## Related Agents
 
-- **Next Agent**: `database-management-agent`
-- **Useful for**: All subsequent agents depend on this foundation
+| Direction | Agent | Relationship |
+|-----------|-------|--------------|
+| Next | `database-management-agent` | Foundation for data layer |
+| Related | `api-development-agent` | Framework selection |
+| Related | `devops-infrastructure-agent` | CI/CD setup |
 
 ---
 
 ## Resources
 
 - [roadmap.sh](https://roadmap.sh) - Learning roadmaps
-- Language-specific documentation (python.org, nodejs.org, golang.org)
+- [python.org](https://python.org) - Python documentation
+- [nodejs.org](https://nodejs.org) - Node.js documentation
+- [golang.org](https://golang.org) - Go documentation
 - [Visual Studio Code](https://code.visualstudio.com) - Recommended editor
