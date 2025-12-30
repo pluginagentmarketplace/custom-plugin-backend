@@ -1,383 +1,366 @@
 {
   "system": {
     "name": "Custom Plugin Backend",
-    "version": "1.0.0",
-    "description": "Comprehensive Backend Development Learning System",
+    "version": "2.1.0",
+    "sasmp_version": "2.0.0",
+    "description": "Production-Grade Backend Development System with SASMP v2.0.0 Compliance",
     "created_date": "2025-11-17",
+    "last_updated": "2025-12-30",
     "status": "active",
-    "total_agents": 7,
-    "total_skills": 28,
-    "total_projects": 43,
-    "total_learning_hours": 1000,
-    "total_content_size_kb": 1400
+    "total_agents": 8,
+    "total_skills": 12,
+    "primary_skills": 7,
+    "secondary_skills": 5
   },
 
   "agents": [
     {
-      "id": "01-programming-fundamentals",
-      "name": "Programming Fundamentals & Language Selection",
+      "id": "programming-fundamentals-agent",
+      "file": "agents/01-backend-fundamentals.md",
+      "name": "Programming Fundamentals Agent",
       "sequence": 1,
-      "duration_weeks": 8,
       "difficulty_level": "Beginner to Intermediate",
-      "status": "complete",
-      "skills_count": 3,
-      "projects_count": 4,
-      "content_size_kb": 250,
-      "learning_hours": 80,
+      "status": "active",
+      "sasmp_version": "2.0.0",
       "description": "Master programming languages, package management, and version control systems",
-      "skills": [
-        {
-          "id": "1.1",
-          "name": "Programming Languages",
-          "file": "agents/01-programming-fundamentals/skills/languages.md"
-        },
-        {
-          "id": "1.2",
-          "name": "Package Management",
-          "file": "agents/01-programming-fundamentals/skills/package-management.md"
-        },
-        {
-          "id": "1.3",
-          "name": "Version Control & Git",
-          "file": "agents/01-programming-fundamentals/skills/version-control.md"
-        }
-      ],
-      "prerequisites": ["Basic computer literacy"],
-      "next_agents": ["02-database-management"],
-      "config_file": "agents/01-programming-fundamentals/agent.json"
+      "primary_skills": ["languages"],
+      "secondary_skills": [],
+      "token_budget": {
+        "max_input": 4000,
+        "max_output": 2000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 3,
+        "backoff": "exponential"
+      },
+      "prerequisites": [],
+      "next_agents": ["database-management-agent"]
     },
-
     {
-      "id": "02-database-management",
-      "name": "Database Management & Data Architecture",
+      "id": "database-management-agent",
+      "file": "agents/02-database-management.md",
+      "name": "Database Management Agent",
       "sequence": 2,
-      "duration_weeks": 10,
       "difficulty_level": "Intermediate",
-      "status": "complete",
-      "skills_count": 4,
-      "projects_count": 6,
-      "content_size_kb": 180,
-      "learning_hours": 100,
-      "description": "SQL, NoSQL, optimization, and disaster recovery strategies",
-      "skills": [
-        {
-          "id": "2.1",
-          "name": "Relational Databases",
-          "file": "agents/02-database-management/skills/relational-databases.md"
-        },
-        {
-          "id": "2.2",
-          "name": "NoSQL Databases",
-          "file": "agents/02-database-management/skills/nosql-databases.md"
-        },
-        {
-          "id": "2.3",
-          "name": "Query Optimization",
-          "file": "agents/02-database-management/skills/query-optimization.md"
-        },
-        {
-          "id": "2.4",
-          "name": "Backup & Replication",
-          "file": "agents/02-database-management/skills/backup-replication.md"
-        }
-      ],
-      "prerequisites": ["Agent 1: Programming Fundamentals"],
-      "next_agents": ["03-api-development", "05-caching-performance"],
-      "config_file": "agents/02-database-management/agent.json"
+      "status": "active",
+      "sasmp_version": "2.0.0",
+      "description": "SQL, NoSQL, optimization, and data architecture strategies",
+      "primary_skills": ["databases"],
+      "secondary_skills": [],
+      "token_budget": {
+        "max_input": 4000,
+        "max_output": 2000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 3,
+        "backoff": "exponential"
+      },
+      "prerequisites": ["programming-fundamentals-agent"],
+      "next_agents": ["api-development-agent", "caching-performance-agent"]
     },
-
     {
-      "id": "03-api-development",
-      "name": "API Development & Design",
+      "id": "api-development-agent",
+      "file": "agents/03-api-development.md",
+      "name": "API Development Agent",
       "sequence": 3,
-      "duration_weeks": 16,
       "difficulty_level": "Intermediate to Advanced",
-      "status": "complete",
-      "skills_count": 4,
-      "projects_count": 7,
-      "content_size_kb": 200,
-      "learning_hours": 160,
-      "description": "REST, GraphQL, gRPC, authentication, and API testing",
-      "skills": [
-        {
-          "id": "3.1",
-          "name": "REST APIs",
-          "file": "agents/03-api-development/skills/rest-apis.md"
-        },
-        {
-          "id": "3.2",
-          "name": "GraphQL & gRPC",
-          "file": "agents/03-api-development/skills/graphql-grpc.md"
-        },
-        {
-          "id": "3.3",
-          "name": "Authentication & Authorization",
-          "file": "agents/03-api-development/skills/authentication-authorization.md"
-        },
-        {
-          "id": "3.4",
-          "name": "API Documentation & Testing",
-          "file": "agents/03-api-development/skills/api-documentation-testing.md"
-        }
-      ],
-      "prerequisites": ["Agent 1: Programming Fundamentals", "Agent 2: Database Management"],
-      "next_agents": ["04-architecture-patterns"],
-      "config_file": "agents/03-api-development/agent.json"
+      "status": "active",
+      "sasmp_version": "2.0.0",
+      "description": "REST, GraphQL, gRPC, authentication, and API design patterns",
+      "primary_skills": ["api-design"],
+      "secondary_skills": ["authentication"],
+      "token_budget": {
+        "max_input": 4000,
+        "max_output": 2000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 3,
+        "backoff": "exponential"
+      },
+      "prerequisites": ["programming-fundamentals-agent", "database-management-agent"],
+      "next_agents": ["architecture-patterns-agent"]
     },
-
     {
-      "id": "04-architecture-patterns",
-      "name": "Architecture & Design Patterns",
+      "id": "architecture-patterns-agent",
+      "file": "agents/04-architecture-patterns.md",
+      "name": "Architecture Patterns Agent",
       "sequence": 4,
-      "duration_weeks": 14,
       "difficulty_level": "Advanced",
-      "status": "complete",
-      "skills_count": 4,
-      "projects_count": 6,
-      "content_size_kb": 190,
-      "learning_hours": 140,
+      "status": "active",
+      "sasmp_version": "2.0.0",
       "description": "SOLID principles, design patterns, microservices, and event-driven architecture",
-      "skills": [
-        {
-          "id": "4.1",
-          "name": "SOLID Principles",
-          "file": "agents/04-architecture-patterns/skills/solid-principles.md"
-        },
-        {
-          "id": "4.2",
-          "name": "Design Patterns",
-          "file": "agents/04-architecture-patterns/skills/design-patterns.md"
-        },
-        {
-          "id": "4.3",
-          "name": "Microservices Architecture",
-          "file": "agents/04-architecture-patterns/skills/microservices-architecture.md"
-        },
-        {
-          "id": "4.4",
-          "name": "Event-Driven & CQRS",
-          "file": "agents/04-architecture-patterns/skills/event-driven-cqrs.md"
-        }
-      ],
-      "prerequisites": ["Agents 1-3"],
-      "next_agents": ["06-devops-infrastructure", "07-testing-security"],
-      "config_file": "agents/04-architecture-patterns/agent.json"
+      "primary_skills": ["architecture"],
+      "secondary_skills": ["microservices", "messaging"],
+      "token_budget": {
+        "max_input": 5000,
+        "max_output": 3000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 2,
+        "backoff": "exponential"
+      },
+      "prerequisites": ["api-development-agent"],
+      "next_agents": ["devops-infrastructure-agent", "testing-security-agent"]
     },
-
     {
-      "id": "05-caching-performance",
-      "name": "Caching & Performance Optimization",
+      "id": "caching-performance-agent",
+      "file": "agents/05-caching-performance.md",
+      "name": "Caching & Performance Agent",
       "sequence": 5,
-      "duration_weeks": 8,
       "difficulty_level": "Advanced",
-      "status": "complete",
-      "skills_count": 4,
-      "projects_count": 9,
-      "content_size_kb": 180,
-      "learning_hours": 100,
-      "description": "Caching strategies, Redis, load balancing, and performance monitoring",
-      "skills": [
-        {
-          "id": "5.1",
-          "name": "Caching Strategies",
-          "file": "agents/05-caching-performance/skills/caching-strategies.md"
-        },
-        {
-          "id": "5.2",
-          "name": "Redis & Memcached",
-          "file": "agents/05-caching-performance/skills/redis-memcached.md"
-        },
-        {
-          "id": "5.3",
-          "name": "Load Balancing & Scaling",
-          "file": "agents/05-caching-performance/skills/load-balancing-scaling.md"
-        },
-        {
-          "id": "5.4",
-          "name": "Monitoring & Optimization",
-          "file": "agents/05-caching-performance/skills/monitoring-optimization.md"
-        }
-      ],
-      "prerequisites": ["Agents 1-3"],
-      "next_agents": ["04-architecture-patterns"],
-      "config_file": "agents/05-caching-performance/agent.json"
+      "status": "active",
+      "sasmp_version": "2.0.0",
+      "description": "Caching strategies, Redis, load balancing, and performance optimization",
+      "primary_skills": ["performance"],
+      "secondary_skills": [],
+      "token_budget": {
+        "max_input": 4000,
+        "max_output": 2000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 3,
+        "backoff": "exponential"
+      },
+      "prerequisites": ["database-management-agent"],
+      "next_agents": ["architecture-patterns-agent"]
     },
-
     {
-      "id": "06-devops-infrastructure",
-      "name": "DevOps & Infrastructure",
+      "id": "devops-infrastructure-agent",
+      "file": "agents/06-devops-infrastructure.md",
+      "name": "DevOps & Infrastructure Agent",
       "sequence": 6,
-      "duration_weeks": 12,
       "difficulty_level": "Advanced",
-      "status": "complete",
-      "skills_count": 4,
-      "projects_count": 5,
-      "content_size_kb": 210,
-      "learning_hours": 120,
-      "description": "Docker, Kubernetes, cloud platforms, CI/CD, and networking",
-      "skills": [
-        {
-          "id": "6.1",
-          "name": "Containerization & Orchestration",
-          "file": "agents/06-devops-infrastructure/skills/containerization-orchestration.md"
-        },
-        {
-          "id": "6.2",
-          "name": "Cloud Platforms & IaC",
-          "file": "agents/06-devops-infrastructure/skills/cloud-iac.md"
-        },
-        {
-          "id": "6.3",
-          "name": "CI/CD Pipelines",
-          "file": "agents/06-devops-infrastructure/skills/ci-cd-pipelines.md"
-        },
-        {
-          "id": "6.4",
-          "name": "Networking & SSL/TLS",
-          "file": "agents/06-devops-infrastructure/skills/networking-ssl.md"
-        }
-      ],
-      "prerequisites": ["Agent 4: Architecture & Design Patterns"],
-      "next_agents": ["07-testing-security"],
-      "config_file": "agents/06-devops-infrastructure/agent.json"
+      "status": "active",
+      "sasmp_version": "2.0.0",
+      "description": "Docker, Kubernetes, cloud platforms, CI/CD, and infrastructure as code",
+      "primary_skills": ["devops"],
+      "secondary_skills": [],
+      "token_budget": {
+        "max_input": 4000,
+        "max_output": 2000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 3,
+        "backoff": "exponential"
+      },
+      "prerequisites": ["architecture-patterns-agent"],
+      "next_agents": ["testing-security-agent", "backend-observability-agent"]
     },
-
     {
-      "id": "07-testing-security",
-      "name": "Testing, Security & Monitoring",
+      "id": "testing-security-agent",
+      "file": "agents/07-testing-security.md",
+      "name": "Testing & Security Agent",
       "sequence": 7,
-      "duration_weeks": 12,
       "difficulty_level": "Advanced",
-      "status": "complete",
-      "skills_count": 4,
-      "projects_count": 6,
-      "content_size_kb": 200,
-      "learning_hours": 120,
-      "description": "Testing strategies, security best practices, compliance, and observability",
-      "skills": [
-        {
-          "id": "7.1",
-          "name": "Testing Strategies",
-          "file": "agents/07-testing-security/skills/testing-strategies.md"
-        },
-        {
-          "id": "7.2",
-          "name": "Security Best Practices",
-          "file": "agents/07-testing-security/skills/security-best-practices.md"
-        },
-        {
-          "id": "7.3",
-          "name": "Security Scanning & Compliance",
-          "file": "agents/07-testing-security/skills/security-scanning-compliance.md"
-        },
-        {
-          "id": "7.4",
-          "name": "Monitoring & Observability",
-          "file": "agents/07-testing-security/skills/monitoring-observability.md"
-        }
-      ],
-      "prerequisites": ["Agent 4: Architecture & Design Patterns", "Agent 6: DevOps"],
-      "next_agents": [],
-      "config_file": "agents/07-testing-security/agent.json"
+      "status": "active",
+      "sasmp_version": "2.0.0",
+      "description": "Testing strategies, security best practices, OWASP, and compliance",
+      "primary_skills": ["security"],
+      "secondary_skills": ["testing"],
+      "token_budget": {
+        "max_input": 4000,
+        "max_output": 2000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 2,
+        "backoff": "exponential"
+      },
+      "prerequisites": ["architecture-patterns-agent", "devops-infrastructure-agent"],
+      "next_agents": ["backend-observability-agent"]
+    },
+    {
+      "id": "backend-observability-agent",
+      "file": "agents/08-backend-observability.md",
+      "name": "Backend Observability Agent",
+      "sequence": 8,
+      "difficulty_level": "Advanced",
+      "status": "active",
+      "sasmp_version": "2.0.0",
+      "description": "Logging, metrics, distributed tracing, OpenTelemetry, and production debugging",
+      "primary_skills": ["observability"],
+      "secondary_skills": [],
+      "token_budget": {
+        "max_input": 4000,
+        "max_output": 2000,
+        "reserved_for_context": 500
+      },
+      "error_handling": {
+        "max_retries": 3,
+        "backoff": "exponential"
+      },
+      "prerequisites": ["devops-infrastructure-agent"],
+      "next_agents": []
     }
   ],
+
+  "skills": {
+    "primary": [
+      {
+        "id": "languages",
+        "file": "skills/languages/SKILL.md",
+        "name": "Programming Languages",
+        "bonded_agent": "programming-fundamentals-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "databases",
+        "file": "skills/databases/SKILL.md",
+        "name": "Database Systems",
+        "bonded_agent": "database-management-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "api-design",
+        "file": "skills/api-design/SKILL.md",
+        "name": "API Design",
+        "bonded_agent": "api-development-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "architecture",
+        "file": "skills/architecture/SKILL.md",
+        "name": "Software Architecture",
+        "bonded_agent": "architecture-patterns-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "performance",
+        "file": "skills/performance/SKILL.md",
+        "name": "Performance Optimization",
+        "bonded_agent": "caching-performance-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "devops",
+        "file": "skills/devops/SKILL.md",
+        "name": "DevOps & Infrastructure",
+        "bonded_agent": "devops-infrastructure-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "security",
+        "file": "skills/security/SKILL.md",
+        "name": "Security Best Practices",
+        "bonded_agent": "testing-security-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      }
+    ],
+    "secondary": [
+      {
+        "id": "authentication",
+        "file": "skills/authentication/SKILL.md",
+        "name": "Authentication & Authorization",
+        "bonded_agent": "api-development-agent",
+        "bond_type": "SECONDARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "microservices",
+        "file": "skills/microservices/SKILL.md",
+        "name": "Microservices Architecture",
+        "bonded_agent": "architecture-patterns-agent",
+        "bond_type": "SECONDARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "messaging",
+        "file": "skills/messaging/SKILL.md",
+        "name": "Message Queues & Event-Driven",
+        "bonded_agent": "architecture-patterns-agent",
+        "bond_type": "SECONDARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "observability",
+        "file": "skills/observability/SKILL.md",
+        "name": "Observability & Monitoring",
+        "bonded_agent": "backend-observability-agent",
+        "bond_type": "PRIMARY_BOND",
+        "sasmp_version": "2.0.0"
+      },
+      {
+        "id": "testing",
+        "file": "skills/testing/SKILL.md",
+        "name": "Testing Strategies",
+        "bonded_agent": "testing-security-agent",
+        "bond_type": "SECONDARY_BOND",
+        "sasmp_version": "2.0.0"
+      }
+    ]
+  },
 
   "learning_paths": [
     {
       "id": "fast-track",
       "name": "Fast Track",
-      "description": "16 weeks - Quick learning for experienced developers",
-      "duration_weeks": 16,
-      "agents": ["01-programming-fundamentals", "03-api-development", "06-devops-infrastructure"],
-      "target_audience": "Experienced developers"
+      "description": "Quick learning for experienced developers",
+      "agents": ["programming-fundamentals-agent", "api-development-agent", "devops-infrastructure-agent"]
     },
     {
       "id": "full-stack",
-      "name": "Full-Stack Web Developer",
-      "description": "20 weeks - Build complete web applications",
-      "duration_weeks": 20,
-      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "06-devops-infrastructure"],
-      "target_audience": "Web developers"
+      "name": "Full-Stack Developer",
+      "description": "Build complete web applications",
+      "agents": ["programming-fundamentals-agent", "database-management-agent", "api-development-agent", "devops-infrastructure-agent"]
     },
     {
-      "id": "microservices",
+      "id": "microservices-architect",
       "name": "Microservices Architect",
-      "description": "28 weeks - Build distributed systems",
-      "duration_weeks": 28,
-      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "04-architecture-patterns", "05-caching-performance", "06-devops-infrastructure", "07-testing-security"],
-      "target_audience": "Senior engineers"
+      "description": "Build distributed systems",
+      "agents": ["programming-fundamentals-agent", "database-management-agent", "api-development-agent", "architecture-patterns-agent", "caching-performance-agent", "devops-infrastructure-agent", "testing-security-agent", "backend-observability-agent"]
     },
     {
-      "id": "devops",
+      "id": "devops-engineer",
       "name": "DevOps Engineer",
-      "description": "24 weeks - Infrastructure and deployment",
-      "duration_weeks": 24,
-      "agents": ["01-programming-fundamentals", "02-database-management", "05-caching-performance", "06-devops-infrastructure", "07-testing-security"],
-      "target_audience": "Infrastructure specialists"
+      "description": "Infrastructure and deployment",
+      "agents": ["programming-fundamentals-agent", "database-management-agent", "caching-performance-agent", "devops-infrastructure-agent", "testing-security-agent", "backend-observability-agent"]
     },
     {
-      "id": "security",
+      "id": "security-specialist",
       "name": "Security Specialist",
-      "description": "26 weeks - Security and compliance",
-      "duration_weeks": 26,
-      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "04-architecture-patterns", "07-testing-security"],
-      "target_audience": "Security engineers"
-    },
-    {
-      "id": "comprehensive",
-      "name": "Comprehensive",
-      "description": "36 weeks - Complete mastery",
-      "duration_weeks": 36,
-      "agents": ["01-programming-fundamentals", "02-database-management", "03-api-development", "04-architecture-patterns", "05-caching-performance", "06-devops-infrastructure", "07-testing-security"],
-      "target_audience": "All skill levels"
+      "description": "Security and compliance",
+      "agents": ["programming-fundamentals-agent", "database-management-agent", "api-development-agent", "architecture-patterns-agent", "testing-security-agent"]
     }
   ],
 
-  "assessment_framework": {
-    "levels": [
-      {
-        "level": 1,
-        "name": "Foundational",
-        "description": "Understanding basic concepts",
-        "agents": ["01-programming-fundamentals"]
-      },
-      {
-        "level": 2,
-        "name": "Intermediate",
-        "description": "Can apply concepts independently",
-        "agents": ["02-database-management"]
-      },
-      {
-        "level": 3,
-        "name": "Professional",
-        "description": "Can build production systems",
-        "agents": ["03-api-development"]
-      },
-      {
-        "level": 4,
-        "name": "Advanced",
-        "description": "Can architect complex systems",
-        "agents": ["04-architecture-patterns", "05-caching-performance"]
-      },
-      {
-        "level": 5,
-        "name": "Expert",
-        "description": "Can lead technical decisions",
-        "agents": ["06-devops-infrastructure", "07-testing-security"]
-      }
-    ]
+  "dependency_graph": {
+    "programming-fundamentals-agent": [],
+    "database-management-agent": ["programming-fundamentals-agent"],
+    "api-development-agent": ["programming-fundamentals-agent", "database-management-agent"],
+    "architecture-patterns-agent": ["api-development-agent"],
+    "caching-performance-agent": ["database-management-agent"],
+    "devops-infrastructure-agent": ["architecture-patterns-agent"],
+    "testing-security-agent": ["architecture-patterns-agent", "devops-infrastructure-agent"],
+    "backend-observability-agent": ["devops-infrastructure-agent"]
+  },
+
+  "integrity_check": {
+    "orphan_skills": [],
+    "broken_bonds": [],
+    "circular_dependencies": [],
+    "ghost_triggers": [],
+    "validation_status": "PASSED",
+    "last_check": "2025-12-30"
   },
 
   "metadata": {
     "created_date": "2025-11-17",
-    "last_updated": "2025-11-17",
-    "author": "Backend Development Learning Team",
+    "last_updated": "2025-12-30",
+    "author": "Dr. Umit Kacar & Muhsin Elcicek",
     "license": "MIT",
-    "repository": "https://github.com/pluginagentmarketplace/custum-plugin-backend",
-    "documentation": {
-      "readme": "README.md",
-      "architecture": "ARCHITECTURE.md",
-      "learning_paths": "LEARNING-PATH.md"
-    }
+    "repository": "https://github.com/pluginagentmarketplace/custom-plugin-backend"
   }
 }

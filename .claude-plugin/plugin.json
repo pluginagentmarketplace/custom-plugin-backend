@@ -1,7 +1,8 @@
 {
   "name": "backend-development-assistant",
-  "version": "2.0.0",
-  "description": "Professional backend development plugin with 7 specialized agents and 7 skills covering programming fundamentals, databases, APIs, architecture, caching, DevOps, and security for Claude Code.",
+  "version": "2.1.0",
+  "sasmp_version": "2.0.0",
+  "description": "Production-grade backend development plugin with 8 specialized agents and 12 skills covering programming fundamentals, databases, APIs, architecture, caching, DevOps, security, and observability for Claude Code.",
   "author": {
     "name": "Dr. Umit Kacar & Muhsin Elcicek",
     "email": "kacarumit.phd@gmail.com",
@@ -17,6 +18,7 @@
     "microservices",
     "devops",
     "security",
+    "observability",
     "fastapi",
     "nodejs",
     "python",
@@ -25,7 +27,9 @@
     "mongodb",
     "redis",
     "docker",
-    "kubernetes"
+    "kubernetes",
+    "opentelemetry",
+    "prometheus"
   ],
   "agents": [
     "./agents/01-backend-fundamentals.md",
@@ -34,22 +38,75 @@
     "./agents/04-architecture-patterns.md",
     "./agents/05-caching-performance.md",
     "./agents/06-devops-infrastructure.md",
-    "./agents/07-testing-security.md"
+    "./agents/07-testing-security.md",
+    "./agents/08-backend-observability.md"
   ],
-  "skills": [
-    "./skills/api-design/SKILL.md",
-    "./skills/architecture/SKILL.md",
-    "./skills/databases/SKILL.md",
-    "./skills/devops/SKILL.md",
-    "./skills/languages/SKILL.md",
-    "./skills/performance/SKILL.md",
-    "./skills/security/SKILL.md"
-  ],
+  "skills": {
+    "primary": [
+      "./skills/languages/SKILL.md",
+      "./skills/databases/SKILL.md",
+      "./skills/api-design/SKILL.md",
+      "./skills/architecture/SKILL.md",
+      "./skills/performance/SKILL.md",
+      "./skills/devops/SKILL.md",
+      "./skills/security/SKILL.md"
+    ],
+    "secondary": [
+      "./skills/authentication/SKILL.md",
+      "./skills/microservices/SKILL.md",
+      "./skills/messaging/SKILL.md",
+      "./skills/observability/SKILL.md",
+      "./skills/testing/SKILL.md"
+    ]
+  },
+  "agent_skill_bonds": {
+    "programming-fundamentals-agent": {
+      "primary": ["languages"],
+      "secondary": []
+    },
+    "database-management-agent": {
+      "primary": ["databases"],
+      "secondary": []
+    },
+    "api-development-agent": {
+      "primary": ["api-design"],
+      "secondary": ["authentication"]
+    },
+    "architecture-patterns-agent": {
+      "primary": ["architecture"],
+      "secondary": ["microservices", "messaging"]
+    },
+    "caching-performance-agent": {
+      "primary": ["performance"],
+      "secondary": []
+    },
+    "devops-infrastructure-agent": {
+      "primary": ["devops"],
+      "secondary": []
+    },
+    "testing-security-agent": {
+      "primary": ["security"],
+      "secondary": ["testing"]
+    },
+    "backend-observability-agent": {
+      "primary": ["observability"],
+      "secondary": []
+    }
+  },
   "commands": [
     "./commands/assess.md",
     "./commands/browse-agent.md",
     "./commands/learn.md",
     "./commands/projects.md"
   ],
-  "hooks": "./hooks/hooks.json"
+  "hooks": "./hooks/hooks.json",
+  "integrity": {
+    "total_agents": 8,
+    "total_skills": 12,
+    "primary_skills": 7,
+    "secondary_skills": 5,
+    "orphan_skills": 0,
+    "broken_bonds": 0,
+    "last_validated": "2025-12-30"
+  }
 }
