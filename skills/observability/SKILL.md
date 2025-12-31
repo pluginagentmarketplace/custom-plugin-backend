@@ -2,7 +2,7 @@
 name: observability
 description: Logging, metrics, and distributed tracing. OpenTelemetry, Prometheus, Grafana, and production debugging.
 sasmp_version: "2.0.0"
-bonded_agent: backend-observability-agent
+bonded_agent: 08-backend-observability
 bond_type: PRIMARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

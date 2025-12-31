@@ -2,7 +2,7 @@
 name: devops
 description: Deploy applications with Docker and Kubernetes, automate with CI/CD, manage infrastructure with code, and configure cloud platforms and networking.
 sasmp_version: "2.0.0"
-bonded_agent: devops-infrastructure-agent
+bonded_agent: 06-devops-infrastructure
 bond_type: PRIMARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

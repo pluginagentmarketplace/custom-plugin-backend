@@ -2,7 +2,7 @@
 name: api-design
 description: Design and build professional APIs with REST, GraphQL, and gRPC. Master authentication, documentation, testing, and operational concerns.
 sasmp_version: "2.0.0"
-bonded_agent: api-development-agent
+bonded_agent: 03-api-development
 bond_type: PRIMARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

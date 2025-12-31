@@ -2,7 +2,7 @@
 name: languages
 description: Master programming languages for backend development. Learn language selection, fundamentals, and ecosystem for JavaScript, Python, Go, Java, C#, PHP, Ruby, and Rust.
 sasmp_version: "2.0.0"
-bonded_agent: programming-fundamentals-agent
+bonded_agent: 01-backend-fundamentals
 bond_type: PRIMARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

@@ -2,7 +2,7 @@
 name: performance
 description: Optimize application performance through caching strategies, load balancing, database scaling, and monitoring. Build systems handling thousands of concurrent users.
 sasmp_version: "2.0.0"
-bonded_agent: caching-performance-agent
+bonded_agent: 05-caching-performance
 bond_type: PRIMARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

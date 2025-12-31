@@ -2,7 +2,7 @@
 name: databases
 description: Master relational and NoSQL databases. Learn PostgreSQL, MySQL, MongoDB, Redis, and other technologies for data persistence, optimization, and scaling.
 sasmp_version: "2.0.0"
-bonded_agent: database-management-agent
+bonded_agent: 02-database-management
 bond_type: PRIMARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

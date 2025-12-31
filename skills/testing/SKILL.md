@@ -2,7 +2,7 @@
 name: testing
 description: Backend testing strategies and test automation. Unit, integration, E2E, and load testing with best practices.
 sasmp_version: "2.0.0"
-bonded_agent: testing-security-agent
+bonded_agent: 07-testing-security
 bond_type: SECONDARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

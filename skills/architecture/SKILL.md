@@ -2,7 +2,7 @@
 name: architecture
 description: Master architectural design with SOLID principles, design patterns, microservices, and event-driven systems. Learn to design scalable backend systems.
 sasmp_version: "2.0.0"
-bonded_agent: architecture-patterns-agent
+bonded_agent: 04-architecture-patterns
 bond_type: PRIMARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

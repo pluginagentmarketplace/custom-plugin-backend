@@ -2,7 +2,7 @@
 name: authentication
 description: Backend authentication and authorization patterns. JWT, OAuth2, session management, RBAC, and secure token handling.
 sasmp_version: "2.0.0"
-bonded_agent: api-development-agent
+bonded_agent: 03-api-development
 bond_type: SECONDARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

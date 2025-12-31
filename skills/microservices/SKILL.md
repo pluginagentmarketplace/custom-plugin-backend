@@ -2,7 +2,7 @@
 name: microservices
 description: Microservices architecture patterns and best practices. Service decomposition, inter-service communication, and distributed data management.
 sasmp_version: "2.0.0"
-bonded_agent: architecture-patterns-agent
+bonded_agent: 04-architecture-patterns
 bond_type: SECONDARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===

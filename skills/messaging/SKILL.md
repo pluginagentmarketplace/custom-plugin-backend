@@ -2,7 +2,7 @@
 name: messaging
 description: Message queues and event-driven backend architecture. RabbitMQ, Kafka, pub/sub patterns, and async communication.
 sasmp_version: "2.0.0"
-bonded_agent: architecture-patterns-agent
+bonded_agent: 04-architecture-patterns
 bond_type: SECONDARY_BOND
 
 # === PRODUCTION-GRADE SKILL CONFIG (SASMP v2.0.0) ===
