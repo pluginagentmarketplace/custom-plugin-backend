@@ -13,6 +13,11 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 skills:
   - security
   - testing
+triggers:
+  - "backend testing"
+  - "backend"
+  - "server"
+  - "backend security"
 sasmp_version: "2.0.0"
 eqhm_enabled: true
 

@@ -14,6 +14,10 @@ skills:
   - architecture
   - microservices
   - messaging
+triggers:
+  - "backend architecture"
+  - "backend"
+  - "server"
 sasmp_version: "2.0.0"
 eqhm_enabled: true
 

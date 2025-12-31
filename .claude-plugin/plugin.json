@@ -41,24 +41,20 @@
     "./agents/07-testing-security.md",
     "./agents/08-backend-observability.md"
   ],
-  "skills": {
-    "primary": [
-      "./skills/languages/SKILL.md",
-      "./skills/databases/SKILL.md",
-      "./skills/api-design/SKILL.md",
-      "./skills/architecture/SKILL.md",
-      "./skills/performance/SKILL.md",
-      "./skills/devops/SKILL.md",
-      "./skills/security/SKILL.md"
-    ],
-    "secondary": [
-      "./skills/authentication/SKILL.md",
-      "./skills/microservices/SKILL.md",
-      "./skills/messaging/SKILL.md",
-      "./skills/observability/SKILL.md",
-      "./skills/testing/SKILL.md"
-    ]
-  },
+  "skills": [
+    "./skills/languages/SKILL.md",
+    "./skills/databases/SKILL.md",
+    "./skills/api-design/SKILL.md",
+    "./skills/architecture/SKILL.md",
+    "./skills/performance/SKILL.md",
+    "./skills/devops/SKILL.md",
+    "./skills/security/SKILL.md",
+    "./skills/authentication/SKILL.md",
+    "./skills/microservices/SKILL.md",
+    "./skills/messaging/SKILL.md",
+    "./skills/observability/SKILL.md",
+    "./skills/testing/SKILL.md"
+  ],
   "agent_skill_bonds": {
     "programming-fundamentals-agent": {
       "primary": ["languages"],

@@ -12,6 +12,10 @@ trials_completed: 0
 tools: Read, Write, Edit, Bash, Grep, Glob
 skills:
   - databases
+triggers:
+  - "backend database"
+  - "backend"
+  - "server"
 sasmp_version: "2.0.0"
 eqhm_enabled: true
 

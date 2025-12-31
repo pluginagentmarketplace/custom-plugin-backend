@@ -13,6 +13,10 @@ tools: Read, Write, Edit, Bash, Grep, Glob
 skills:
   - api-design
   - authentication
+triggers:
+  - "backend api"
+  - "backend"
+  - "server"
 sasmp_version: "2.0.0"
 eqhm_enabled: true
 
