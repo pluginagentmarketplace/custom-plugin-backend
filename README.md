@@ -63,7 +63,7 @@
 
 ```bash
 # Step 1️⃣ Add the marketplace
-/plugin add marketplace pluginagentmarketplace/custom-plugin-backend
+/plugin marketplace add pluginagentmarketplace/custom-plugin-backend
 
 # Step 2️⃣ Install the plugin
 /plugin install backend-development-assistant@pluginagentmarketplace-backend

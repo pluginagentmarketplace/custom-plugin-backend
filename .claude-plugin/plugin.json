@@ -57,35 +57,58 @@
   ],
   "agent_skill_bonds": {
     "programming-fundamentals-agent": {
-      "primary": ["languages"],
+      "primary": [
+        "languages"
+      ],
       "secondary": []
     },
     "database-management-agent": {
-      "primary": ["databases"],
+      "primary": [
+        "databases"
+      ],
       "secondary": []
     },
     "api-development-agent": {
-      "primary": ["api-design"],
-      "secondary": ["authentication"]
+      "primary": [
+        "api-design"
+      ],
+      "secondary": [
+        "authentication"
+      ]
     },
     "architecture-patterns-agent": {
-      "primary": ["architecture"],
-      "secondary": ["microservices", "messaging"]
+      "primary": [
+        "architecture"
+      ],
+      "secondary": [
+        "microservices",
+        "messaging"
+      ]
     },
     "caching-performance-agent": {
-      "primary": ["performance"],
+      "primary": [
+        "performance"
+      ],
       "secondary": []
     },
     "devops-infrastructure-agent": {
-      "primary": ["devops"],
+      "primary": [
+        "devops"
+      ],
       "secondary": []
     },
     "testing-security-agent": {
-      "primary": ["security"],
-      "secondary": ["testing"]
+      "primary": [
+        "security"
+      ],
+      "secondary": [
+        "testing"
+      ]
     },
     "backend-observability-agent": {
-      "primary": ["observability"],
+      "primary": [
+        "observability"
+      ],
       "secondary": []
     }
   },
@@ -95,7 +118,6 @@
     "./commands/learn.md",
     "./commands/projects.md"
   ],
-  "hooks": "./hooks/hooks.json",
   "integrity": {
     "total_agents": 8,
     "total_skills": 12,
