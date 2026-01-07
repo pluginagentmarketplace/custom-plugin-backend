@@ -1,7 +1,6 @@
 {
   "name": "backend-development-assistant",
   "version": "2.1.0",
-  "sasmp_version": "2.0.0",
   "description": "Production-grade backend development plugin with 8 specialized agents and 12 skills covering programming fundamentals, databases, APIs, architecture, caching, DevOps, security, and observability for Claude Code.",
   "author": {
     "name": "Dr. Umit Kacar & Muhsin Elcicek",
@@ -117,14 +116,5 @@
     "./commands/browse-agent.md",
     "./commands/learn.md",
     "./commands/projects.md"
-  ],
-  "integrity": {
-    "total_agents": 8,
-    "total_skills": 12,
-    "primary_skills": 7,
-    "secondary_skills": 5,
-    "orphan_skills": 0,
-    "broken_bonds": 0,
-    "last_validated": "2025-12-30"
-  }
+  ]
 }
